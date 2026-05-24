@@ -5,7 +5,25 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="google-site-verification" content="nzO4XNSOoXA18UNiiZIsrxClOY2xoVKuHN1JvSUwvXY" />
 <title>Futebol da Zona</title>
-<style>
+<style><style>
+body{
+  background: #05070c url('https://user-gen-media-assets.s3.amazonaws.com/gpt4o_images/193c5445-90a3-44b5-8bf5-dc2373ea0106.png') center top / cover fixed no-repeat !important;
+}
+body::before{
+  content:'';
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.68);
+  z-index:-1;
+  pointer-events:none;
+}
+.header,.footer,.sidebar-box,.news-card,.video-card,.static-page,.hero{
+  backdrop-filter: blur(6px);
+}
+.header,.footer{
+  background: rgba(2,10,24,.86) !important;
+}
+</style>
   * { margin: 0; padding: 0; box-sizing: border-box; }
   body { font-family: 'Georgia', serif; background: #f0f0f0; color: #222; }
   a { text-decoration: none; color: inherit; }
