@@ -1,229 +1,160 @@
-
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="google-site-verification" content="nzO4XNSOoXA18UNiiZIsrxClOY2xoVKuHN1JvSUwvXY" />
-  <title>Futebol Total - Notícias e Jogos ao Vivo</title>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet" />
-  <style>
-    body {
-      font-family: 'Roboto', sans-serif;
-      margin: 0;
-      background: url('https://cdn.pixabay.com/photo/2017/01/11/21/05/football-1970948_1280.jpg') no-repeat center center fixed;
-      background-size: cover;
-      color: #333;
-    }
-    header {
-      background-color: rgba(0,0,0,0.7);
-      color: white;
-      padding: 10px 20px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-    }
-    header h1 {
-      margin: 0;
-      font-weight: 700;
-    }
-    nav a {
-      color: white;
-      margin-left: 20px;
-      text-decoration: none;
-      font-weight: 500;
-    }
-    nav a:hover {
-      text-decoration: underline;
-    }
-    main {
-      max-width: 1200px;
-      margin: auto;
-      background-color: rgba(255,255,255,0.95);
-      padding: 20px;
-      margin-top: 30px;
-      border-radius: 8px;
-    }
-    article {
-      margin-bottom: 20px;
-      border-bottom: 1px solid #ccc;
-      padding-bottom: 15px;
-    }
-    article img {
-      max-width: 100%;
-      border-radius: 6px;
-      margin-top: 10px;
-    }
-    footer {
-      text-align: center;
-      padding: 15px;
-      background-color: #222;
-      color: white;
-      margin-top: 40px;
-    }
-    .links-footer a {
-      color: #aaa;
-      margin: 0 10px;
-      text-decoration: none;
-      font-size: 0.9rem;
-    }
-    .links-footer a:hover {
-      color: white;
-      text-decoration: underline;
-    }
-    /* Estilo para modal simples (Política e Termos) */
-    .modal {
-      display: none;
-      position: fixed;
-      z-index: 1500;
-      padding-top: 100px;
-      left: 0;
-      top: 0;
-      width: 100%;
-      height: 100%;
-      overflow: auto;
-      background-color: rgba(0,0,0,0.7);
-    }
-    .modal-content {
-      background-color: #fefefe;
-      margin: auto;
-      padding: 20px;
-      border-radius: 10px;
-      width: 90%;
-      max-width: 700px;
-      max-height: 80vh;
-      overflow-y: auto;
-    }
-    .close {
-      color: #aaa;
-      float: right;
-      font-size: 28px;
-      font-weight: bold;
-      cursor: pointer;
-    }
-    .close:hover {
-      color: black;
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Futebol da Zona</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Arial', sans-serif; background: #0a0a0a; color: #fff; }
+  
+  /* HEADER */
+  .header { background: #1a1a1a; border-bottom: 1px solid #2a2a2a; }
+  .header-top { display: flex; align-items: center; justify-content: space-between; padding: 16px 40px; }
+  .logo { font-size: 24px; font-weight: 900; color: #00cc44; display: flex; align-items: center; gap: 8px; }
+  .nav { display: flex; gap: 0; }
+  .nav a { color: rgba(255,255,255,0.7); padding: 16px 20px; font-size: 13px; font-weight: bold; text-transform: uppercase; transition: all 0.2s; border-bottom: 3px solid transparent; }
+  .nav a:hover { color: #00cc44; border-bottom-color: #00cc44; }
+  .btn-entrar { background: #00cc44; color: #0a0a0a; padding: 10px 24px; border-radius: 4px; cursor: pointer; font-weight: 900; border: none; }
+
+  /* HERO */
+  .hero { background: linear-gradient(90deg, rgba(0,0,0,0.8) 0%, transparent 50%); padding: 60px 40px; display: flex; align-items: center; min-height: 450px; margin-bottom: 40px; border-radius: 8px; position: relative; overflow: hidden; }
+  .hero::after { content: ''; position: absolute; right: 0; top: 0; width: 50%; height: 100%; background: radial-gradient(circle at right, rgba(0,204,68,0.1) 0%, transparent 70%); }
+  .hero-content { position: relative; z-index: 1; max-width: 600px; }
+  .hero-prefix { font-size: 16px; color: #00cc44; font-weight: bold; margin-bottom: 8px; }
+  .hero-title { font-size: 48px; font-weight: 900; line-height: 1.1; margin-bottom: 16px; text-transform: uppercase; }
+  .hero-sub { font-size: 15px; opacity: 0.8; line-height: 1.6; margin-bottom: 24px; }
+  .hero-buttons { display: flex; gap: 16px; }
+  .btn-primary { background: #00cc44; color: #0a0a0a; padding: 12px 28px; border-radius: 4px; cursor: pointer; font-weight: 900; border: none; }
+  .btn-secondary { background: transparent; color: #00cc44; padding: 12px 28px; border: 2px solid #00cc44; border-radius: 4px; cursor: pointer; font-weight: 900; }
+
+  /* SECTION TITLE */
+  .section-title { font-size: 14px; font-weight: 900; text-transform: uppercase; color: #00cc44; border-left: 4px solid #00cc44; padding-left: 12px; margin: 40px 0 24px; }
+
+  /* NEWS GRID */
+  .news-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; margin-bottom: 40px; }
+  .news-card { background: #1a1a1a; border-radius: 6px; overflow: hidden; cursor: pointer; transition: all 0.2s; border: 1px solid #2a2a2a; }
+  .news-card:hover { transform: translateY(-4px); border-color: #00cc44; }
+  .news-card-img { height: 180px; display: flex; align-items: center; justify-content: center; font-size: 60px; background: linear-gradient(135deg, #1a1a1a, #2a2a2a); }
+  .news-card-body { padding: 16px; }
+  .news-card-tag { font-size: 10px; font-weight: 900; text-transform: uppercase; color: #00cc44; margin-bottom: 8px; }
+  .news-card-title { font-size: 14px; font-weight: bold; line-height: 1.4; color: #fff; }
+  .news-card-time { font-size: 11px; color: #777; margin-top: 10px; }
+
+  /* SIDEBAR */
+  .sidebar { display: flex; flex-direction: column; gap: 24px; }
+  .sidebar-box { background: #1a1a1a; border-radius: 6px; overflow: hidden; border: 1px solid #2a2a2a; }
+  .sidebar-header { background: #2a2a2a; color: white; padding: 14px 16px; font-size: 12px; font-weight: 900; text-transform: uppercase; }
+  .table-classif { width: 100%; font-size: 12px; border-collapse: collapse; }
+  .table-classif th { background: #2a2a2a; padding: 10px 8px; text-align: center; color: #aaa; font-weight: 900; }
+  .table-classif td { padding: 10px 8px; border-bottom: 1px solid #2a2a2a; text-align: center; }
+  .team-name { text-align: left !important; color: #fff; font-weight: bold; }
+
+  /* FOOTER */
+  .footer { background: #0a0a0a; border-top: 1px solid #2a2a2a; padding: 40px; text-align: center; color: #777; font-size: 12px; }
+</style>
 </head>
 <body>
-  <header>
-    <h1>Futebol Total</h1>
-    <nav>
+
+<!-- HEADER -->
+<header class="header">
+  <div class="header-top">
+    <div class="logo">⚽ FUTEBOL <span style="color: #fff;">DA ZONA</span></div>
+    <nav class="nav">
       <a href="#">Início</a>
       <a href="#">Notícias</a>
-      <a href="#">Jogadores</a>
-      <a href="#">Times</a>
       <a href="#">Partidas</a>
+      <a href="#">Tabelas</a>
+      <a href="#">Vídeos</a>
+      <a href="#">Loja</a>
       <a href="#">Contato</a>
-      <a href="#" id="link-politica">Política de Privacidade</a>
-      <a href="#" id="link-termos">Termos de Uso</a>
     </nav>
-  </header>
-  
-  <main>
-    <section>
-      <article>
-        <h2>Campeonato Brasileiro: Rodada decisiva neste domingo</h2>
-        <img src="https://cdn.pixabay.com/photo/2017/05/10/21/22/football-2309342_1280.jpg" alt="Partida de futebol" />
-        <p>Confira os principais jogos da rodada decisiva do Brasileirão, com times brigando pelo título e pela classificação para a Libertadores.</p>
-        <a href="#">Ler mais</a>
-      </article>
+    <button class="btn-entrar">🔐 ENTRAR</button>
+  </div>
+</header>
 
-      <article>
-        <h2>Neymar confirma retorno aos treinos após lesão</h2>
-        <img src="https://cdn.pixabay.com/photo/2016/11/21/15/38/football-1840439_1280.jpg" alt="Jogador de futebol" />
-        <p>O craque Neymar está de volta aos treinos e promete voltar com tudo na próxima fase da temporada. Veja os detalhes.</p>
-        <a href="#">Ler mais</a>
-      </article>
-    </section>
-  </main>
-  
-  <footer>
-    <div class="links-footer">
-      <a href="#" id="link-politica-footer">Política de Privacidade</a> | 
-      <a href="#" id="link-termos-footer">Termos de Uso</a> | 
-      <a href="#">Contato</a>
-    </div>
-    <p>© 2024 Futebol Total - Todos os direitos reservados.</p>
-  </footer>
-
-  <!-- Modal Política de Privacidade -->
-  <div id="modal-politica" class="modal">
-    <div class="modal-content">
-      <span class="close" id="close-politica">&times;</span>
-      <h2>Política de Privacidade</h2>
-      <p>Este site respeita sua privacidade. Coletamos informações como dados de navegação e cookies para melhorar sua experiência. Não compartilhamos seus dados com terceiros sem consentimento. Você pode solicitar a exclusão de seus dados a qualquer momento pelo contato disponível no site.</p>
-      <p><strong>Informações coletadas:</strong> Dados de navegação, cookies e informações fornecidas voluntariamente.</p>
-      <p><strong>Uso dos dados:</strong> Melhorar o site, personalizar conteúdo e comunicação.</p>
-      <p><strong>Compartilhamento:</strong> Não divulgamos informações pessoais a terceiros sem sua autorização.</p>
-      <p><strong>Seus direitos:</strong> Você pode acessar, corrigir ou excluir seus dados enviados a nós.</p>
-      <p>Em caso de dúvidas, entre em contato conosco pelo email: contato@futeboltotal.com</p>
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-content">
+    <div class="hero-prefix">AQUI, O FUTEBOL</div>
+    <div class="hero-title">NUNCA<br>PARA!</div>
+    <div class="hero-sub">Cobertura completa, notícias exclusivas, estatísticas, tabelas e tudo sobre o mundo da bola!</div>
+    <div class="hero-buttons">
+      <button class="btn-primary">📰 ÚLTIMAS NOTÍCIAS →</button>
+      <button class="btn-secondary">⚽ VER PARTIDAS →</button>
     </div>
   </div>
+</div>
 
-  <!-- Modal Termos de Uso -->
-  <div id="modal-termos" class="modal">
-    <div class="modal-content">
-      <span class="close" id="close-termos">&times;</span>
-      <h2>Termos de Uso</h2>
-      <p>Ao utilizar este site, você concorda com as regras descritas abaixo:</p>
-      <p><strong>Uso permitido:</strong> Acesso para informações pessoais e não comerciais.</p>
-      <p><strong>Uso proibido:</strong> Reprodução não autorizada do conteúdo, uso para fins comerciais sem permissão e ações que prejudiquem o site ou outros usuários.</p>
-      <p><strong>Direitos autorais:</strong> Todo o conteúdo é protegido por direitos autorais e propriedade intelectual.</p>
-      <p><strong>Responsabilidade:</strong> O site não se responsabiliza por danos causados por uso indevido das informações.</p>
-      <p><strong>Alteração dos termos:</strong> Estes termos podem ser atualizados sem aviso prévio.</p>
-      <p>Para dúvidas, entre em contato conosco pelo email: contato@futeboltotal.com</p>
+<!-- MAIN CONTENT -->
+<div style="max-width: 1200px; margin: 0 auto; padding: 0 40px;">
+  <div style="display: grid; grid-template-columns: 1fr 320px; gap: 30px;">
+    
+    <!-- CONTENT -->
+    <div>
+      <h2 class="section-title">Últimas Notícias</h2>
+      <div class="news-grid">
+        <div class="news-card">
+          <div class="news-card-img">📰</div>
+          <div class="news-card-body">
+            <div class="news-card-tag">Seleção</div>
+            <div class="news-card-title">Brasil vence e convence em amistoso</div>
+            <div class="news-card-time">24/05/2024</div>
+          </div>
+        </div>
+        <div class="news-card">
+          <div class="news-card-img">🏆</div>
+          <div class="news-card-body">
+            <div class="news-card-tag">Champions</div>
+            <div class="news-card-title">Real Madrid conquista a Champions</div>
+            <div class="news-card-time">23/05/2024</div>
+          </div>
+        </div>
+        <div class="news-card">
+          <div class="news-card-img">⚽</div>
+          <div class="news-card-body">
+            <div class="news-card-tag">Mercado</div>
+            <div class="news-card-title">Vini Jr. entra na mira de gigante</div>
+            <div class="news-card-time">22/05/2024</div>
+          </div>
+        </div>
+        <div class="news-card">
+          <div class="news-card-img">🏟️</div>
+          <div class="news-card-body">
+            <div class="news-card-tag">Bastidores</div>
+            <div class="news-card-title">Novas tecnologias nos estádios</div>
+            <div class="news-card-time">21/05/2024</div>
+          </div>
+        </div>
+      </div>
     </div>
-  </div>
 
-  <script>
-    // Abertura e fechamento dos modais da política e termos
-    const modalPolitica = document.getElementById('modal-politica');
-    const modalTermos = document.getElementById('modal-termos');
-    const linkPolitica = document.getElementById('link-politica');
-    const linkPoliticaFooter = document.getElementById('link-politica-footer');
-    const linkTermos = document.getElementById('link-termos');
-    const linkTermosFooter = document.getElementById('link-termos-footer');
-    const closePolitica = document.getElementById('close-politica');
-    const closeTermos = document.getElementById('close-termos');
-    
-    linkPolitica.onclick = function(e) {
-      e.preventDefault();
-      modalPolitica.style.display = 'block';
-    }
-    linkPoliticaFooter.onclick = function(e) {
-      e.preventDefault();
-      modalPolitica.style.display = 'block';
-    }
-    
-    linkTermos.onclick = function(e) {
-      e.preventDefault();
-      modalTermos.style.display = 'block';
-    }
-    linkTermosFooter.onclick = function(e) {
-      e.preventDefault();
-      modalTermos.style.display = 'block';
-    }
-    
-    closePolitica.onclick = function() {
-      modalPolitica.style.display = 'none';
-    }
-    closeTermos.onclick = function() {
-      modalTermos.style.display = 'none';
-    }
-    
-    window.onclick = function(event) {
-      if(event.target == modalPolitica) {
-        modalPolitica.style.display = 'none';
-      }
-      if(event.target == modalTermos) {
-        modalTermos.style.display = 'none';
-      }
-    }
-  </script>
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+      <div class="sidebar-box">
+        <div class="sidebar-header">📊 Brasileirão — Série A</div>
+        <table class="table-classif">
+          <thead>
+            <tr><th>#</th><th>Time</th><th>P</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>1</td><td class="team-name">Palmeiras</td><td>31</td></tr>
+            <tr><td>2</td><td class="team-name">Fluminense</td><td>28</td></tr>
+            <tr><td>3</td><td class="team-name">São Paulo</td><td>26</td></tr>
+            <tr><td>4</td><td class="team-name">Athletico-PR</td><td>25</td></tr>
+            <tr><td>5</td><td class="team-name">Flamengo</td><td>23</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </aside>
+
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer class="footer">
+  © 2024 Futebol da Zona · Todos os direitos reservados
+</footer>
+
 </body>
 </html>
