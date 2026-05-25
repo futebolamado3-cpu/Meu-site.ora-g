@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Futebol da Zona</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Arial', sans-serif; background: #0a0a0a; color: #fff; }
+  
+  /* HEADER */
+  .header { background: #1a1a1a; border-bottom: 1px solid #2a2a2a; }
+  .header-top { display: flex; align-items: center; justify-content: space-between; padding: 16px 40px; }
+  .logo { font-size: 24px; font-weight: 900; color: #00cc44; display: flex; align-items: center; gap: 8px; }
+  .nav { display: flex; gap: 0; }
+  .nav a { color: rgba(255,255,255,0.7); padding: 16px 20px; font-size: 13px; font-weight: bold; text-transform: uppercase; transition: all 0.2s; border-bottom: 3px solid transparent; }
+  .nav a:hover { color: #00cc44; border-bottom-color: #00cc44; }
+  .btn-entrar { background: #00cc44; color: #0a0a0a; padding: 10px 24px; border-radius: 4px; cursor: pointer; font-weight: 900; border: none; }
+
+  /* HERO */
+  .hero { background: linear-gradient(90deg, rgba(0,0,0,0.8) 0%, transparent 50%); padding: 60px 40px; display: flex; align-items: center; min-height: 450px; margin-bottom: 40px; border-radius: 8px; position: relative; overflow: hidden; }
+  .hero::after { content: ''; position: absolute; right: 0; top: 0; width: 50%; height: 100%; background: radial-gradient(circle at right, rgba(0,204,68,0.1) 0%, transparent 70%); }
+  .hero-content { position: relative; z-index: 1; max-width: 600px; }
+  .hero-prefix { font-size: 16px; color: #00cc44; font-weight: bold; margin-bottom: 8px; }
+  .hero-title { font-size: 48px; font-weight: 900; line-height: 1.1; margin-bottom: 16px; text-transform: uppercase; }
+  .hero-sub { font-size: 15px; opacity: 0.8; line-height: 1.6; margin-bottom: 24px; }
+  .hero-buttons { display: flex; gap: 16px; }
+  .btn-primary { background: #00cc44; color: #0a0a0a; padding: 12px 28px; border-radius: 4px; cursor: pointer; font-weight: 900; border: none; }
+  .btn-secondary { background: transparent; color: #00cc44; padding: 12px 28px; border: 2px solid #00cc44; border-radius: 4px; cursor: pointer; font-weight: 900; }
+
+  /* SECTION TITLE */
+  .section-title { font-size: 14px; font-weight: 900; text-transform: uppercase; color: #00cc44; border-left: 4px solid #00cc44; padding-left: 12px; margin: 40px 0 24px; }
+
+  /* NEWS GRID */
+  .news-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; margin-bottom: 40px; }
+  .news-card { background: #1a1a1a; border-radius: 6px; overflow: hidden; cursor: pointer; transition: all 0.2s; border: 1px solid #2a2a2a; }
+  .news-card:hover { transform: translateY(-4px); border-color: #00cc44; }
+  .news-card-img { height: 180px; display: flex; align-items: center; justify-content: center; font-size: 60px; background: linear-gradient(135deg, #1a1a1a, #2a2a2a); }
+  .news-card-body { padding: 16px; }
+  .news-card-tag { font-size: 10px; font-weight: 900; text-transform: uppercase; color: #00cc44; margin-bottom: 8px; }
+  .news-card-title { font-size: 14px; font-weight: bold; line-height: 1.4; color: #fff; }
+  .news-card-time { font-size: 11px; color: #777; margin-top: 10px; }
+
+  /* SIDEBAR */
+  .sidebar { display: flex; flex-direction: column; gap: 24px; }
+  .sidebar-box { background: #1a1a1a; border-radius: 6px; overflow: hidden; border: 1px solid #2a2a2a; }
+  .sidebar-header { background: #2a2a2a; color: white; padding: 14px 16px; font-size: 12px; font-weight: 900; text-transform: uppercase; }
+  .table-classif { width: 100%; font-size: 12px; border-collapse: collapse; }
+  .table-classif th { background: #2a2a2a; padding: 10px 8px; text-align: center; color: #aaa; font-weight: 900; }
+  .table-classif td { padding: 10px 8px; border-bottom: 1px solid #2a2a2a; text-align: center; }
+  .team-name { text-align: left !important; color: #fff; font-weight: bold; }
+
+  /* FOOTER */
+  .footer { background: #0a0a0a; border-top: 1px solid #2a2a2a; padding: 40px; text-align: center; color: #777; font-size: 12px; }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="header">
+  <div class="header-top">
+    <div class="logo">⚽ FUTEBOL <span style="color: #fff;">DA ZONA</span></div>
+    <nav class="nav">
+      <a href="#">Início</a>
+      <a href="#">Notícias</a>
+      <a href="#">Partidas</a>
+      <a href="#">Tabelas</a>
+      <a href="#">Vídeos</a>
+      <a href="#">Loja</a>
+      <a href="#">Contato</a>
+    </nav>
+    <button class="btn-entrar">🔐 ENTRAR</button>
+  </div>
+</header>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-content">
+    <div class="hero-prefix">AQUI, O FUTEBOL</div>
+    <div class="hero-title">NUNCA<br>PARA!</div>
+    <div class="hero-sub">Cobertura completa, notícias exclusivas, estatísticas, tabelas e tudo sobre o mundo da bola!</div>
+    <div class="hero-buttons">
+      <button class="btn-primary">📰 ÚLTIMAS NOTÍCIAS →</button>
+      <button class="btn-secondary">⚽ VER PARTIDAS →</button>
+    </div>
+  </div>
+</div>
+
+<!-- MAIN CONTENT -->
+<div style="max-width: 1200px; margin: 0 auto; padding: 0 40px;">
+  <div style="display: grid; grid-template-columns: 1fr 320px; gap: 30px;">
+    
+    <!-- CONTENT -->
+    <div>
+      <h2 class="section-title">Últimas Notícias</h2>
+      <div class="news-grid">
+        <div class="news-card">
+          <div class="news-card-img">📰</div>
+          <div class="news-card-body">
+            <div class="news-card-tag">Seleção</div>
+            <div class="news-card-title">Brasil vence e convence em amistoso</div>
+            <div class="news-card-time">24/05/2024</div>
+          </div>
+        </div>
+        <div class="news-card">
+          <div class="news-card-img">🏆</div>
+          <div class="news-card-body">
+            <div class="news-card-tag">Champions</div>
+            <div class="news-card-title">Real Madrid conquista a Champions</div>
+            <div class="news-card-time">23/05/2024</div>
+          </div>
+        </div>
+        <div class="news-card">
+          <div class="news-card-img">⚽</div>
+          <div class="news-card-body">
+            <div class="news-card-tag">Mercado</div>
+            <div class="news-card-title">Vini Jr. entra na mira de gigante</div>
+            <div class="news-card-time">22/05/2024</div>
+          </div>
+        </div>
+        <div class="news-card">
+          <div class="news-card-img">🏟️</div>
+          <div class="news-card-body">
+            <div class="news-card-tag">Bastidores</div>
+            <div class="news-card-title">Novas tecnologias nos estádios</div>
+            <div class="news-card-time">21/05/2024</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+      <div class="sidebar-box">
+        <div class="sidebar-header">📊 Brasileirão — Série A</div>
+        <table class="table-classif">
+          <thead>
+            <tr><th>#</th><th>Time</th><th>P</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>1</td><td class="team-name">Palmeiras</td><td>31</td></tr>
+            <tr><td>2</td><td class="team-name">Fluminense</td><td>28</td></tr>
+            <tr><td>3</td><td class="team-name">São Paulo</td><td>26</td></tr>
+            <tr><td>4</td><td class="team-name">Athletico-PR</td><td>25</td></tr>
+            <tr><td>5</td><td class="team-name">Flamengo</td><td>23</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </aside>
+
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer class="footer">
+  © 2024 Futebol da Zona · Todos os direitos reservados
+</footer>
+
+</body>
+</html>
