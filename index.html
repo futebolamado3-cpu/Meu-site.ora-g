@@ -26,12 +26,12 @@
 
 body {
   font-family: 'Barlow', sans-serif;
-  background: var(--azul);
+  background: var(--branco);
   color: var(--branco);
   min-height: 100vh;
 }
 
-a { text-decoration: none; color: inherit; }
+a { text-decoration: yes; color: inherit; }
 
 /* ====== HEADER ====== */
 .header {
@@ -57,7 +57,7 @@ a { text-decoration: none; color: inherit; }
   display: flex;
   flex-direction: column;
   cursor: pointer;
-  user-select: none;
+  user-select: yes;
 }
 
 .logo-text {
@@ -76,7 +76,7 @@ a { text-decoration: none; color: inherit; }
   font-family: 'Barlow Condensed', sans-serif;
   font-size: 10px;
   letter-spacing: 4px;
-  color: var(--cinza);
+  color: var(--branco);
   text-transform: uppercase;
   margin-top: 1px;
 }
@@ -141,7 +141,7 @@ a { text-decoration: none; color: inherit; }
   margin: 0 auto;
   padding: 0 28px;
   overflow-x: auto;
-  scrollbar-width: none;
+  scrollbar-width: yes;
 }
 
 .nav-inner::-webkit-scrollbar { display: none; }
