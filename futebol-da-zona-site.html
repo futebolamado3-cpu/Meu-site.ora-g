@@ -1,0 +1,1612 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Futebol da Zona — O melhor do futebol nacional e internacional com notícias, placares e análises em tempo real.">
+<meta name="google-site-verification" content="nzO4XNSOoXA18UNiiZIsrxClOY2xoVKuHN1JvSUwvXY" />
+<title>Futebol da Zona — Notícias, Placares e Análises</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow+Condensed:wght@400;600;700;900&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --verde: #00cc44;
+  --azul: #003366;
+  --azul-escuro: #001a33;
+  --azul-medio: #004488;
+  --branco: #ffffff;
+  --cinza-claro: #f2f4f6;
+  --cinza: #e0e3e8;
+  --texto: #1a1a2e;
+  --texto-leve: #5a6070;
+  --vermelho: #e63030;
+  --amarelo: #ffd700;
+}
+
+* { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-behavior: smooth; }
+body { font-family: 'Lora', Georgia, serif; background: var(--cinza-claro); color: var(--texto); }
+a { text-decoration: none; color: inherit; }
+img { max-width: 100%; }
+
+/* ======================== HEADER ======================== */
+.header {
+  background: var(--azul-escuro);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  box-shadow: 0 2px 20px rgba(0,0,0,0.4);
+}
+.header-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 32px;
+  border-bottom: 3px solid var(--verde);
+  gap: 16px;
+}
+.logo {
+  display: flex;
+  flex-direction: column;
+  line-height: 1;
+}
+.logo-main {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 38px;
+  letter-spacing: 2px;
+  color: var(--branco);
+  line-height: 0.9;
+}
+.logo-main span { color: var(--verde); }
+.logo-sub {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 10px;
+  letter-spacing: 4px;
+  color: rgba(255,255,255,0.45);
+  text-transform: uppercase;
+  margin-top: 4px;
+}
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+.header-search {
+  display: flex;
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.15);
+  border-radius: 6px;
+  overflow: hidden;
+}
+.header-search input {
+  background: transparent;
+  border: none;
+  outline: none;
+  padding: 8px 14px;
+  color: white;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 14px;
+  width: 200px;
+}
+.header-search input::placeholder { color: rgba(255,255,255,0.35); }
+.header-search button {
+  background: var(--verde);
+  border: none;
+  padding: 8px 14px;
+  color: var(--azul-escuro);
+  cursor: pointer;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 700;
+  font-size: 13px;
+  letter-spacing: 1px;
+  transition: background 0.2s;
+}
+.header-search button:hover { background: #00ff55; }
+
+/* NAV */
+.nav {
+  display: flex;
+  background: var(--azul);
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+.nav::-webkit-scrollbar { display: none; }
+.nav a {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.75);
+  padding: 12px 20px;
+  white-space: nowrap;
+  border-right: 1px solid rgba(255,255,255,0.06);
+  transition: all 0.2s;
+  cursor: pointer;
+  border-bottom: 2px solid transparent;
+}
+.nav a:hover { color: white; background: rgba(255,255,255,0.07); }
+.nav a.active { color: var(--verde); border-bottom-color: var(--verde); }
+
+/* TICKER */
+.ticker {
+  background: var(--verde);
+  padding: 0;
+  display: flex;
+  align-items: stretch;
+  overflow: hidden;
+}
+.ticker-label {
+  background: var(--azul-escuro);
+  color: var(--verde);
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 13px;
+  letter-spacing: 2px;
+  padding: 6px 16px;
+  white-space: nowrap;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.live-dot {
+  width: 7px; height: 7px;
+  background: var(--verde);
+  border-radius: 50%;
+  animation: pulse 1.2s infinite;
+}
+@keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.3;transform:scale(0.7)} }
+.ticker-wrap { overflow: hidden; flex: 1; padding: 6px 0; }
+.ticker-text {
+  display: inline-block;
+  white-space: nowrap;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--azul-escuro);
+  animation: ticker-scroll 45s linear infinite;
+  padding-left: 30px;
+}
+@keyframes ticker-scroll {
+  0% { transform: translateX(100vw); }
+  100% { transform: translateX(-100%); }
+}
+
+/* ======================== PAGES ======================== */
+.page { display: none; }
+.page.active { display: block; }
+
+/* ======================== HOME ======================== */
+.container { max-width: 1200px; margin: 0 auto; padding: 24px 20px; }
+.layout { display: grid; grid-template-columns: 1fr 320px; gap: 24px; }
+
+/* HERO */
+.hero {
+  position: relative;
+  height: 440px;
+  border-radius: 10px;
+  overflow: hidden;
+  cursor: pointer;
+  margin-bottom: 28px;
+}
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, #001a33 0%, #003366 50%, #00441a 100%);
+}
+.hero-pattern {
+  position: absolute;
+  inset: 0;
+  background-image:
+    repeating-linear-gradient(
+      -45deg,
+      transparent,
+      transparent 30px,
+      rgba(0,204,68,0.03) 30px,
+      rgba(0,204,68,0.03) 31px
+    );
+}
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.3) 50%, transparent 100%);
+}
+.hero-icon {
+  position: absolute;
+  right: -20px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 280px;
+  opacity: 0.04;
+  line-height: 1;
+  user-select: none;
+}
+.hero-content {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 32px;
+  color: white;
+}
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--verde);
+  color: var(--azul-escuro);
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 12px;
+  letter-spacing: 2px;
+  padding: 4px 12px;
+  border-radius: 3px;
+  margin-bottom: 12px;
+}
+.hero-title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 42px;
+  letter-spacing: 1px;
+  line-height: 1.05;
+  margin-bottom: 10px;
+}
+.hero-sub {
+  font-family: 'Lora', serif;
+  font-size: 15px;
+  opacity: 0.75;
+  line-height: 1.5;
+  max-width: 560px;
+}
+
+/* SECTION TITLES */
+.s-title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 22px;
+  letter-spacing: 2px;
+  color: var(--azul);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+.s-title::before {
+  content: '';
+  display: block;
+  width: 4px;
+  height: 24px;
+  background: var(--verde);
+  border-radius: 2px;
+}
+.s-title::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--cinza);
+}
+
+/* NEWS GRID */
+.news-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-bottom: 28px;
+}
+.news-card {
+  background: white;
+  border-radius: 8px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+  border: 1px solid var(--cinza);
+}
+.news-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 30px rgba(0,51,102,0.12);
+  border-color: var(--verde);
+}
+.news-thumb {
+  height: 160px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 56px;
+  position: relative;
+}
+.news-thumb::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0,0,0,0.3), transparent);
+}
+.bg1 { background: linear-gradient(135deg, #001a33, #003d99); }
+.bg2 { background: linear-gradient(135deg, #001a00, #007722); }
+.bg3 { background: linear-gradient(135deg, #330000, #cc2200); }
+.bg4 { background: linear-gradient(135deg, #1a0033, #660099); }
+.bg5 { background: linear-gradient(135deg, #332200, #cc7700); }
+.bg6 { background: linear-gradient(135deg, #1a1a1a, #444); }
+.news-body { padding: 14px 16px 18px; }
+.news-tag {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 11px;
+  letter-spacing: 2px;
+  color: var(--verde);
+  margin-bottom: 6px;
+}
+.news-title {
+  font-family: 'Lora', serif;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.45;
+  color: var(--texto);
+}
+.news-time {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 11px;
+  color: var(--texto-leve);
+  margin-top: 10px;
+  letter-spacing: 0.5px;
+}
+
+/* BTN GERAR */
+.btn-gerar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  background: linear-gradient(135deg, var(--azul), var(--azul-medio));
+  color: white;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 16px;
+  letter-spacing: 2px;
+  padding: 14px 28px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s;
+  margin-bottom: 28px;
+  border: 2px solid var(--azul-medio);
+  width: 100%;
+}
+.btn-gerar:hover {
+  background: linear-gradient(135deg, var(--azul-medio), #005599);
+  box-shadow: 0 6px 20px rgba(0,51,102,0.3);
+  transform: translateY(-2px);
+}
+.btn-gerar:disabled { opacity: 0.6; cursor: not-allowed; transform: none; }
+.loading {
+  display: none;
+  text-align: center;
+  padding: 24px;
+  color: var(--texto-leve);
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 14px;
+  letter-spacing: 1px;
+}
+.spinner {
+  width: 28px; height: 28px;
+  border: 3px solid var(--cinza);
+  border-top-color: var(--verde);
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+  margin: 0 auto 10px;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* ======================== SIDEBAR ======================== */
+.sidebar { display: flex; flex-direction: column; gap: 20px; }
+.sbox {
+  background: white;
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid var(--cinza);
+}
+.sbox-head {
+  background: var(--azul);
+  color: white;
+  padding: 12px 16px;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 15px;
+  letter-spacing: 2px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* PLACAR */
+.placar { padding: 4px 0; }
+.placar-item { padding: 12px 16px; border-bottom: 1px solid #f3f3f3; }
+.placar-item:last-child { border-bottom: none; }
+.placar-comp {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 10px;
+  letter-spacing: 1px;
+  color: var(--texto-leve);
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+.placar-jogo { display: flex; align-items: center; gap: 8px; }
+.placar-time {
+  flex: 1;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--texto);
+}
+.placar-time.right { text-align: right; }
+.placar-score {
+  background: var(--azul);
+  color: white;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 18px;
+  padding: 4px 10px;
+  border-radius: 4px;
+  letter-spacing: 3px;
+  min-width: 60px;
+  text-align: center;
+}
+.placar-live {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 10px;
+  color: var(--vermelho);
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-align: center;
+  margin-top: 6px;
+  animation: pulse 1.5s infinite;
+}
+
+/* TABELA */
+.tabela { padding: 0 8px 8px; overflow-x: auto; }
+.tbl {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 12px;
+}
+.tbl th {
+  text-align: center;
+  padding: 7px 4px;
+  color: var(--texto-leve);
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  font-size: 10px;
+  border-bottom: 1px solid var(--cinza);
+}
+.tbl th:nth-child(2) { text-align: left; }
+.tbl td {
+  text-align: center;
+  padding: 7px 4px;
+  border-bottom: 1px solid #f5f5f5;
+  color: var(--texto);
+}
+.tbl tr:last-child td { border-bottom: none; }
+.tbl .team { text-align: left; font-weight: 700; color: var(--azul); }
+.pos {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 20px; height: 20px;
+  border-radius: 50%;
+  font-size: 10px; font-weight: 900;
+}
+.pos-a { background: var(--azul); color: white; }
+.pos-b { background: var(--verde); color: var(--azul); }
+.pos-c { background: #ccc; color: #555; }
+.pos-d { background: var(--vermelho); color: white; }
+.tbl-legend {
+  padding: 8px 16px;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 10px;
+  color: var(--texto-leve);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  border-top: 1px solid var(--cinza);
+  letter-spacing: 0.3px;
+}
+.dot { display: inline-block; width: 8px; height: 8px; border-radius: 50%; margin-right: 3px; }
+
+/* MAIS LIDAS */
+.mais-item {
+  display: flex;
+  gap: 12px;
+  padding: 11px 16px;
+  border-bottom: 1px solid #f3f3f3;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+.mais-item:hover { background: #f9fdf9; }
+.mais-item:last-child { border-bottom: none; }
+.mais-num {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 28px;
+  color: var(--cinza);
+  line-height: 1;
+  min-width: 28px;
+}
+.mais-info .tag {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 10px;
+  letter-spacing: 2px;
+  color: var(--verde);
+}
+.mais-info .title {
+  font-family: 'Lora', serif;
+  font-size: 12px;
+  color: var(--texto);
+  line-height: 1.4;
+  margin-top: 2px;
+}
+
+/* ======================== FOOTER ======================== */
+footer {
+  background: var(--azul-escuro);
+  color: rgba(255,255,255,0.7);
+  margin-top: 48px;
+}
+.footer-top {
+  border-top: 3px solid var(--verde);
+  padding: 48px 32px 32px;
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
+  gap: 32px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.footer-brand .logo-main { font-size: 32px; }
+.footer-brand p {
+  font-family: 'Lora', serif;
+  font-size: 13px;
+  line-height: 1.65;
+  margin-top: 14px;
+  opacity: 0.65;
+}
+.footer-brand .social {
+  display: flex;
+  gap: 10px;
+  margin-top: 18px;
+}
+.social-btn {
+  display: flex; align-items: center; justify-content: center;
+  width: 36px; height: 36px;
+  border-radius: 6px;
+  background: rgba(255,255,255,0.08);
+  font-size: 15px;
+  transition: background 0.2s;
+  cursor: pointer;
+}
+.social-btn:hover { background: var(--verde); }
+.footer-col h4 {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 14px;
+  letter-spacing: 2px;
+  color: white;
+  margin-bottom: 14px;
+}
+.footer-col a {
+  display: block;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 13px;
+  color: rgba(255,255,255,0.55);
+  margin-bottom: 8px;
+  transition: color 0.2s;
+  cursor: pointer;
+}
+.footer-col a:hover { color: var(--verde); }
+.footer-bottom {
+  border-top: 1px solid rgba(255,255,255,0.08);
+  padding: 18px 32px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 1200px;
+  margin: 0 auto;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 12px;
+  letter-spacing: 0.5px;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.footer-bottom a { color: rgba(255,255,255,0.4); cursor: pointer; transition: color 0.2s; }
+.footer-bottom a:hover { color: var(--verde); }
+
+/* ======================== STATIC PAGES ======================== */
+.static-wrap {
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 36px 20px 60px;
+}
+.static-card {
+  background: white;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid var(--cinza);
+}
+.static-header {
+  background: linear-gradient(135deg, var(--azul-escuro), var(--azul));
+  padding: 48px 48px 36px;
+  color: white;
+  position: relative;
+  overflow: hidden;
+}
+.static-header::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: repeating-linear-gradient(
+    -45deg, transparent, transparent 25px,
+    rgba(0,204,68,0.04) 25px, rgba(0,204,68,0.04) 26px
+  );
+}
+.static-header-icon {
+  font-size: 48px;
+  margin-bottom: 16px;
+  position: relative;
+}
+.static-header h1 {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 42px;
+  letter-spacing: 2px;
+  line-height: 1;
+  position: relative;
+}
+.static-header .update {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 12px;
+  letter-spacing: 1px;
+  color: rgba(255,255,255,0.45);
+  margin-top: 10px;
+  position: relative;
+}
+.static-body { padding: 48px; }
+.static-body h2 {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 24px;
+  letter-spacing: 1.5px;
+  color: var(--azul);
+  margin: 36px 0 14px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.static-body h2::before {
+  content: '';
+  display: block;
+  width: 4px;
+  height: 22px;
+  background: var(--verde);
+  border-radius: 2px;
+  flex-shrink: 0;
+}
+.static-body h2:first-child { margin-top: 0; }
+.static-body p {
+  font-family: 'Lora', serif;
+  font-size: 15px;
+  line-height: 1.8;
+  color: #3a3a4a;
+  margin-bottom: 16px;
+}
+.static-body ul, .static-body ol {
+  margin: 0 0 16px 20px;
+}
+.static-body li {
+  font-family: 'Lora', serif;
+  font-size: 15px;
+  line-height: 1.8;
+  color: #3a3a4a;
+  margin-bottom: 8px;
+}
+.static-body strong { color: var(--azul); font-weight: 700; }
+.info-box {
+  background: #f0f9f4;
+  border: 1px solid #b3e8c8;
+  border-left: 4px solid var(--verde);
+  border-radius: 6px;
+  padding: 18px 22px;
+  margin: 20px 0;
+}
+.info-box p { margin: 0; }
+.warn-box {
+  background: #fff8f0;
+  border: 1px solid #ffd9a8;
+  border-left: 4px solid #ff9500;
+  border-radius: 6px;
+  padding: 18px 22px;
+  margin: 20px 0;
+}
+.warn-box p { margin: 0; }
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin: 20px 0;
+}
+.contact-item {
+  background: var(--cinza-claro);
+  border-radius: 8px;
+  padding: 20px;
+  display: flex;
+  gap: 14px;
+  align-items: flex-start;
+}
+.contact-icon { font-size: 24px; flex-shrink: 0; }
+.contact-item h4 {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 11px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--texto-leve);
+  margin-bottom: 4px;
+}
+.contact-item p {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--azul);
+  margin: 0;
+}
+.contact-item a {
+  color: var(--verde);
+  font-weight: 700;
+}
+.sobre-team {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin: 20px 0;
+}
+.team-card {
+  background: var(--cinza-claro);
+  border-radius: 8px;
+  padding: 20px 16px;
+  text-align: center;
+}
+.team-avatar {
+  width: 60px; height: 60px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--azul), var(--azul-medio));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 26px;
+  margin: 0 auto 12px;
+}
+.team-card h4 {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--azul);
+  letter-spacing: 0.5px;
+}
+.team-card p {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 12px;
+  color: var(--texto-leve);
+  margin: 0;
+  letter-spacing: 0.5px;
+}
+.stat-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  margin: 24px 0;
+}
+.stat-item {
+  background: var(--cinza-claro);
+  border-radius: 8px;
+  padding: 20px 16px;
+  text-align: center;
+}
+.stat-num {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 36px;
+  color: var(--verde);
+  line-height: 1;
+}
+.stat-label {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 11px;
+  letter-spacing: 1.5px;
+  color: var(--texto-leve);
+  text-transform: uppercase;
+  margin-top: 4px;
+}
+.divider {
+  height: 1px;
+  background: var(--cinza);
+  margin: 36px 0;
+}
+.toc {
+  background: var(--cinza-claro);
+  border-radius: 8px;
+  padding: 20px 24px;
+  margin-bottom: 32px;
+}
+.toc h3 {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 14px;
+  letter-spacing: 2px;
+  color: var(--azul);
+  margin-bottom: 12px;
+}
+.toc ol {
+  margin: 0 0 0 18px;
+}
+.toc li {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 14px;
+  color: var(--azul-medio);
+  margin-bottom: 6px;
+  letter-spacing: 0.3px;
+}
+.toc li:last-child { margin-bottom: 0; }
+
+/* RESPONSIVE */
+@media (max-width: 900px) {
+  .layout { grid-template-columns: 1fr; }
+  .sidebar { display: none; }
+  .news-grid { grid-template-columns: 1fr; }
+  .footer-top { grid-template-columns: 1fr 1fr; }
+  .contact-grid { grid-template-columns: 1fr; }
+  .sobre-team { grid-template-columns: 1fr 1fr; }
+  .stat-grid { grid-template-columns: 1fr 1fr; }
+  .header-top { padding: 12px 16px; }
+  .header-search input { width: 140px; }
+  .static-body { padding: 28px 24px; }
+  .static-header { padding: 36px 28px 28px; }
+  .static-header h1 { font-size: 32px; }
+}
+@media (max-width: 600px) {
+  .footer-top { grid-template-columns: 1fr; }
+  .sobre-team { grid-template-columns: 1fr; }
+  .stat-grid { grid-template-columns: 1fr 1fr; }
+  .hero-title { font-size: 28px; }
+  .hero { height: 320px; }
+  .header-search { display: none; }
+}
+</style>
+</head>
+<body>
+
+<!-- =================== HEADER =================== -->
+<header class="header">
+  <div class="header-top">
+    <div class="logo" onclick="showPage('home')" style="cursor:pointer">
+      <div class="logo-main">Futebol<span>da Zona</span></div>
+      <div class="logo-sub">Notícias · Placares · Análises</div>
+    </div>
+    <div class="header-actions">
+      <div class="header-search">
+        <input type="text" placeholder="Buscar notícias...">
+        <button>BUSCAR</button>
+      </div>
+    </div>
+  </div>
+  <nav class="nav">
+    <a class="active" onclick="showPage('home');setActive(this)">🏠 Home</a>
+    <a onclick="showPage('home');setActive(this)">⚽ Brasileirão</a>
+    <a onclick="showPage('home');setActive(this)">🏆 Libertadores</a>
+    <a onclick="showPage('home');setActive(this)">🥇 Copa do Brasil</a>
+    <a onclick="showPage('home');setActive(this)">⭐ Champions League</a>
+    <a onclick="showPage('home');setActive(this)">🇧🇷 Seleção</a>
+    <a onclick="showPage('home');setActive(this)">🏎️ Fórmula 1</a>
+    <a onclick="showPage('home');setActive(this)">🏀 NBA</a>
+    <a onclick="showPage('home');setActive(this)">🥊 UFC</a>
+    <a onclick="showPage('home');setActive(this)">🎾 Tênis</a>
+  </nav>
+  <div class="ticker">
+    <div class="ticker-label"><div class="live-dot"></div>AO VIVO</div>
+    <div class="ticker-wrap">
+      <div class="ticker-text" id="ticker-text">
+        ⚽ Brasileirão Série A 2026 em andamento &nbsp;·&nbsp; 🏆 Libertadores — Fase de Grupos &nbsp;·&nbsp; 🇧🇷 Seleção Brasileira se prepara para as Eliminatórias &nbsp;·&nbsp; 🏎️ F1: Grande Prêmio de Mônaco neste fim de semana &nbsp;·&nbsp; 🏀 NBA Playoffs — Semifinais em andamento &nbsp;·&nbsp; 🥊 UFC 315 confirmado para junho
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- =================== HOME =================== -->
+<div id="page-home" class="page active">
+  <div class="container">
+    <div class="layout">
+      <main>
+        <!-- HERO -->
+        <div class="hero" id="hero-section">
+          <div class="hero-bg"></div>
+          <div class="hero-pattern"></div>
+          <div class="hero-overlay"></div>
+          <div class="hero-icon" id="hero-icon">⚽</div>
+          <div class="hero-content" id="hero-content">
+            <div class="hero-badge">🔴 DESTAQUE</div>
+            <div class="hero-title">Carregando notícias com IA...</div>
+            <div class="hero-sub">Aguarde enquanto geramos as principais manchetes do dia</div>
+          </div>
+        </div>
+
+        <!-- BTN IA -->
+        <button class="btn-gerar" id="btn-gerar" onclick="gerarNoticias()">
+          🤖 ATUALIZAR NOTÍCIAS COM IA
+        </button>
+
+        <!-- ÚLTIMAS -->
+        <div class="s-title">ÚLTIMAS NOTÍCIAS</div>
+        <div class="loading" id="loading1"><div class="spinner"></div>Gerando com IA...</div>
+        <div class="news-grid" id="grid-ultimas"></div>
+
+        <!-- MAIS LIDAS -->
+        <div class="s-title">MAIS LIDAS HOJE</div>
+        <div class="loading" id="loading2"><div class="spinner"></div>Gerando com IA...</div>
+        <div class="news-grid" id="grid-mais"></div>
+      </main>
+
+      <!-- SIDEBAR -->
+      <aside class="sidebar">
+        <!-- PLACARES -->
+        <div class="sbox">
+          <div class="sbox-head"><div class="live-dot"></div> PLACARES AO VIVO</div>
+          <div class="placar">
+            <div class="placar-item">
+              <div class="placar-comp">Brasileirão Série A · Rodada 12</div>
+              <div class="placar-jogo">
+                <span class="placar-time">Flamengo</span>
+                <span class="placar-score">2 · 1</span>
+                <span class="placar-time right">Palmeiras</span>
+              </div>
+              <div class="placar-live">⏱ 73'</div>
+            </div>
+            <div class="placar-item">
+              <div class="placar-comp">Libertadores · Grupo C</div>
+              <div class="placar-jogo">
+                <span class="placar-time">Grêmio</span>
+                <span class="placar-score">1 · 1</span>
+                <span class="placar-time right">Nacional-URU</span>
+              </div>
+              <div class="placar-live">⏱ 58'</div>
+            </div>
+            <div class="placar-item">
+              <div class="placar-comp">Copa do Brasil · Oitavas</div>
+              <div class="placar-jogo">
+                <span class="placar-time">Atlético-MG</span>
+                <span class="placar-score">0 · 0</span>
+                <span class="placar-time right">Corinthians</span>
+              </div>
+              <div class="placar-live">⏱ 34'</div>
+            </div>
+            <div class="placar-item">
+              <div class="placar-comp">Champions League · Semifinal</div>
+              <div class="placar-jogo">
+                <span class="placar-time">Real Madrid</span>
+                <span class="placar-score">3 · 0</span>
+                <span class="placar-time right">Arsenal</span>
+              </div>
+              <div class="placar-live">ENCERRADO</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- TABELA -->
+        <div class="sbox">
+          <div class="sbox-head">📊 TABELA · BRASILEIRÃO</div>
+          <div class="tabela">
+            <table class="tbl">
+              <thead>
+                <tr>
+                  <th>#</th><th>Time</th><th>PTS</th><th>J</th><th>SG</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr><td><span class="pos pos-a">1</span></td><td class="team">Flamengo</td><td>28</td><td>12</td><td>+14</td></tr>
+                <tr><td><span class="pos pos-a">2</span></td><td class="team">Palmeiras</td><td>26</td><td>12</td><td>+10</td></tr>
+                <tr><td><span class="pos pos-b">3</span></td><td class="team">São Paulo</td><td>22</td><td>12</td><td>+5</td></tr>
+                <tr><td><span class="pos pos-b">4</span></td><td class="team">Atlético-MG</td><td>21</td><td>12</td><td>+4</td></tr>
+                <tr><td><span class="pos pos-c">5</span></td><td class="team">Grêmio</td><td>19</td><td>12</td><td>+2</td></tr>
+                <tr><td><span class="pos pos-c">6</span></td><td class="team">Internacional</td><td>18</td><td>12</td><td>+1</td></tr>
+                <tr><td><span class="pos pos-c">7</span></td><td class="team">Fluminense</td><td>16</td><td>12</td><td>-1</td></tr>
+                <tr><td><span class="pos pos-c">8</span></td><td class="team">Corinthians</td><td>14</td><td>12</td><td>-3</td></tr>
+                <tr><td><span class="pos pos-d">17</span></td><td class="team">Criciúma</td><td>8</td><td>12</td><td>-10</td></tr>
+                <tr><td><span class="pos pos-d">18</span></td><td class="team">Juventude</td><td>7</td><td>12</td><td>-13</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="tbl-legend">
+            <span><span class="dot" style="background:var(--azul)"></span>Libertadores</span>
+            <span><span class="dot" style="background:var(--verde)"></span>Sul-Americana</span>
+            <span><span class="dot" style="background:var(--vermelho)"></span>Rebaixamento</span>
+          </div>
+        </div>
+
+        <!-- MAIS LIDAS SIDEBAR -->
+        <div class="sbox">
+          <div class="sbox-head">🔥 MAIS ACESSADAS</div>
+          <div class="mais-item">
+            <div class="mais-num">1</div>
+            <div class="mais-info">
+              <div class="tag">BRASILEIRÃO</div>
+              <div class="title">Flamengo anuncia reforço europeu para a reta final do Brasileirão</div>
+            </div>
+          </div>
+          <div class="mais-item">
+            <div class="mais-num">2</div>
+            <div class="mais-info">
+              <div class="tag">SELEÇÃO</div>
+              <div class="title">Técnico convoca 26 jogadores para dupla rodada das Eliminatórias</div>
+            </div>
+          </div>
+          <div class="mais-item">
+            <div class="mais-num">3</div>
+            <div class="mais-info">
+              <div class="tag">LIBERTADORES</div>
+              <div class="title">Palmeiras vence e confirma liderança do grupo na Libertadores</div>
+            </div>
+          </div>
+          <div class="mais-item">
+            <div class="mais-num">4</div>
+            <div class="mais-info">
+              <div class="tag">FÓRMULA 1</div>
+              <div class="title">Verstappen lidera treinos em Mônaco; Norris surpreende na Q3</div>
+            </div>
+          </div>
+          <div class="mais-item">
+            <div class="mais-num">5</div>
+            <div class="mais-info">
+              <div class="tag">NBA</div>
+              <div class="title">Warriors eliminam Thunder e avançam para a final da conferência</div>
+            </div>
+          </div>
+        </div>
+      </aside>
+    </div>
+  </div>
+</div>
+
+<!-- =================== POLÍTICA DE PRIVACIDADE =================== -->
+<div id="page-privacidade" class="page">
+  <div class="static-wrap">
+    <div class="static-card">
+      <div class="static-header">
+        <div class="static-header-icon">🔒</div>
+        <h1>Política de Privacidade</h1>
+        <div class="update">Última atualização: 26 de maio de 2026 · Versão 2.1</div>
+      </div>
+      <div class="static-body">
+
+        <div class="info-box">
+          <p>Esta Política de Privacidade descreve como o <strong>Futebol da Zona</strong> coleta, usa, armazena e protege suas informações pessoais. Ao utilizar nosso site, você concorda com as práticas descritas neste documento.</p>
+        </div>
+
+        <div class="toc">
+          <h3>📋 ÍNDICE</h3>
+          <ol>
+            <li>Quem somos</li>
+            <li>Dados que coletamos</li>
+            <li>Como usamos seus dados</li>
+            <li>Compartilhamento de informações</li>
+            <li>Cookies e tecnologias de rastreamento</li>
+            <li>Seus direitos (LGPD)</li>
+            <li>Segurança das informações</li>
+            <li>Retenção de dados</li>
+            <li>Links externos</li>
+            <li>Menores de idade</li>
+            <li>Alterações nesta política</li>
+            <li>Contato e DPO</li>
+          </ol>
+        </div>
+
+        <h2>1. Quem Somos</h2>
+        <p>O <strong>Futebol da Zona</strong> é um portal de notícias esportivas brasileiro dedicado à cobertura do futebol nacional e internacional, além de outras modalidades esportivas. Operado no Brasil, nosso site está sujeito à <strong>Lei Geral de Proteção de Dados (LGPD — Lei nº 13.709/2018)</strong>.</p>
+
+        <h2>2. Dados que Coletamos</h2>
+        <p>Coletamos diferentes categorias de dados dependendo da forma como você interage com nosso portal:</p>
+        <ul>
+          <li><strong>Dados de navegação:</strong> endereço IP, tipo de navegador, sistema operacional, páginas visitadas, tempo de permanência e origem do acesso.</li>
+          <li><strong>Dados de dispositivo:</strong> identificadores do dispositivo, resolução de tela e configurações de idioma.</li>
+          <li><strong>Dados de interação:</strong> cliques, rolagem, tempo em cada artigo e preferências de conteúdo.</li>
+          <li><strong>Dados de cadastro (quando aplicável):</strong> nome, e-mail e preferências de notificação, caso você crie uma conta ou assine nossa newsletter.</li>
+          <li><strong>Dados de comunicação:</strong> conteúdo das mensagens enviadas por meio de nossos formulários de contato.</li>
+        </ul>
+
+        <div class="warn-box">
+          <p>⚠️ <strong>Não coletamos</strong> dados sensíveis como informações de saúde, biométricos, religiosos, políticos ou financeiros dos usuários.</p>
+        </div>
+
+        <h2>3. Como Usamos Seus Dados</h2>
+        <p>Utilizamos suas informações para as seguintes finalidades:</p>
+        <ul>
+          <li>Personalizar o conteúdo exibido com base em seus interesses esportivos;</li>
+          <li>Analisar o desempenho do site e melhorar a experiência do usuário;</li>
+          <li>Enviar newsletters e alertas esportivos, se você optou por recebê-los;</li>
+          <li>Cumprir obrigações legais e regulatórias;</li>
+          <li>Detectar e prevenir fraudes, abusos e atividades maliciosas;</li>
+          <li>Exibir publicidade relevante por meio de redes parceiras (com base legítima de consentimento ou interesse legítimo, conforme o caso).</li>
+        </ul>
+
+        <h2>4. Compartilhamento de Informações</h2>
+        <p>O Futebol da Zona <strong>não vende seus dados pessoais</strong> a terceiros. Podemos compartilhar informações nas seguintes situações:</p>
+        <ul>
+          <li><strong>Parceiros de publicidade</strong> (Google AdSense, redes de anúncios): dados anonimizados ou identificadores de cookies para segmentação de anúncios;</li>
+          <li><strong>Ferramentas de análise</strong> (Google Analytics, Search Console): para fins de mensuração de audiência;</li>
+          <li><strong>Autoridades legais:</strong> quando exigido por lei, ordem judicial ou para proteger nossos direitos legais;</li>
+          <li><strong>Prestadores de serviço:</strong> empresas que atuam em nosso nome (hospedagem, e-mail marketing), com cláusulas contratuais de proteção de dados.</li>
+        </ul>
+
+        <h2>5. Cookies e Tecnologias de Rastreamento</h2>
+        <p>Utilizamos cookies e tecnologias similares para melhorar sua experiência. Os tipos de cookies que usamos incluem:</p>
+        <ul>
+          <li><strong>Cookies essenciais:</strong> necessários para o funcionamento básico do site. Não podem ser desativados.</li>
+          <li><strong>Cookies de desempenho:</strong> coletam dados anônimos sobre como você usa o site (Google Analytics).</li>
+          <li><strong>Cookies de funcionalidade:</strong> lembram suas preferências, como tema e notificações.</li>
+          <li><strong>Cookies de publicidade:</strong> usados para exibir anúncios relevantes. Podem ser gerenciados nas configurações do navegador.</li>
+        </ul>
+        <p>Você pode controlar ou desativar cookies nas configurações do seu navegador. Observe que isso pode afetar algumas funcionalidades do site.</p>
+
+        <h2>6. Seus Direitos (LGPD)</h2>
+        <p>De acordo com a Lei Geral de Proteção de Dados (LGPD), você possui os seguintes direitos em relação aos seus dados pessoais:</p>
+        <ul>
+          <li><strong>Confirmação e acesso:</strong> saber se tratamos seus dados e acessar uma cópia;</li>
+          <li><strong>Correção:</strong> solicitar a correção de dados incompletos, inexatos ou desatualizados;</li>
+          <li><strong>Anonimização, bloqueio ou eliminação:</strong> de dados desnecessários ou tratados em desconformidade;</li>
+          <li><strong>Portabilidade:</strong> transferência dos seus dados a outro fornecedor de serviço;</li>
+          <li><strong>Eliminação:</strong> exclusão dos dados tratados com base no seu consentimento;</li>
+          <li><strong>Revogação do consentimento:</strong> a qualquer momento, para usos baseados nele;</li>
+          <li><strong>Oposição:</strong> contestar tratamentos realizados com base em interesse legítimo.</li>
+        </ul>
+        <div class="info-box">
+          <p>Para exercer qualquer um desses direitos, entre em contato conosco pelo e-mail <strong>privacidade@futebolDaZona.com.br</strong>. Responderemos em até <strong>15 dias úteis</strong>.</p>
+        </div>
+
+        <h2>7. Segurança das Informações</h2>
+        <p>Adotamos medidas técnicas e organizacionais para proteger seus dados contra acesso não autorizado, perda, alteração ou divulgação indevida, incluindo:</p>
+        <ul>
+          <li>Conexão segura via HTTPS (SSL/TLS);</li>
+          <li>Acesso restrito aos dados por funcionários autorizados;</li>
+          <li>Revisão periódica de nossos sistemas e práticas de segurança;</li>
+          <li>Contratos de proteção de dados com todos os fornecedores.</li>
+        </ul>
+
+        <h2>8. Retenção de Dados</h2>
+        <p>Mantemos seus dados pessoais apenas pelo tempo necessário para cumprir as finalidades descritas nesta política ou para atender a obrigações legais. Dados de navegação são anonimizados após <strong>26 meses</strong>. Dados de cadastro são mantidos enquanto a conta estiver ativa e por até <strong>5 anos</strong> após o encerramento, conforme exigências legais.</p>
+
+        <h2>9. Links Externos</h2>
+        <p>Nosso site pode conter links para sites de terceiros. Não somos responsáveis pelas práticas de privacidade desses sites e recomendamos que você leia as políticas de privacidade de qualquer site externo que visitar.</p>
+
+        <h2>10. Menores de Idade</h2>
+        <p>O Futebol da Zona não é direcionado a menores de 13 anos e não coleta intencionalmente dados pessoais de crianças. Se você acredita que seu filho nos forneceu dados pessoais, entre em contato para que possamos excluí-los imediatamente.</p>
+
+        <h2>11. Alterações nesta Política</h2>
+        <p>Podemos atualizar esta Política de Privacidade periodicamente. Quando o fizermos, revisaremos a data de "última atualização" no topo deste documento. Recomendamos que você a consulte regularmente. Alterações significativas serão comunicadas por meio de aviso em destaque no site.</p>
+
+        <h2>12. Contato e DPO</h2>
+        <p>Para dúvidas, solicitações ou reclamações relacionadas à privacidade, entre em contato com nosso <strong>Encarregado de Proteção de Dados (DPO)</strong>:</p>
+        <div class="contact-grid">
+          <div class="contact-item">
+            <div class="contact-icon">📧</div>
+            <div>
+              <h4>E-mail DPO</h4>
+              <p><a href="mailto:privacidade@futebolDaZona.com.br">privacidade@futebolDaZona.com.br</a></p>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon">🏛️</div>
+            <div>
+              <h4>Autoridade Nacional</h4>
+              <p><a href="https://www.gov.br/anpd" target="_blank">ANPD — anpd.gov.br</a></p>
+            </div>
+          </div>
+        </div>
+
+        <div class="divider"></div>
+        <p style="font-size:13px;color:var(--texto-leve);font-family:'Barlow Condensed',sans-serif;letter-spacing:0.5px;">Esta Política de Privacidade foi redigida em conformidade com a Lei nº 13.709/2018 (LGPD), o Regulamento Geral de Proteção de Dados (GDPR) e demais normas aplicáveis. Versão 2.1 — 26 de maio de 2026.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- =================== TERMOS DE USO =================== -->
+<div id="page-termos" class="page">
+  <div class="static-wrap">
+    <div class="static-card">
+      <div class="static-header">
+        <div class="static-header-icon">📄</div>
+        <h1>Termos de Uso</h1>
+        <div class="update">Última atualização: 26 de maio de 2026 · Versão 1.4</div>
+      </div>
+      <div class="static-body">
+        <div class="info-box">
+          <p>Ao acessar e utilizar o site <strong>Futebol da Zona</strong>, você declara ter lido, compreendido e concordado com estes Termos de Uso. Se não concordar com algum ponto, pedimos que não utilize nossos serviços.</p>
+        </div>
+
+        <div class="toc">
+          <h3>📋 ÍNDICE</h3>
+          <ol>
+            <li>Aceitação dos termos</li>
+            <li>Descrição do serviço</li>
+            <li>Propriedade intelectual</li>
+            <li>Uso permitido e proibido</li>
+            <li>Conteúdo gerado por usuários</li>
+            <li>Isenção de responsabilidade</li>
+            <li>Links para terceiros</li>
+            <li>Publicidade</li>
+            <li>Modificações no serviço</li>
+            <li>Lei aplicável e foro</li>
+          </ol>
+        </div>
+
+        <h2>1. Aceitação dos Termos</h2>
+        <p>Estes Termos de Uso regulam o acesso e a utilização do portal <strong>Futebol da Zona</strong> e de todos os seus serviços digitais. O uso continuado do site após qualquer alteração dos Termos implica aceitação das novas condições.</p>
+
+        <h2>2. Descrição do Serviço</h2>
+        <p>O Futebol da Zona é um portal de notícias e conteúdo esportivo que oferece cobertura jornalística de futebol brasileiro e internacional, placares, análises, vídeos e outros conteúdos relacionados ao esporte. O acesso ao conteúdo principal é gratuito.</p>
+
+        <h2>3. Propriedade Intelectual</h2>
+        <p>Todo o conteúdo publicado no Futebol da Zona — incluindo textos, imagens, gráficos, vídeos, logotipos, layout e código-fonte — é protegido por direitos autorais e demais leis de propriedade intelectual aplicáveis.</p>
+        <ul>
+          <li>É <strong>proibida</strong> a reprodução, distribuição ou uso comercial do conteúdo sem autorização expressa e por escrito;</li>
+          <li>O compartilhamento nas redes sociais com crédito e link para a fonte original é permitido e incentivado;</li>
+          <li>Citações jornalísticas são permitidas desde que não ultrapassem 20% do conteúdo e incluam referência à fonte.</li>
+        </ul>
+
+        <h2>4. Uso Permitido e Proibido</h2>
+        <p>Você pode utilizar nosso site para fins pessoais e não comerciais. É <strong>expressamente proibido</strong>:</p>
+        <ul>
+          <li>Reproduzir ou redistribuir nosso conteúdo de forma não autorizada;</li>
+          <li>Usar robôs, scrapers ou sistemas automatizados para coletar dados do site;</li>
+          <li>Tentar comprometer a segurança ou integridade do nosso sistema;</li>
+          <li>Publicar, transmitir ou distribuir conteúdo ilegal, difamatório, ofensivo ou que viole direitos de terceiros;</li>
+          <li>Fazer-se passar por outra pessoa ou entidade;</li>
+          <li>Utilizar o site para fins comerciais sem autorização prévia.</li>
+        </ul>
+
+        <h2>5. Conteúdo Gerado por Usuários</h2>
+        <p>Ao submeter comentários, sugestões ou qualquer conteúdo ao Futebol da Zona, você declara que possui os direitos necessários sobre esse conteúdo e nos concede uma licença não exclusiva para utilizá-lo em nossos serviços. Reservamo-nos o direito de remover conteúdo que viole estes termos ou que seja considerado ofensivo.</p>
+
+        <h2>6. Isenção de Responsabilidade</h2>
+        <p>O Futebol da Zona se esforça para fornecer informações precisas e atualizadas, mas não garante a exatidão, completude ou adequação do conteúdo para qualquer finalidade específica. O site é oferecido "como está" e não assumimos responsabilidade por:</p>
+        <ul>
+          <li>Erros ou omissões nas informações publicadas;</li>
+          <li>Decisões tomadas com base no conteúdo do site;</li>
+          <li>Interrupções ou indisponibilidade do serviço;</li>
+          <li>Danos causados por vírus ou outros códigos maliciosos em links de terceiros.</li>
+        </ul>
+
+        <h2>7. Links para Terceiros</h2>
+        <p>Nosso site pode conter links para sites externos. Esses links são fornecidos apenas para sua conveniência e não implicam aprovação ou endorsement do conteúdo desses sites. Não somos responsáveis pelo conteúdo ou práticas de sites de terceiros.</p>
+
+        <h2>8. Publicidade</h2>
+        <p>O Futebol da Zona exibe anúncios para manter o serviço gratuito. Os anunciantes são responsáveis pelo conteúdo de seus próprios anúncios. Não somos responsáveis por produtos ou serviços ofertados por terceiros em anúncios exibidos em nosso site.</p>
+
+        <h2>9. Modificações no Serviço</h2>
+        <p>Reservamo-nos o direito de modificar, suspender ou encerrar qualquer parte do serviço a qualquer momento, com ou sem aviso prévio. Não seremos responsáveis perante você ou terceiros por qualquer modificação, suspensão ou encerramento do serviço.</p>
+
+        <h2>10. Lei Aplicável e Foro</h2>
+        <p>Estes Termos de Uso são regidos pelas leis da <strong>República Federativa do Brasil</strong>. Quaisquer disputas relacionadas a estes termos serão resolvidas no foro da comarca competente no Brasil, com exclusão de qualquer outro, por mais privilegiado que seja.</p>
+
+        <div class="divider"></div>
+        <div class="info-box">
+          <p>Dúvidas sobre estes termos? Entre em contato: <strong>contato@futebolDaZona.com.br</strong></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- =================== SOBRE NÓS =================== -->
+<div id="page-sobre" class="page">
+  <div class="static-wrap">
+    <div class="static-card">
+      <div class="static-header">
+        <div class="static-header-icon">⚽</div>
+        <h1>Sobre Nós</h1>
+        <div class="update">Fundado em 2019 · Cobertura nacional e internacional</div>
+      </div>
+      <div class="static-body">
+        <p>O <strong>Futebol da Zona</strong> nasceu da paixão de um grupo de jornalistas e entusiastas do esporte que acreditavam que o Brasil merecia um portal de notícias esportivas moderno, ágil e com cobertura de qualidade — tanto do futebol das grandes ligas quanto do esporte de base e local.</p>
+
+        <div class="stat-grid">
+          <div class="stat-item">
+            <div class="stat-num">2.4M</div>
+            <div class="stat-label">Leitores Mensais</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-num">850+</div>
+            <div class="stat-label">Notícias/mês</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-num">7</div>
+            <div class="stat-label">Anos no ar</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-num">24/7</div>
+            <div class="stat-label">Cobertura</div>
+          </div>
+        </div>
+
+        <h2>Nossa Missão</h2>
+        <p>Levar informação esportiva de qualidade, rápida e honesta para todos os torcedores brasileiros — dos grandes centros às zonas periféricas do país. Acreditamos que esporte é cultura, é paixão e é parte fundamental da identidade brasileira.</p>
+
+        <h2>Nossa Equipe</h2>
+        <p>Somos um time diverso de jornalistas, analistas, designers e desenvolvedores apaixonados por esporte:</p>
+        <div class="sobre-team">
+          <div class="team-card">
+            <div class="team-avatar">✍️</div>
+            <h4>Equipe Editorial</h4>
+            <p>12 jornalistas especializados</p>
+          </div>
+          <div class="team-card">
+            <div class="team-avatar">📊</div>
+            <h4>Análise & Dados</h4>
+            <p>4 analistas de performance</p>
+          </div>
+          <div class="team-card">
+            <div class="team-avatar">🎥</div>
+            <h4>Vídeo & Mídia</h4>
+            <p>3 produtores audiovisuais</p>
+          </div>
+          <div class="team-card">
+            <div class="team-avatar">💻</div>
+            <h4>Tecnologia</h4>
+            <p>5 desenvolvedores e designers</p>
+          </div>
+          <div class="team-card">
+            <div class="team-avatar">📱</div>
+            <h4>Redes Sociais</h4>
+            <p>2 gestores de comunidade</p>
+          </div>
+          <div class="team-card">
+            <div class="team-avatar">🤖</div>
+            <h4>IA & Inovação</h4>
+            <p>Tecnologia de ponta</p>
+          </div>
+        </div>
+
+        <h2>Cobertura Esportiva</h2>
+        <p>Cobrimos as principais competições nacionais e internacionais com profundidade e rigor jornalístico:</p>
+        <ul>
+          <li>Brasileirão Série A e Série B</li>
+          <li>Copa do Brasil e Copas Estaduais</li>
+          <li>CONMEBOL Libertadores e Sul-Americana</li>
+          <li>UEFA Champions League e principais ligas europeias</li>
+          <li>Seleção Brasileira — todas as categorias</li>
+          <li>Fórmula 1, MotoGP, NASCAR</li>
+          <li>NBA, NFL e esportes norte-americanos</li>
+          <li>UFC e MMA nacional e internacional</li>
+          <li>Tênis, Vôlei, Basquete nacional e outros</li>
+        </ul>
+
+        <div class="info-box">
+          <p>🤖 <strong>Tecnologia com IA:</strong> Somos pioneiros no uso de Inteligência Artificial para geração e curadoria de conteúdo esportivo, sempre com supervisão editorial humana para garantir precisão e qualidade.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- =================== CONTATO =================== -->
+<div id="page-contato" class="page">
+  <div class="static-wrap">
+    <div class="static-card">
+      <div class="static-header">
+        <div class="static-header-icon">📬</div>
+        <h1>Fale Conosco</h1>
+        <div class="update">Respondemos em até 2 dias úteis</div>
+      </div>
+      <div class="static-body">
+        <p>Tem uma dica de pauta, encontrou um erro, quer anunciar no nosso portal ou só quer bater um papo sobre futebol? Estamos aqui!</p>
+
+        <div class="contact-grid">
+          <div class="contact-item">
+            <div class="contact-icon">📧</div>
+            <div>
+              <h4>Redação</h4>
+              <p><a href="mailto:redacao@futebolDaZona.com.br">redacao@futebolDaZona.com.br</a></p>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon">💼</div>
+            <div>
+              <h4>Publicidade</h4>
+              <p><a href="mailto:publicidade@futebolDaZona.com.br">publicidade@futebolDaZona.com.br</a></p>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon">🔒</div>
+            <div>
+              <h4>Privacidade (DPO)</h4>
+              <p><a href="mailto:privacidade@futebolDaZona.com.br">privacidade@futebolDaZona.com.br</a></p>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon">⚖️</div>
+            <div>
+              <h4>Jurídico</h4>
+              <p><a href="mailto:juridico@futebolDaZona.com.br">juridico@futebolDaZona.com.br</a></p>
+            </div>
+          </div>
+        </div>
+
+        <h2>Redes Sociais</h2>
+        <p>Nos acompanhe nas redes para receber as últimas notícias em tempo real:</p>
+        <ul>
+          <li>Instagram: <strong>@futeboldazona</strong></li>
+          <li>Twitter/X: <strong>@futeboldazona</strong></li>
+          <li>YouTube: <strong>Futebol da Zona</strong></li>
+          <li>TikTok: <strong>@futeboldazona</strong></li>
+          <li>WhatsApp: Canal oficial <strong>Futebol da Zona</strong></li>
+        </ul>
+
+        <h2>Dicas de Pauta</h2>
+        <p>Você viu uma notícia esportiva importante que a gente ainda não cobriu? Envie sua dica para <strong>redacao@futebolDaZona.com.br</strong> com o assunto "DICA DE PAUTA". Valorizamos muito a colaboração dos nossos leitores!</p>
+
+        <div class="info-box">
+          <p>📰 <strong>Assessores de imprensa e clubes:</strong> Para envio de notas, comunicados e solicitações de cobertura, utilize o e-mail <strong>redacao@futebolDaZona.com.br</strong> com o assunto "ASSESSORIA".</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- =================== FOOTER =================== -->
+<footer>
+  <div class="footer-top">
+    <div class="footer-brand">
+      <div class="logo">
+        <div class="logo-main">Futebol<span style="color:var(--verde)">da Zona</span></div>
+        <div class="logo-sub">Notícias · Placares · Análises</div>
+      </div>
+      <p>O portal de esportes mais completo do Brasil. Cobertura 24 horas com jornalismo de qualidade e tecnologia de ponta.</p>
+      <div class="social">
+        <div class="social-btn">📸</div>
+        <div class="social-btn">🐦</div>
+        <div class="social-btn">▶️</div>
+        <div class="social-btn">📱</div>
+        <div class="social-btn">💬</div>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4>Esportes</h4>
+      <a>Brasileirão</a>
+      <a>Libertadores</a>
+      <a>Copa do Brasil</a>
+      <a>Champions League</a>
+      <a>Seleção Brasileira</a>
+      <a>Fórmula 1</a>
+      <a>NBA · UFC</a>
+    </div>
+    <div class="footer-col">
+      <h4>Portal</h4>
+      <a>Notícias</a>
+      <a>Placares</a>
+      <a>Vídeos</a>
+      <a>Tabelas</a>
+      <a>Análises</a>
+      <a>Newsletter</a>
+    </div>
+    <div class="footer-col">
+      <h4>Institucional</h4>
+      <a onclick="showPage('sobre')">Sobre nós</a>
+      <a onclick="showPage('contato')">Contato</a>
+      <a onclick="showPage('privacidade')">Política de Privacidade</a>
+      <a onclick="showPage('termos')">Termos de Uso</a>
+      <a>Publicidade</a>
+      <a>Trabalhe Conosco</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2026 Futebol da Zona · Todos os direitos reservados · CNPJ 00.000.000/0001-00</span>
+    <span>
+      <a onclick="showPage('privacidade')">Privacidade</a> ·
+      <a onclick="showPage('termos')">Termos</a> ·
+      <a onclick="showPage('contato')">Contato</a>
+    </span>
+  </div>
+</footer>
+
+<!-- =================== SCRIPTS =================== -->
+<script>
+function showPage(name) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.getElementById('page-' + name).classList.add('active');
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+function setActive(el) {
+  document.querySelectorAll('.nav a').forEach(a => a.classList.remove('active'));
+  el.classList.add('active');
+}
+
+// IA NEWS GENERATOR
+const BGSCLASS = ['bg1','bg2','bg3','bg4','bg5','bg6'];
+const EMOJIS = {
+  'Brasileirão':'⚽','Libertadores':'⚽','Copa do Brasil':'🏆',
+  'Champions League':'⭐','Fórmula 1':'🏎️','NBA':'🏀',
+  'UFC':'🥊','Tênis':'🎾','Seleção Brasileira':'🇧🇷','Futebol Local':'⚽'
+};
+
+function randBg() { return BGSCLASS[Math.floor(Math.random() * BGSCLASS.length)]; }
+function getEmoji(cat) {
+  for (let k in EMOJIS) { if (cat && cat.includes(k)) return EMOJIS[k]; }
+  return '⚽';
+}
+
+function renderNews(arr, containerId) {
+  const el = document.getElementById(containerId);
+  if (!el) return;
+  el.innerHTML = arr.map(n => `
+    <div class="news-card">
+      <div class="news-thumb ${randBg()}">${getEmoji(n.categoria)}</div>
+      <div class="news-body">
+        <div class="news-tag">${n.categoria || 'Esportes'}</div>
+        <div class="news-title">${n.titulo}</div>
+        <div class="news-time">🕐 ${n.tempo}</div>
+      </div>
+    </div>`).join('');
+}
+
+function renderHero(h) {
+  const el = document.getElementById('hero-content');
+  const icon = document.getElementById('hero-icon');
+  if (!el || !h) return;
+  if (icon) icon.textContent = getEmoji(h.categoria);
+  el.innerHTML = `
+    <div class="hero-badge">🔴 DESTAQUE · ${h.categoria || ''}</div>
+    <div class="hero-title">${h.titulo}</div>
+    <div class="hero-sub">${h.subtitulo || ''}</div>`;
+}
+
+async function gerarNoticias() {
+  const btn = document.getElementById('btn-gerar');
+  const l1 = document.getElementById('loading1');
+  const l2 = document.getElementById('loading2');
+  if (btn) { btn.disabled = true; btn.innerHTML = '⏳ GERANDO COM IA...'; }
+  if (l1) l1.style.display = 'block';
+  if (l2) l2.style.display = 'block';
+  document.getElementById('grid-ultimas').innerHTML = '';
+  document.getElementById('grid-mais').innerHTML = '';
+
+  try {
+    const resp = await fetch('https://api.anthropic.com/v1/messages', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        model: 'claude-sonnet-4-20250514',
+        max_tokens: 1000,
+        messages: [{
+          role: 'user',
+          content: `Você é redator do portal esportivo brasileiro "Futebol da Zona". Gere notícias REALISTAS e CRIATIVAS para hoje (maio de 2026). Responda SOMENTE com JSON válido, sem markdown, sem texto extra. Formato exato:
+{
+  "hero": {"titulo":"...","subtitulo":"...","categoria":"..."},
+  "ultimas": [
+    {"titulo":"...","categoria":"...","tempo":"Há X minutos"},
+    {"titulo":"...","categoria":"...","tempo":"Há X minutos"},
+    {"titulo":"...","categoria":"...","tempo":"Há X hora"},
+    {"titulo":"...","categoria":"...","tempo":"Há X horas"}
+  ],
+  "mais": [
+    {"titulo":"...","categoria":"...","tempo":"Há X horas"},
+    {"titulo":"...","categoria":"...","tempo":"Há X horas"},
+    {"titulo":"...","categoria":"...","tempo":"Há X horas"},
+    {"titulo":"...","categoria":"...","tempo":"Há X horas"}
+  ]
+}
+Categorias: Brasileirão, Libertadores, Copa do Brasil, Champions League, Fórmula 1, NBA, UFC, Tênis, Seleção Brasileira, Futebol Local. Títulos criativos, específicos e realistas. Não repita times.`
+        }]
+      })
+    });
+
+    const data = await resp.json();
+    const text = data.content.map(i => i.text || '').join('').replace(/```json|```/g,'').trim();
+    const json = JSON.parse(text);
+
+    renderHero(json.hero);
+    if (l1) l1.style.display = 'none';
+    if (l2) l2.style.display = 'none';
+    renderNews(json.ultimas, 'grid-ultimas');
+    renderNews(json.mais, 'grid-mais');
+    if (btn) { btn.disabled = false; btn.innerHTML = '🤖 ATUALIZAR NOTÍCIAS COM IA'; }
+  } catch(e) {
+    if (l1) l1.innerHTML = '<p style="color:#cc0000;font-family:Barlow Condensed,sans-serif;font-size:13px;padding:10px;text-align:center">⚠️ Erro ao gerar notícias. Tente novamente.</p>';
+    if (l2) l2.style.display = 'none';
+    if (btn) { btn.disabled = false; btn.innerHTML = '🤖 ATUALIZAR NOTÍCIAS COM IA'; }
+    console.error(e);
+  }
+}
+
+window.addEventListener('DOMContentLoaded', gerarNoticias);
+</script>
+</body>
+</html>
