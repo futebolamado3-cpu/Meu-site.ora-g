@@ -12,3 +12,10 @@ export async function gerarNoticias() {
   // Aqui você pode colocar o skeleton ou buscar notícias reais
   grid.innerHTML = "<p>Carregando notícias...</p>";
 }
+<script type="module">
+  import { gerarNoticias } from './src/asist/gerarNoticias.js';
+
+  window.addEventListener('load', () => {
+    setTimeout(gerarNoticias, 800);
+  });
+</script>
