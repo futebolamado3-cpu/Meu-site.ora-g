@@ -688,60 +688,25 @@ async function gerarNoticias() {
         <div class="skeleton skel-p"></div>
       </div>`).join('')}
     </div>`;
+    try {
+        const prompt = 'Gere 3 notícias de futebol atuais em formato JSON puro. Estrutura de array rigorosa: [{"titulo": "Texto", "categoria": "Texto", "imagem": "https://unsplash.com", "destaque": true}]. Não envie blocos markdown.';
+        
+        const API_KEY = "AIzaSyD0u8hNE9NiVvfp_p0wAJ6zhemo2F_8Jyk";
+        const response = await fetch(`https://googleapis.com{API_KEY}`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ contents: [{ parts: [{ text: prompt }] }] })
+        });
 
-  try {
-    const prompt = `Você é um jornalista esportivo brasileiro especializado em futebol. Gere 4 notícias REALISTAS e ATUAIS sobre futebol (Brasileirão, Libertadores, Champions League, Premier League, La Liga ou Copa do Brasil). Data de hoje: ${new Date().toLocaleDateString('pt-BR')}.
+        const data = await response.json();
+        const text = data.candidates[0].content.parts[0].text;
+        const clean = text.replace(/```json|```/g, '').trim();
+        const noticias = JSON.parse(clean);
 
-Responda APENAS com JSON válido, sem nenhum texto extra, exatamente nesse formato:
-{
-  "noticias": [
-    {
-      "titulo": "Título da notícia principal (impactante, máx 90 chars)",
-      "categoria": "Nome do campeonato",
-      "tempo": "há X horas",
-      "destaque": true
-    },
-    {
-      "titulo": "Segunda notícia (máx 80 chars)",
-      "categoria": "Nome do campeonato",
-      "tempo": "há X horas",
-      "destaque": false
-    },
-    {
-      "titulo": "Terceira notícia (máx 80 chars)",
-      "categoria": "Nome do campeonato",
-      "tempo": "há X horas",
-      "destaque": false
-    },
-    {
-      "titulo": "Quarta notícia (máx 80 chars)",
-      "categoria": "Nome do campeonato",
-      "tempo": "há X horas",
-      "destaque": false
-    }
-  ]
-}`;
+        status.innerHTML = `✅ <span>${noticias.length} notícias geradas</span>`;
+        const destaque = noticias[0] || null;
+        const secundarias = noticias.slice(1);
 
-    
-
-    grid.innerHTML = `
-      <div class="news-card featured" onclick="">
-        <img src="${imgs[0]}" alt="${destaque.categoria}" loading="lazy"/>
-        <div class="news-body">
-          <span class="news-tag">${destaque.categoria}</span>
-          <h3>${destaque.titulo}</h3>
-          <p class="news-meta">${destaque.tempo} · ${destaque.categoria}</p>
-        </div>
-      </div>
-      <div class="news-side">
-        ${secundarias.slice(0,3).map((n, i) => `
-          <div class="${i === 0 ? 'news-card small' : 'news-text-card'}">
-            ${i === 0 ? `<img src="${imgs[1]}" alt="${n.categoria}" loading="lazy"/>` : ''}
-            <div class="news-body" style="${i > 0 ? 'padding:0' : ''}">
-              <span class="news-tag">${n.categoria}</span>
-              <h3>${n.titulo}</h3>
-              <p class="news-meta" style="color:var(--muted);font-size:12px;margin-top:6px;">${n.tempo}</p>
-            </div>
           </div>`).join('')}
       </div>`;} catch (err) {
     status.innerHTML = ' gera noticia .';
