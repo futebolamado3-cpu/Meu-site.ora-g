@@ -783,7 +783,7 @@ Responda APENAS com JSON válido, sem nenhum texto extra, exatamente nesse forma
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({
-            contents: [{ parts: [{ text: "Gere 3 notícias atuais em formato JSON puro. Use estritamente esta estrutura de array: [{\"titulo\": \"Texto aqui\", \"categoria\": \"Texto aqui\"}]. Não adicione formatação markdown ou blocos de código."}]});
+            contents: [{ parts: [{ text: "Gere 10 notícias atuais em formato JSON puro. Use estritamente esta estrutura de array: [{\"titulo\": \"Texto aqui\", \"categoria\": \"Texto aqui\"}]. Não adicione formatação markdown ou blocos de código."}]});
 
            
         const dados = await resposta.json();
