@@ -765,9 +765,9 @@ Responda APENAS com JSON válido, sem nenhum texto extra, exatamente nesse forma
       </div>`;} catch (err) {
     status.innerHTML = ' gera noticia .';
     console.error(err);}
-  const btn = document.getElementById('update-btn');
-if (btn) btn.addEventListener('click', gerarNoticias);
+  document.querySelector('.atualizar-btn, button, #update-btn')?.addEventListener('click', gerarNoticias);
 window.addEventListener('load', gerarNoticias);
+
 
   async function gerarNoticias() {
     const container = document.getElementById('news-container'); // Alinhe com o ID real do seu container se for diferente
