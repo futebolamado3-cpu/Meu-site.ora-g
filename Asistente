@@ -18,4 +18,19 @@ export async function gerarNoticias() {
   window.addEventListener('load', () => {
     setTimeout(gerarNoticias, 800);
   });
-</script>
+</script><!-- AI BAR -->
+    <div class="ai-bar">
+      <div class="ai-bar-left">
+        <div class="ai-icon">🤖</div>
+        <div>
+          <h3>IA de Notícias — Sport General</h3>
+          <p>Powered by Claude · Gera notícias reais de futebol automaticamente</p>
+        </div>
+      </div>
+      <button class="btn-ai" id="btn-gerar" onclick="gerarNoticias()">
+        <span>⚡</span> Atualizar Notícias com IA
+      </button>
+    </div>
+    <div class="ai-status" id="ai-status"></div>
+
+    <div id="news-container">
