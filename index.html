@@ -788,6 +788,7 @@ Responda APENAS com JSON válido, sem nenhum texto extra, exatamente nesse forma
            
         const dados = await resposta.json();
         const textoIA = dados.candidates[0].content.parts[0].text;
+
         
         // Converte o texto da IA em dados reais para o seu site ler
         const noticias = JSON.parse(textoIA.trim());
