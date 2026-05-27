@@ -217,17 +217,27 @@
 
 <style>
   .hero {
-    min-height: 100vh;
-    padding: 24px 16px 32px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: relative;
-    overflow: hidden;
-    background: linear-gradient(180deg, #07111f, #0d1b2a);
-    color: #fff;
-  }
+  min-height: 100vh;
+  padding: 24px 16px 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
 
+  background:
+    linear-gradient(
+      rgba(0,0,0,0.20),
+      rgba(0,0,0,0.35)
+    ),
+    url('estadio.jpg');
+
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  color: #fff;
+}
   .hero::before {
     content: "";
     position: absolute;
