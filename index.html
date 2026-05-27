@@ -508,19 +508,39 @@ Responda APENAS com JSON válido, sem nenhum texto extra, exatamente nesse forma
               <p class="news-meta" style="color:var(--muted);font-size:12px;margin-top:6px;">${n.tempo}</p>
             </div>
           </div>`).join('')}
-      </div>`;
-
-  } catch (err) {
+      </div>`;} catch (err) {
     status.innerHTML = '⚠️ Erro ao gerar notícias. Tente novamente.';
-    console.error(err);
-  }
-
+    console.error(err);}
   btn.disabled = false;
-  btn.innerHTML = '<span>⚡</span> Atualizar Notícias com IA';
-}
-
+  btn.innerHTML = '<span>⚡</span> Atualizar Notícias com IA';}
+                                              
 // Gera notícias automaticamente ao carregar
-window.addEventListener('load', () => {
+android.addEventistener.window.addEventListener('load', () => {
+  setTimeout(gerarNoticias, 800);
+});
+
+function gerarNoticias em tempo reais () {
+  // Simulando dados que viriam de um banco ou API
+  const noticias = [
+    { titulo: "Nova Tecnologia IA", conteudo: "Inteligência artificial avança no mercado." },
+    { titulo: "Exploração Espacial", conteudo: "Novo foguete é lançado com sucesso rumo a Marte." },
+    { titulo: "Economia Global", conteudo: "Mercados financeiros fecham o dia em alta histórica." }
+  ];
+
+  const container = document.getElementById('noticias-container');
+  
+  // Limpa o container antes de inserir novas notícias
+  container.innerHTML = ''; 
+
+  // Insere cada notícia no HTML
+  noticias.forEach(noticia => {
+    const card = document.createElement('div');
+    card.className = 'noticia-card';
+    card.innerHTML = `
+      <h3>${noticia.titulo}</h3>
+      <p>${noticia.conteudo}</p>
+    container.appendChild(card);});}
+   ('load', () => {
   setTimeout(gerarNoticias, 800);
 });
 </script>
