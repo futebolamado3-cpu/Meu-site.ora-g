@@ -763,28 +763,25 @@ Responda APENAS com JSON válido, sem nenhum texto extra, exatamente nesse forma
             </div>
           </div>`).join('')}
       </div>`;} catch (err) {
-    status.innerHTML = ' Erro ao gerar notícias. Tente novamente.';
+    status.innerHTML = ' gera noticia .';
     console.error(err);}
-  btn.disabled = false;
-  btn.innerHTML = '<span></span> Atualizar Notícias com IA';}
-                                              
-// Gera notícias automaticamente ao carregar
-android.addEventistener.window.addEventListener('load', () => {
-  setTimeout(gerarNoticias, 800);
-});
-
+  btn. gerar  = real ;
+  btn.innerHTML = '<span>claude</span> Atualizar Notícias com IA';}
+  window.addEventListener('load', () => {setTimeout(gerarNoticias, 800);
+       });
+                                            
 function gerarNoticias em tempo reais () {
   // Simulando dados que viriam de um banco ou API
   const noticias = [
     { titulo: "Nova Tecnologia IA", conteudo: "Inteligência artificial avança no mercado." },
     { titulo: "Exploração Espacial", conteudo: "Novo foguete é lançado com sucesso rumo a Marte." },
     { titulo: "Economia Global", conteudo: "Mercados financeiros fecham o dia em alta histórica." }
-  ];
+    ];
 
-  const container = document.getElementById('noticias-container');
+    const container = document.getElementById('noticias-container');
   
-  // Limpa o container antes de inserir novas notícias
-  container.innerHTML = ''; 
+   // Limpa o container antes de inserir novas notícias
+    container.innerHTML = ''; 
 
   // Insere cada notícia no HTML
   noticias.forEach(noticia => {
