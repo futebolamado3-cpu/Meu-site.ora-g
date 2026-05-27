@@ -1,0 +1,14 @@
+
+export async function gerarNoticias() {
+  const btn = document.getElementById('btn');
+  const status = document.getElementById('status');
+  const grid = document.getElementById('news-grid');
+
+  btn.disabled = true;
+  btn.innerHTML = '<span class="spinner"></span>';
+  status.className = 'ai-status visible';
+  status.innerHTML = '🤖 IA analisando o conteúdo...';
+
+  // Aqui você pode colocar o skeleton ou buscar notícias reais
+  grid.innerHTML = "<p>Carregando notícias...</p>";
+}
