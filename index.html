@@ -768,32 +768,50 @@ Responda APENAS com JSON válido, sem nenhum texto extra, exatamente nesse forma
   btn. gerar  = real ;
   btn.innerHTML = '<span>claude</span> Atualizar Notícias com IA';}
   window.addEventListener('load', () => {setTimeout(gerarNoticias, 800);
-       });
+  async function gerarNoticias() {
+    const container = document.getElementById('news-container'); // Alinhe com o ID real do seu container se for diferente
+    if (!container) return;
+    
+    container.innerHTML = 'Carregando notícias com IA...';
+
+    try {
+        const API_KEY = "AIzaSyD0u8hNE9NiVvfp_p0wAJ6zhemo2F_8Jyk";
+        const url = `https://googleapis.com{API_KEY}`;
+
+        // Pedimos para a IA gerar os dados exatamente no formato que o seu site já usa
+        const resposta = await fetch(url, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+            contents: [{ parts: [{ text: "Gere 3 notícias atuais em formato JSON puro. Use estritamente esta estrutura de array: [{\"titulo\": \"Texto aqui\", \"categoria\": \"Texto aqui\"}]. Não adicione formatação markdown ou blocos de código."}]});
+
+           
+        const dados = await resposta.json();
+        const textoIA = dados.candidates[0].content.parts[0].text;
+        
+        // Converte o texto da IA em dados reais para o seu site ler
+        const noticias = JSON.parse(textoIA.trim());
+
+        // Limpa o container
+        container.innerHTML = '';
+
+        // O seu código original que monta as notícias na tela (Linha 786 em diante)
+        noticias.forEach(noticia => {
+            const card = document.createElement('div');
+            card.className = 'noticia-card';
+            // Aqui continua o seu código original que desenha o HTML da notícia...
+            card.innerHTML = `<span class="news-tag">${noticia.categoria}</span><h3>${noticia.titulo}</h3>`;
+            container.appendChild(card);
+        });
+
+    } catch (err) {
+        container.innerHTML = 'Erro ao gerar notícias com IA.';
+        console.error(err);
+    }
+}
+     });
                                             
-function gerarNoticias em tempo reais () {
-  // Simulando dados que viriam de um banco ou API
-  const noticias = [
-    { titulo: "Nova Tecnologia IA", conteudo: "Inteligência artificial avança no mercado." },
-    { titulo: "Exploração Espacial", conteudo: "Novo foguete é lançado com sucesso rumo a Marte." },
-    { titulo: "Economia Global", conteudo: "Mercados financeiros fecham o dia em alta histórica." }
-    ];
 
-    const container = document.getElementById('noticias-container');
-  
-   // Limpa o container antes de inserir novas notícias
-    container.innerHTML = ''; 
-
-  // Insere cada notícia no HTML
-  noticias.forEach(noticia => {
-    const card = document.createElement('div');
-    card.className = 'noticia-card';
-    card.innerHTML = `
-      <h3>${noticia.titulo}</h3>
-      <p>${noticia.conteudo}</p>
-    container.appendChild(card);});}
-   ('load', () => {
-  setTimeout(gerarNoticias, 800);
-});
 </script>
 </body>
 </html>
