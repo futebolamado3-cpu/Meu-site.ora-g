@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Sobre — Sport General</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root { --green: #00c853; --bg: #0a0a0a; --surface: #111111; --surface2: #1a1a1a; --border: rgba(255,255,255,0.08); --text: #f0f0f0; --muted: #888; }
+    body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--text); min-height: 100vh; }
+    header { position: sticky; top: 0; z-index: 100; background: rgba(10,10,10,0.85); backdrop-filter: blur(16px); border-bottom: 1px solid var(--border); }
+    nav { max-width: 1200px; margin: 0 auto; padding: 0 24px; height: 64px; display: flex; align-items: center; justify-content: space-between; }
+    .logo { display: flex; align-items: center; gap: 10px; text-decoration: none; color: var(--text); }
+    .logo-icon { width: 36px; height: 36px; border-radius: 50%; background: linear-gradient(135deg, #00c853, #009624); display: grid; place-items: center; font-weight: 900; font-size: 14px; color: #000; }
+    .logo span { font-family: 'Bebas Neue', sans-serif; font-size: 22px; letter-spacing: 1px; }
+    .btn-back { background: transparent; border: 1px solid var(--border); color: var(--text); padding: 8px 16px; border-radius: 8px; font-size: 13px; font-weight: 600; text-decoration: none; transition: all 0.2s; }
+    .btn-back:hover { border-color: rgba(255,255,255,0.3); }
+    .page-hero { background: linear-gradient(to bottom, rgba(0,200,83,0.07), transparent); border-bottom: 1px solid var(--border); padding: 64px 24px; text-align: center; }
+    .page-tag { display: inline-block; background: rgba(0,200,83,0.15); color: var(--green); font-size: 11px; font-weight: 700; padding: 4px 12px; border-radius: 100px; margin-bottom: 16px; text-transform: uppercase; letter-spacing: 1px; }
+    .page-hero h1 { font-family: 'Bebas Neue', sans-serif; font-size: 64px; letter-spacing: 1px; }
+    .page-hero p { color: var(--muted); font-size: 16px; margin-top: 12px; max-width: 560px; margin-left: auto; margin-right: auto; line-height: 1.7; }
+    main { max-width: 900px; margin: 0 auto; padding: 64px 24px 80px; }
+    .mission { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 64px; }
+    @media (max-width: 640px) { .mission { grid-template-columns: 1fr; } .page-hero h1 { font-size: 44px; } }
+    .card { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 28px; }
+    .card-icon { font-size: 32px; margin-bottom: 16px; }
+    .card h3 { font-size: 18px; font-weight: 700; margin-bottom: 8px; }
+    .card p { color: var(--muted); font-size: 14px; line-height: 1.7; }
+    .stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-bottom: 64px; }
+    @media (max-width: 640px) { .stats { grid-template-columns: 1fr; } }
+    .stat { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 28px; text-align: center; }
+    .stat-num { font-family: 'Bebas Neue', sans-serif; font-size: 48px; color: var(--green); letter-spacing: 1px; line-height: 1; }
+    .stat-label { color: var(--muted); font-size: 13px; margin-top: 6px; }
+    .story h2 { font-family: 'Bebas Neue', sans-serif; font-size: 36px; margin-bottom: 20px; }
+    .story p { color: var(--muted); font-size: 15px; line-height: 1.8; margin-bottom: 16px; }
+    footer { background: var(--surface); border-top: 1px solid var(--border); padding: 24px; text-align: center; color: var(--muted); font-size: 13px; }
+    footer a { color: var(--muted); text-decoration: none; margin: 0 8px; }
+    footer a:hover { color: var(--text); }
+  </style>
+</head>
+<body>
+<header>
+  <nav>
+    <a href="index.html" class="logo">
+      <div class="logo-icon">S</div>
+      <span>SPORT GENERAL</span>
+    </a>
+    <a href="index.html" class="btn-back">← Voltar</a>
+  </nav>
+</header>
+
+<div class="page-hero">
+  <div class="page-tag">Quem somos</div>
+  <h1>Sobre o Sport General</h1>
+  <p>Somos apaixonados por futebol e criamos o Sport General para reunir tudo o que o torcedor precisa em um só lugar.</p>
+</div>
+
+<main>
+  <div class="stats">
+    <div class="stat">
+      <div class="stat-num">50+</div>
+      <div class="stat-label">Campeonatos cobertos</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">24/7</div>
+      <div class="stat-label">Cobertura ao vivo</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">100%</div>
+      <div class="stat-label">Gratuito</div>
+    </div>
+  </div>
+
+  <div class="mission">
+    <div class="card">
+      <div class="card-icon">⚽</div>
+      <h3>Nossa Missão</h3>
+      <p>Levar informação de qualidade sobre futebol a todos os torcedores, com agilidade, precisão e paixão pelo esporte.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon">🌍</div>
+      <h3>Cobertura Global</h3>
+      <p>Do Brasileirão à Champions League, cobrimos os principais campeonatos do Brasil e do mundo em tempo real.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon">📊</div>
+      <h3>Dados e Estatísticas</h3>
+      <p>Classificações, artilheiros, escalações e muito mais. Tudo organizado para você acompanhar cada detalhe.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon">🆓</div>
+      <h3>Sempre Gratuito</h3>
+      <p>Acesso livre a todo o conteúdo. Sem paywalls, sem assinaturas. O futebol é para todos.</p>
+    </div>
+  </div>
+
+  <div class="story">
+    <h2>Nossa História</h2>
+    <p>O Sport General nasceu da vontade de criar um portal de futebol simples, rápido e completo. Cansados de sites lentos e cheios de anúncios, decidimos construir algo diferente — pensando primeiro no torcedor.</p>
+    <p>Hoje cobrimos mais de 50 campeonatos ao redor do mundo, com placares ao vivo, notícias atualizadas, classificações e análises táticas. Tudo em um design limpo, feito para funcionar bem tanto no celular quanto no computador.</p>
+    <p>Somos um projeto independente, movido pela paixão pelo futebol. Se você também ama o esporte, este é o seu lugar.</p>
+  </div>
+</main>
+
+<footer>
+  <p>© 2026 Sport General &nbsp;·&nbsp; <a href="privacidade.html">Privacidade</a> <a href="termos.html">Termos</a> <a href="contato.html">Contato</a></p>
+</footer>
+</body>
+</html>
