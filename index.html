@@ -203,7 +203,7 @@
 </div>
 
 <!-- HERO -->
- <section class="hero">
+<section class="hero">
   <div class="hero-content">
     <div class="badge">⚽ FUTEBOL • NOTÍCIAS • RESULTADOS</div>
     <h1>O melhor conteúdo de <span>futebol</span> na sua tela</h1>
@@ -232,8 +232,19 @@
 </section>
 
 <style>
-  .hero { 
+  *, *::before, *::after {
+    box-sizing: border-box;
+  }
+
+  img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  .hero {
     min-height: 100vh;
+    width: 100%;
     padding: 24px 16px 32px;
     display: flex;
     align-items: center;
@@ -241,13 +252,13 @@
     position: relative;
     overflow: hidden;
     color: #fff;
-    /* Aplica o filtro de leitura + a imagem gerada */
-    background: linear-gradient(180deg, rgba(7, 17, 26, 0.82) 0%, rgba(7, 17, 26, 0.65) 100%), 
-                url('https://prodia.xyz');
+    background:
+      linear-gradient(180deg, rgba(7, 17, 26, 0.82) 0%, rgba(7, 17, 26, 0.65) 100%),
+      url('https://prodia.xyz');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-}
+  }
 
   .hero::before {
     content: "";
@@ -314,6 +325,7 @@
     font-size: 14px;
     min-width: 140px;
     text-align: center;
+    display: inline-block;
   }
 
   .btn-primary {
@@ -357,11 +369,12 @@
 
   @media (max-width: 360px) {
     .hero h1 {
-      font-size: 30px;
+      font-size: 28px;
     }
 
     .btn {
       width: 100%;
+      min-width: unset;
     }
 
     .actions {
