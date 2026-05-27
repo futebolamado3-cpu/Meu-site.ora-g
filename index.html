@@ -209,33 +209,36 @@
   .hero {
     position: relative;
     width: 100%;
-    height: 90vh;
+    min-height: 100vh; /* ocupa toda a altura da tela */
     display: flex;
     align-items: center;
     justify-content: center;
     text-align: center;
     color: #000;
+    overflow: hidden;
   }
 
   .hero-bg {
     position: absolute;
     inset: 0;
     background-image: url('sua-imagem-hero.jpg'); /* substitua pela foto criada */
-    background-size: cover;
+    background-size: cover;   /* cobre toda a área */
     background-position: center;
+    background-repeat: no-repeat;
     z-index: 0;
-    opacity: 0.9; /* leve transparência para destacar texto */
   }
 
   .hero-content {
     position: relative;
     z-index: 1;
-    max-width: 800px;
+    max-width: 900px;
     padding: 20px;
+    background-color: rgba(255, 255, 255, 0.7); /* leve fundo branco para destacar texto */
+    border-radius: 8px;
   }
 
   .hero h1 {
-    font-size: 2.5rem;
+    font-size: 3rem;
     font-weight: bold;
     margin: 0;
   }
@@ -286,11 +289,8 @@
 
   /* Responsivo para celular */
   @media (max-width: 768px) {
-    .hero {
-      height: 70vh;
-    }
     .hero h1 {
-      font-size: 1.8rem;
+      font-size: 2rem;
     }
     .hero p {
       font-size: 1rem;
@@ -301,6 +301,7 @@
     }
   }
 </style>
+    
 <!-- NOTICIAS -->
 <section id="noticias">
   <div class="container">
