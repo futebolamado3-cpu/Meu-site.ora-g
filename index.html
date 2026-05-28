@@ -692,30 +692,58 @@ async function gerarNoticias() {
         const prompt = 'Gere 3 notícias de futebol atuais em formato JSON puro. Estrutura de array rigorosa: [{"titulo": "Texto", "categoria": "Texto", "imagem": "https://unsplash.com", "destaque": true}]. Não envie blocos markdown.';
         
         const API_KEY = "AIzaSyD0u8hNE9NiVvfp_p0wAJ6zhemo2F_8Jyk";
-        const response = await fetch(`https://googleapis.com{API_KEY}`, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ contents: [{ parts: [{ text: prompt }] }] })
-        });
 
-        const data = await response.json();
-        const text = data.candidates[0].content.parts[0].text;
-        const clean = text.replace(/```json|```/g, '').trim();
-        const noticias = JSON.parse(clean);
+       async function gerarNoticias() {
+  const btn = document.getElementById('btn-gerar');
+  const status = document.getElementById('ai-status');
+  const grid = document.getElementById('news-grid');
 
-        status.innerHTML = `✅ <span>${noticias.length} notícias geradas</span>`;
-        const destaque = noticias[0] || null;
-        const secundarias = noticias.slice(1);
+  btn.disabled = true;
+  btn.innerHTML = '<span class="spinner"></span> Gerando...';
+  status.className = 'ai-status visible';
+  status.innerHTML = '🤖 IA analisando o cenário do futebol mundial...';
 
-          </div>`).join('')}
-      </div>`;} catch (err) {
-    status.innerHTML = ' gera noticia .';
-    console.error(err);}
-  document.querySelector('.atualizar-btn, button, #update-btn')?.addEventListener('click', gerarNoticias);
-window.addEventListener('load', gerarNoticias);
+  try {
+    const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${API_KEY}`;
+    
+    const response = await fetch(url, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        contents: [{ parts: [{ text: 'Gere 4 notícias de futebol em JSON puro, sem markdown. Formato: [{"titulo":"...","categoria":"...","tempo":"..."}]' }] }]
+      })
+    });
+
+    const data = await response.json();
+    const text = data.candidates[0].content.parts[0].text;
+    const clean = text.replace(/```json|```/g, '').trim();
+    const noticias = JSON.parse(clean);
+
+    status.innerHTML = `✅ <span>${noticias.length} notícias geradas com IA</span>`;
+
+    grid.innerHTML = noticias.map((n, i) => `
+      <div class="news-card ${i === 0 ? 'featured' : 'small'}">
+        <div class="news-body">
+          <span class="news-tag">${n.categoria}</span>
+          <h3>${n.titulo}</h3>
+          <p class="news-meta">${n.tempo || 'agora'}</p>
+        </div>
+      </div>
+    `).join('');
+
+     } catch (err) {
+    status.innerHTML = '❌ Erro ao gerar notícias.';
+    console.error(err);
+    }
+
+    btn.disabled = false;
+    btn.innerHTML = '<span>⚡</span> Atualizar Notícias com IA';
+    }
+
+   window.addEventListener('load', gerarNoticias);
 
 
-  async function gerarNoticias() {
+    async function gerarNoticias() {
     const container = document.getElementById('news-container'); // Alinhe com o ID real do seu container se for diferente
     if (!container) return;
     
@@ -749,17 +777,13 @@ window.addEventListener('load', gerarNoticias);
             card.className = 'noticia-card';
             // Aqui continua o seu código original que desenha o HTML da notícia...
             card.innerHTML = `<span class="news-tag">${noticia.categoria}</span><h3>${noticia.titulo}</h3>`;
-            container.appendChild(card);
-        });
+            container.appendChild(card);});
 
-    } catch (err) {
+        } catch (err) {
         container.innerHTML = 'Erro ao gerar notícias com IA.';
-        console.error(err);
-    }
-}
-     });
+        console.error(err);} } }); 
                                             
 
-</script>
-</body>
-</html>
+       </script>
+      </body>
+     </html>
