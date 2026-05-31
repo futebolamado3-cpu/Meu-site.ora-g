@@ -611,177 +611,34 @@ function showTab(name) {
 }
 
 // ── Brasileirão standings ──
-const times = [
-  { nome:'Flamengo',    emoji:'🇧🇷', j:14, v:10, e:2, d:2, pts:32, top:true },
-  { nome:'Palmeiras',   emoji:'🇧🇷', j:14, v:9,  e:3, d:2, pts:30, top:true },
-  { nome:'Atlético-MG', emoji:'🇧🇷', j:14, v:8,  e:3, d:3, pts:27, top:true },
-  { nome:'Grêmio',      emoji:'🇧🇷', j:14, v:7,  e:4, d:3, pts:25, top:true },
-  { nome:'São Paulo',   emoji:'🇧🇷', j:14, v:7,  e:3, d:4, pts:24 },
-  { nome:'Internacional',emoji:'🇧🇷',j:14, v:6,  e:4, d:4, pts:22 },
-  { nome:'Fluminense',  emoji:'🇧🇷', j:14, v:5,  e:5, d:4, pts:20 },
-  { nome:'Botafogo',    emoji:'🇧🇷', j:14, v:5,  e:4, d:5, pts:19 },
-  { nome:'Cruzeiro',    emoji:'🇧🇷', j:14, v:4,  e:5, d:5, pts:17 },
-  { nome:'Corinthians', emoji:'🇧🇷', j:14, v:4,  e:3, d:7, pts:15, rel:true },
-];
-const tbody = document.getElementById('tb-brasileirao');
-times.forEach((t, i) => {
-  const cls = t.top ? 'top' : (t.rel ? 'rel' : '');
-  tbody.innerHTML += `<tr>
-    <td><span class="pos-badge ${cls}">${i+1}</span></td>
-    <td><div class="team-row">${t.emoji} ${t.nome}</div></td>
-    <td>${t.j}</td><td>${t.v}</td><td>${t.e}</td><td>${t.d}</td>
-    <td class="pts">${t.pts}</td></tr>`;
-});
 
-// ── Scores ticker ──
-const jogos = [
-  { home:'Flamengo',   away:'Palmeiras',  score:'2-1', league:'Brasileirão',  live:true  },
-  { home:'Real Madrid',away:'Barcelona',  score:'1-1', league:'La Liga',      live:true  },
-  { home:'Man City',   away:'Arsenal',    score:'0-0', league:'Premier Lg',   live:false },
-  { home:'PSG',        away:'Lyon',       score:'3-0', league:'Ligue 1',      live:false },
-  { home:'Bayern',     away:'Dortmund',   score:'2-2', league:'Bundesliga',   live:true  },
-  { home:'Juventus',   away:'Inter',      score:'1-0', league:'Serie A',      live:false },
-  { home:'Atlético-MG',away:'Grêmio',    score:'1-2', league:'Brasileirão',  live:true  },
-  { home:'River Plate',away:'Boca',       score:'0-0', league:'Libertadores', live:true  },
-];
-const track = document.getElementById('scores-track');
-const html = jogos.map(j => `
-  <div class="score-item">
-    ${j.live ? '<span class="live-tag">AO VIVO</span>' : ''}
-    <span class="teams">${j.home} vs ${j.away}</span>
-    <span class="score">${j.score}</span>
-    <span class="league">${j.league}</span>
-  </div>`).join('');
-track.innerHTML = html + html;
 
-// ── Images for AI news ──
-const imgs = [
-  'https://images.unsplash.com/photo-1574629810360-7efbbe195018?w=800&q=80',
-  'https://images.unsplash.com/photo-1551958219-acbc608c6377?w=600&q=80',
-  'https://images.unsplash.com/photo-1508098682722-e99c43a406b2?w=600&q=80',
-  'https://images.unsplash.com/photo-1560272564-c83b66b1ad12?w=600&q=80',
-];
+       async function perguntar(texto) {
 
-// ── AI News Generator ──
-async function gerarNoticias() {
-  const btn = document.getElementById('btn-gerar');
-  const status = document.getElementById('ai-status');
-  const grid = document.getElementById('news-grid');
-
-  btn.disabled = true;
-  btn.innerHTML = '<span class="spinner"></span> Gerando...';
-  status.className = 'ai-status visible';
-  status.innerHTML = '🤖 IA analisando o cenário do futebol mundial...';
-
-  // Show skeleton
-  grid.innerHTML = `
-    <div class="news-card featured" style="min-height:340px;padding:20px;">
-      <div class="skeleton skel-h" style="height:180px;border-radius:8px;margin-bottom:16px;"></div>
-      <div class="skeleton skel-h" style="width:60px;height:18px;margin-bottom:12px;"></div>
-      <div class="skeleton skel-h"></div>
-      <div class="skeleton skel-p"></div>
-    </div>
-    <div style="display:flex;flex-direction:column;gap:16px;">
-      ${[1,2,3].map(()=>`<div class="news-text-card" style="min-height:90px;">
-        <div class="skeleton skel-h" style="width:60px;height:16px;margin-bottom:10px;"></div>
-        <div class="skeleton skel-h"></div>
-        <div class="skeleton skel-p"></div>
-      </div>`).join('')}
-    </div>`;
-    try {
-        const prompt = 'Gere 3 notícias de futebol atuais em formato JSON puro. Estrutura de array rigorosa: [{"titulo": "Texto", "categoria": "Texto", "imagem": "https://unsplash.com", "destaque": true}]. Não envie blocos markdown.';
-        
-        const API_KEY = "AIzaSyD0u8hNE9NiVvfp_p0wAJ6zhemo2F_8Jyk";
-
-       async function gerarNoticias() {
-  const btn = document.getElementById('btn-gerar');
-  const status = document.getElementById('ai-status');
-  const grid = document.getElementById('news-grid');
-
-  btn.disabled = true;
-  btn.innerHTML = '<span class="spinner"></span> Gerando...';
-  status.className = 'ai-status visible';
-  status.innerHTML = '🤖 IA analisando o cenário do futebol mundial...';
-
-  try {
-    const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${API_KEY}`;
-    
-    const response = await fetch(url, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
+  const resposta = await fetch(
+    "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent",
+    {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "x-goog-api-key": "AIzaSyD0u8hNE9NiVvfp_p0wAJ6zhemo2F_8Jyk "
+      },
       body: JSON.stringify({
-        contents: [{ parts: [{ text: 'Gere 4 notícias de futebol em JSON puro, sem markdown. Formato: [{"titulo":"...","categoria":"...","tempo":"..."}]' }] }]
+        contents: [
+          {
+            parts: [
+              { text: texto }
+            ]
+          }
+        ]
       })
-    });
-
-    const data = await response.json();
-    const text = data.candidates[0].content.parts[0].text;
-    const clean = text.replace(/```json|```/g, '').trim();
-    const noticias = JSON.parse(clean);
-
-    status.innerHTML = `✅ <span>${noticias.length} notícias geradas com IA</span>`;
-
-    grid.innerHTML = noticias.map((n, i) => `
-      <div class="news-card ${i === 0 ? 'featured' : 'small'}">
-        <div class="news-body">
-          <span class="news-tag">${n.categoria}</span>
-          <h3>${n.titulo}</h3>
-          <p class="news-meta">${n.tempo || 'agora'}</p>
-        </div>
-      </div>
-    `).join('');
-
-     } catch (err) {
-    status.innerHTML = '❌ Erro ao gerar notícias.';
-    console.error(err);
     }
+  );
 
-    btn.disabled = false;
-    btn.innerHTML = '<span>⚡</span> Atualizar Notícias com IA';
-    }
+  const dados = await resposta.json();
 
-   window.addEventListener('load', gerarNoticias);
-
-
-    async function gerarNoticias() {
-    const container = document.getElementById('news-container'); // Alinhe com o ID real do seu container se for diferente
-    if (!container) return;
-    
-    container.innerHTML = 'Carregando notícias com IA...';
-
-    try {
-        const API_KEY = "AIzaSyD0u8hNE9NiVvfp_p0wAJ6zhemo2F_8Jyk";
-        const url = `https://googleapis.com{API_KEY}`;
-
-        // Pedimos para a IA gerar os dados exatamente no formato que o seu site já usa
-        const resposta = await fetch(url, {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({
-            contents: [{ parts: [{ text: "Gere 10 notícias atuais em formato JSON puro. Use estritamente esta estrutura de array: [{\"titulo\": \"Texto aqui\", \"categoria\": \"Texto aqui\"}]. Não adicione formatação markdown ou blocos de código."}]});
-
-           
-        const dados = await resposta.json();
-        const textoIA = dados.candidates[0].content.parts[0].text;
-
-        
-        // Converte o texto da IA em dados reais para o seu site ler
-        const noticias = JSON.parse(textoIA.trim());
-
-        // Limpa o container
-        container.innerHTML = '';
-
-        // O seu código original que monta as notícias na tela (Linha 786 em diante)
-        noticias.forEach(noticia => {
-            const card = document.createElement('div');
-            card.className = 'noticia-card';
-            // Aqui continua o seu código original que desenha o HTML da notícia...
-            card.innerHTML = `<span class="news-tag">${noticia.categoria}</span><h3>${noticia.titulo}</h3>`;
-            container.appendChild(card);});
-
-        } catch (err) {
-        container.innerHTML = 'Erro ao gerar notícias com IA.';
-        console.error(err);} } }); 
+  return dados.candidates?.[0]?.content?.parts?.[0]?.text;
+}  
                                             
 
        </script>
