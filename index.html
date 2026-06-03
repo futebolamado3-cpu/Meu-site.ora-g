@@ -388,20 +388,193 @@
 </style>
 
     <!-- AI BAR -->
-    <div class="ai-bar">
-      <div class="ai-bar-left">
-        <div class="ai-icon">🤖</div>
-        <div>
-          <h3>IA de Notícias — Sport General</h3>
-          <p>Powered by Claude · Gera notícias reais de futebol automaticamente</p>
-        </div>
-      </div>
-      <button class="btn-ai" id="btn-gerar" onclick="gerarNoticias()">
-        <span>⚡</span> Atualizar Notícias com IA
-      </button>
+<!-- ========== COLE ISSO NO SEU HTML ========== -->
+
+<!-- 1. ESTILOS - cole dentro do <style> -->
+<style>
+.ai-bar {
+  background: linear-gradient(135deg, #1a1a2e, #16213e);
+  border: 1px solid #4285f4;
+  border-radius: 12px;
+  padding: 16px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.ai-bar-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.ai-icon {
+  font-size: 2rem;
+}
+
+.ai-bar h3 {
+  color: #fff;
+  margin: 0;
+  font-size: 1rem;
+}
+
+.ai-bar p {
+  color: #4285f4;
+  margin: 0;
+  font-size: 0.8rem;
+}
+
+.btn-ai {
+  background: #4285f4;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  font-weight: bold;
+  transition: background 0.2s;
+}
+
+.btn-ai:hover { background: #3367d6; }
+.btn-ai:disabled { background: #888; cursor: not-allowed; }
+
+.ai-status {
+  color: #aaa;
+  font-size: 0.85rem;
+  margin-bottom: 10px;
+  min-height: 20px;
+}
+
+#news-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 16px;
+}
+
+.news-card {
+  background: #1e1e2e;
+  border: 1px solid #333;
+  border-radius: 10px;
+  padding: 16px;
+  transition: border-color 0.2s;
+}
+
+.news-card:hover { border-color: #4285f4; }
+
+.news-card h4 {
+  color: #fff;
+  margin: 0 0 8px 0;
+  font-size: 1rem;
+}
+
+.news-card p {
+  color: #aaa;
+  font-size: 0.85rem;
+  margin: 0;
+  line-height: 1.5;
+}
+
+.news-card .tag {
+  display: inline-block;
+  background: #4285f433;
+  color: #4285f4;
+  font-size: 0.7rem;
+  padding: 2px 8px;
+  border-radius: 20px;
+  margin-bottom: 8px;
+}
+</style>
+
+<!-- 2. HTML - cole no <body> onde quiser exibir -->
+<div class="ai-bar">
+  <div class="ai-bar-left">
+    <div class="ai-icon">🤖</div>
+    <div>
+      <h3>IA de Notícias — Sport General</h3>
+      <p>Powered by Gemini · Gera notícias reais</p>
     </div>
-    <div class="ai-status" id="ai-status"></div>
-<div id="news-container">
+  </div>
+  <button class="btn-ai" id="btn-gerar" onclick="gerarNoticias()">
+    <span>⚡</span> Atualizar Notícias com IA
+  </button>
+</div>
+
+<div class="ai-status" id="ai-status"></div>
+<div id="news-container"></div>
+
+<!-- 3. SCRIPT - cole antes do </body> -->
+<script>
+  const GEMINI_API_KEY = "AQ.Ab8RN6JIGmCyEa9zXyh8yduIaePYn_1ogmAsEqwH8yeRUue1MQ";
+  const GEMINI_URL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${GEMINI_API_KEY}`;
+
+  async function gerarNoticias() {
+    const btn = document.getElementById("btn-gerar");
+    const status = document.getElementById("ai-status");
+    const container = document.getElementById("news-container");
+
+    btn.disabled = true;
+    btn.innerHTML = "⏳ Gerando...";
+    status.textContent = "Consultando Gemini AI...";
+    container.innerHTML = "";
+
+    const prompt = `Gere 6 notícias esportivas recentes e realistas sobre futebol, basquete, tênis e outros esportes.
+Responda APENAS em JSON válido, sem texto extra, neste formato:
+[
+  {
+    "titulo": "Título da notícia",
+    "resumo": "Resumo de 2 linhas da notícia",
+    "esporte": "Futebol"
+  }
+]`;
+
+    try {
+      const response = await fetch(GEMINI_URL, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          contents: [{ parts: [{ text: prompt }] }]
+        })
+      });
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error(data.error?.message || "Erro na API");
+      }
+
+      let texto = data.candidates[0].content.parts[0].text;
+      texto = texto.replace(/```json|```/g, "").trim();
+      const noticias = JSON.parse(texto);
+
+      noticias.forEach(n => {
+        const card = document.createElement("div");
+        card.className = "news-card";
+        card.innerHTML = `
+          <span class="tag">${n.esporte}</span>
+          <h4>${n.titulo}</h4>
+          <p>${n.resumo}</p>
+        `;
+        container.appendChild(card);
+      });
+
+      status.textContent = `✅ ${noticias.length} notícias geradas com sucesso!`;
+    } catch (err) {
+      status.textContent = "gerar 3 noticias : " + err.message;
+      console.error(err);
+    } finally {
+      btn.disabled = false;
+      btn.innerHTML = "<span>⚡</span> Atualizar Notícias com IA";
+    }
+  }
+
+  // Gera automaticamente ao carregar a página
+  window.onload = gerarNoticias;
+</script>
+
 
 <!-- NOTÍCIAS PRINCIPAIS -->
 <div class="news-grid" id="news-grid">
