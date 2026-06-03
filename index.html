@@ -673,60 +673,7 @@ O FIFA.com compilou uma lista completa dos jogos de cada seleção, juntamente c
       <p>Powered by <span style="color:var(--green);font-weight:700;">arlison linhares </span>  </p>
     </div>
   </div>
-</footer>
-
-<script>
-// ── Mobile menu ──
-function toggleMenu() {
-  const m = document.getElementById('mobile-menu');
-  m.style.display = m.style.display === 'flex' ? 'none' : 'flex';
-}
-
-// ── Scroll helper ──
-function scrollTo(id) {
-  document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
-}
-
-// ── Tabs ──
-function showTab(name) {
-  ['brasileirao','champions','libertadores'].forEach(t => {
-    document.getElementById('tab-' + t).style.display = t === name ? 'block' : 'none';
-  });
-  document.querySelectorAll('.tab').forEach((btn, i) => {
-    btn.classList.toggle('active', ['brasileirao','champions','libertadores'][i] === name);
-  });
-}
-
-// ── Brasileirão standings ──
-
-
-       async function perguntar(texto) {
-
-  const resposta = await fetch(
-    "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent",
-    {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        "x-goog-api-key": "AIzaSyD0u8hNE9NiVvfp_p0wAJ6zhemo2F_8Jyk "
-      },
-      body: JSON.stringify({
-        contents: [
-          {
-            parts: [
-              { text: texto }
-            ]
-          }
-        ]
-      })
-    }
-  );
-
-  const dados = await resposta.json();
-
-  return dados.candidates?.[0]?.content?.parts?.[0]?.text;
-}  
-                                            
+</footer>                                   
 
        </script>
       </body>
