@@ -1,171 +1,65 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="utf-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <title>Sport General —  futebol chamando todos os autobots</title>
-  <meta name="description" content="Notícias, jogos ao vivo, classificações, times e ídolos do futebol mundial."/>
-  <meta name="google-site-verification" content="nzO4XNSOoXA18UNiiZIsrxClOY2xoVKuHN1JvSUwvXY"/>
-  <meta property="og:title" content="Sport General — O universo do futebol"/>
-  <meta property="og:description" content="Notícias, jogos ao vivo, classificações, times e ídolos do futebol mundial."/>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet">
-  <style>.hero {
-    min-height: 100vh;
-    padding: 24px 16px 32px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: relative;
-    overflow: hidden;
-    color:#F5S9FB;
-    /* Aplica o filtro de leitura + a imagem gerada */
-    background: linear-gradient(180deg, rgba(7, 17, 26, 0.82) 0%, rgba(7, 17, 26, 0.65) 100%), 
-                url('https://prodia.xyz');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Sport General</title>
+<style>
+body{margin:0;font-family:Arial,sans-serif;background:#fff;color:#111}
+header{background:#111;color:#fff;padding:15px;text-align:center}
+.hero{
+min-height:420px;
+display:flex;
+align-items:center;
+justify-content:center;
+text-align:center;
+padding:20px;
+background:url('https://images.unsplash.com/photo-1574629810360-7efbbe195018?q=80&w=1600') center/cover;
+}
+.hero-box{
+background:rgba(255,255,255,.85);
+padding:20px;
+border-radius:12px;
+max-width:700px;
+}
+.hero h1{font-size:42px;margin:0}
+.hero p{font-size:16px}
+.btn{
+display:inline-block;
+background:#00b050;
+color:#fff;
+padding:12px 18px;
+border-radius:8px;
+text-decoration:none;
+}
+.container{max-width:1100px;margin:auto;padding:20px}
+.card{
+background:#fff;
+border:1px solid #ddd;
+border-radius:10px;
+overflow:hidden;
+margin-bottom:20px;
+}
+.card img{width:100%;display:block}
+.card div{padding:15px}
+</style>
+</head>
+<body>
+<header><h2>SPORT GENERAL</h2></header>
 
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    :root {
-      --green: #003357; --green-dark: #169564;
-      --bg: #3a0d1a; --surface:#F9F9FB ; --surface2:#F9F9FB;
-      --border: rgba(155,255,255,0.08); --text:#F9F9FB --muted: #112;
-    }
-    html { scroll-behavior: smooth; }
-    body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--text); min-height: 100vh; overflow-x: hidden; }
+<section class="hero">
+<div class="hero-box">
+<h1>O UNIVERSO DO FUTEBOL</h1>
+<p>Notícias, jogos ao vivo e classificações.</p>
+<a class="btn" href="#">Ver Notícias</a>
+</div>
+</section>
 
-    /* HEADER */
-    header { position: sticky; top: 0; z-index: 100; background: rgba(10,10,10,0.9); backdrop-filter: blur(20px); border-bottom: 1px solid var(--border); }
-    nav { max-width: 1200px; margin: 0 auto; padding: 0 24px; height: 64px; display: flex; align-items: center; justify-content: space-between; }
-    .logo { display: flex; align-items: center; gap: 10px; text-decoration: none; color: var(--text); }
-    .logo-icon { width: 36px; height: 36px; border-radius: 50%; background: linear-gradient(135deg, var(--green), var(--green-dark)); display: grid; place-items: center; font-weight: 900; font-size: 14px; color: #000; }
-    .logo span { font-family: 'Bebas Neue', sans-serif; font-size: 22px; letter-spacing: 1px; }
-    .nav-links { display: flex; list-style: none; gap: 32px; }
-    .nav-links a { text-decoration: none; color: var(--muted); font-size: 14px; font-weight: 500; transition: color 0.2s; }
-    .nav-links a:hover, .nav-links a.active { color: var(--text); }
-    .btn-primary { background: var(--green); color: #000; border: none; padding: 8px 18px; border-radius: 8px; font-size: 13px; font-weight: 700; cursor: pointer; transition: all 0.2s; }
-    .btn-primary:hover { background: #03r65c; transform: translateY(-1px); }
-    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 4px; }
-    .hamburger span { display: block; width: 24px; height: 2px; background: var(--text); border-radius: 2px; }
-    #mobile-menu { display: none; flex-direction: column; background: var(--surface); border-top: 1px solid var(--border); padding: 16px 24px; gap: 16px; }
-    #mobile-menu a { text-decoration: none; color: var(--muted); font-size: 15px; font-weight: 500; }
-    @media (max-width: 768px) { .nav-links { display: none; } .hamburger { display: flex; } }
-
-    /* SCORES TICKER */
-    .scores-bar { background: var(--surface); border-bottom: 1px solid var(--border); overflow: hidden; height: 38px; display: flex; align-items: center; }
-    .scores-track { display: flex; animation: scroll-left 35s linear infinite; width: max-content; }
-    .scores-bar:hover .scores-track { animation-play-state: paused; }
-    @keyframes scroll-left { from { transform: translateX(0); } to { transform: translateX(-50%); } }
-    .score-item { display: flex; align-items: center; gap: 8px; padding: 0 24px; border-right: 1px solid var(--border); white-space: nowrap; font-size: 12px; height: 38px; }
-    .score-item .teams { font-weight: 600; }
-    .score-item .score { color: var(--green); font-weight: 700; }
-    .score-item .league { color: var(--muted); font-size: 11px; }
-    .live-tag { background: rgba(0,200,83,0.2); color: var(--green); font-size: 10px; font-weight: 700; padding: 2px 6px; border-radius: 4px; animation: blink 1.5s infinite; }
-    @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0.4} }
-
-    /* HERO */
-    .hero { position: relative; overflow: hidden; min-height: 580px; display: flex; align-items: center; }
-    .hero-bg { position: absolute; inset: 0; background: radial-gradient(ellipse 80% 60% at 60% 40%, rgba(0,200,83,0.13) 0%, transparent 70%), linear-gradient(to bottom, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0.88) 100%), url('https://images.unsplash.com/photo-1508098682722-e99c43a406b2?w=1400&q=80') center/cover no-repeat; }
-    .hero-content { position: relative; max-width: 1200px; margin: 0 auto; padding: 80px 24px; }
-    .live-badge { display: inline-flex; align-items: center; gap: 6px; background: rgba(0,200,83,0.15); border: 1px solid rgba(0,200,83,0.4); color: var(--green); font-size: 11px; font-weight: 700; padding: 4px 12px; border-radius: 100px; margin-bottom: 24px; letter-spacing: 1px; text-transform: uppercase; }
-    .live-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--green); animation: blink 1.5s infinite; }
-    .hero h1 { font-family: 'Bebas Neue', sans-serif; font-size: clamp(52px, 10vw, 96px); line-height: 0.95; max-width: 700px; letter-spacing: 1px; }
-    .hero h1 em { font-style: normal; color: var(--green); }
-    .hero p { margin-top: 20px; max-width: 500px; color: var(--muted); font-size: 16px; line-height: 1.6; }
-    .hero-btns { margin-top: 32px; display: flex; flex-wrap: wrap; gap: 12px; }
-    .btn-lg { padding: 14px 28px; font-size: 15px; border-radius: 10px; font-weight: 700; cursor: pointer; transition: all 0.2s; border: none; }
-    .btn-outline { background: transparent; border: 1px solid var(--border); color: var(--text); }
-    .btn-outline:hover { border-color: rgba(255,255,255,0.3); background: rgba(255,255,255,0.05); }
-
-    /* SECTIONS */
-    section { padding: 64px 24px; }
-    .container { max-width: 1200px; margin: 0 auto; }
-    .section-title { font-family: 'Bebas Neue', sans-serif; font-size: 36px; letter-spacing: 1px; margin-bottom: 6px; }
-    .section-sub { color: var(--muted); font-size: 14px; margin-bottom: 32px; }
-
-    /* AI NEWS */
-    .ai-bar {
-      background: linear-gradient(135deg, rgba(0,200,83,0.1), rgba(0,150,60,0.05));
-      border: 1px solid rgba(0,200,83,0.25);
-      border-radius: 14px;
-      padding: 20px 24px;
-      margin-bottom: 32px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      gap: 16px;
-    }
-    .ai-bar-left { display: flex; align-items: center; gap: 12px; }
-    .ai-icon { width: 40px; height: 40px; border-radius: 10px; background: linear-gradient(135deg, var(--green), var(--green-dark)); display: grid; place-items: center; font-size: 18px; flex-shrink: 0; }
-    .ai-bar-left h3 { font-size: 15px; font-weight: 700; }
-    .ai-bar-left p { color: var(--muted); font-size: 13px; margin-top: 2px; }
-    .btn-ai { background: var(--green); color: #000; border: none; padding: 10px 22px; border-radius: 8px; font-size: 13px; font-weight: 700; cursor: pointer; transition: all 0.2s; display: flex; align-items: center; gap: 8px; white-space: nowrap; }
-    .btn-ai:hover { background: #12e65c; transform: translateY(-1px); }
-    .btn-ai:disabled { opacity: 0.6; cursor: not-allowed; transform: none; }
-    .spinner { width: 14px; height: 14px; border: 2px solid rgba(0,0,0,0.3); border-top-color: #000; border-radius: 50%; animation: spin 0.7s linear infinite; }
-    @keyframes spin { to { transform: rotate(360deg); } }
-
-    /* NEWS GRID */
-    .news-grid { display: grid; grid-template-columns: 2fr 1fr; gap: 20px; }
-    @media (max-width: 768px) { .news-grid { grid-template-columns: 1fr; } }
-    .news-card { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; overflow: hidden; transition: border-color 0.2s, transform 0.2s; cursor: pointer; }
-    .news-card:hover { border-color: rgba(0,200,83,0.3); transform: translateY(-2px); }
-    .news-card img { width: 100%; height: 220px; object-fit: cover; display: block; }
-    .news-card.small img { height: 130px; }
-    .news-body { padding: 16px; }
-    .news-tag { display: inline-block; background: rgba(0,200,83,0.15); color: var(--green); font-size: 10px; font-weight: 700; padding: 3px 8px; border-radius: 4px; margin-bottom: 10px; text-transform: uppercase; letter-spacing: 0.5px; }
-    .news-card h3 { font-size: 15px; font-weight: 700; line-height: 1.4; margin-bottom: 8px; }
-    .news-card.featured h3 { font-size: 21px; }
-    .news-meta { color: var(--muted); font-size: 12px; }
-    .news-side { display: flex; flex-direction: column; gap: 16px; }
-    .news-text-card { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 16px; transition: border-color 0.2s; cursor: pointer; }
-    .news-text-card:hover { border-color: rgba(0,200,83,0.3); }
-
-    /* AI GENERATING SKELETON */
-    .skeleton { background: linear-gradient(90deg, var(--surface) 25%, var(--surface2) 50%, var(--surface) 75%); background-size: 200% 100%; animation: shimmer 1.5s infinite; border-radius: 6px; }
-    @keyframes shimmer { 0%{background-position:200% 0} 100%{background-position:-200% 0} }
-    .skel-h { height: 20px; margin-bottom: 8px; }
-    .skel-p { height: 14px; margin-bottom: 6px; width: 80%; }
-
-    /* STANDINGS */
-    .standings-table { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; overflow: hidden; }
-    .standings-header { padding: 16px 20px; border-bottom: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; }
-    .standings-header h3 { font-family: 'Bebas Neue', sans-serif; font-size: 20px; letter-spacing: 1px; }
-    table { width: 100%; border-collapse: collapse; font-size: 13px; }
-    thead th { padding: 10px 16px; text-align: left; color: var(--muted); font-weight: 600; font-size: 11px; text-transform: uppercase; border-bottom: 1px solid var(--border); }
-    tbody tr { border-bottom: 1px solid var(--border); transition: background 0.15s; }
-    tbody tr:last-child { border-bottom: none; }
-    tbody tr:hover { background: rgba(255,255,255,0.03); }
-    tbody td { padding: 12px 16px; vertical-align: middle; }
-    .team-row { display: flex; align-items: center; gap: 10px; }
-    .pos-badge { width: 22px; height: 22px; border-radius: 50%; background: var(--surface2); display: grid; place-items: center; font-size: 11px; font-weight: 700; color: var(--muted); }
-    .pos-badge.top { background: rgba(0,200,83,0.2); color: var(--green); }
-    .pos-badge.rel { background: rgba(220,50,50,0.2); color:#F9F9FB ; }
-    .pts { font-weight: 700; color: var(--green); }
-    .tabs { display: flex; gap: 4px; background: var(--surface2); border-radius: 8px; padding: 4px; margin-bottom: 24px; width: fit-content; }
-    .tab { padding: 6px 16px; border-radius: 6px; font-size: 13px; font-weight: 600; cursor: pointer; border: none; background: transparent; color: var(--muted); transition: all 0.2s; }
-    .tab.active { background: var(--surface); color: var(--text); }
-
-    /* FOOTER */
-    footer { background: var(--surface); border-top: 1px solid var(--border); padding: 48px 24px 24px; }
-    .footer-inner { max-width: 1200px; margin: 0 auto; }
-    .footer-top { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 48px; margin-bottom: 40px; }
-    @media (max-width: 768px) { .footer-top { grid-template-columns: 1fr; gap: 32px; } }
-    .footer-brand p { color: var(--muted); font-size: 14px; line-height: 1.6; margin-top: 12px; max-width: 300px; }
-    .footer-col h4 { font-weight: 700; font-size: 13px; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 16px; color: var(--muted); }
-    .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
-    .footer-col a { color: var(--muted); text-decoration: none; font-size: 14px; transition: color 0.2s; }
-    .footer-col a:hover { color: var(--text); }
-    .footer-bottom { border-top: 1px solid var(--border); padding-top: 20px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; }
-    .footer-bottom p { color: var(--muted); font-size: 13px; }
-
-    /* AI STATUS */
-    .ai-status { font-size: 12px; color: var(--muted); margin-top: 12px; display: none; }
-    .ai-status.visible { display: block; }
-    .ai-status span { color: var(--green); }
+<div class="container">
+<div class="card">
+<img src="https://images.unsplash.com/photo-1543326727-cf6c39e8f84c?q=80&w=1200">
+<div><h3>Últimas Notícias</h3><p>Área pronta para suas notícias.</p></div>
+ 
   </style>
 </head>
 <body>
