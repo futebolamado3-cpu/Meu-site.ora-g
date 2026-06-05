@@ -12,45 +12,57 @@
             --muted: #666666;
             --green: #00b050;
             --dark: #111111;
+            --glow: #00ff73;
         }
 
         /* TEXTO GERAL */
         body { margin: 0; font-family: Arial, sans-serif; background: #fff; color: #111; line-height: 1.6; font-size: 17px; }
-        header { background: var(--dark); color: #fff; padding: 20px; text-align: center; }
-        header h2 { margin: 0; letter-spacing: 2px; font-size: 30px; }
+        header { background: var(--dark); color: #fff; padding: 20px; text-align: center; border-bottom: 3px solid var(--green); }
+        header h2 { margin: 0; letter-spacing: 4px; font-size: 30px; font-weight: 900; }
         
         .container { max-width: 1100px; margin: auto; padding: 20px; }
 
-        /* 🚀 SEÇÃO HERO - ESTÁDIO DE FUTEBOL NO FUNDO */
+        /* 🚀 SEÇÃO HERO - DESENHO ABSTRATO DA MARCA LUMINA */
         .hero {
-            min-height: 450px;
+            min-height: 400px;
             display: flex;
             align-items: center;
             justify-content: center;
             text-align: center;
             padding: 40px 20px;
-            /* Imagem de um grande estádio de futebol iluminado */
-            background: linear-gradient(rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0.75)), url('https://images.unsplash.com/photo-1508098682722-e99c43a406b2?q=80&w=1600&auto=format&fit=crop') center/cover no-repeat;
+            /* Fundo geométrico desenhado via CSS representando feixes de luz (Lumina) */
+            background: radial-gradient(circle at 80% 20%, rgba(0, 176, 80, 0.3), transparent 50%), 
+                        linear-gradient(135deg, #111111 0%, #1a3020 100%);
+            position: relative;
+            overflow: hidden;
             margin-bottom: 30px;
         }
+        /* Detalhe do desenho de linhas no fundo do Hero */
+        .hero::before {
+            content: "";
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background-image: linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+                              linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+            background-size: 20px 20px;
+        }
         .hero-box {
-            background: transparent;
-            padding: 0;
+            position: relative;
+            z-index: 2;
             max-width: 700px;
         }
         .hero h1 { 
-            font-size: 46px; 
+            font-size: 48px; 
             margin: 0 0 12px 0; 
             color: #ffffff; 
             font-weight: 900; 
-            letter-spacing: 1px;
-            text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.9); 
+            letter-spacing: 2px;
+            text-shadow: 0 4px 10px rgba(0,0,0,0.5);
         }
         .hero p { 
             font-size: 20px; 
             margin: 0 0 25px 0; 
-            color: #e5e5e5; 
-            text-shadow: 1px 1px 6px rgba(0, 0, 0, 0.9);
+            color: #ccc;
         }
         .btn {
             display: inline-block;
@@ -61,10 +73,10 @@
             text-decoration: none;
             font-weight: bold;
             font-size: 18px;
-            transition: background 0.3s;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+            transition: all 0.3s;
+            box-shadow: 0 4px 15px rgba(0, 176, 80, 0.4);
         }
-        .btn:hover { background: #008f3e; }
+        .btn:hover { background: var(--glow); color: var(--dark); box-shadow: 0 4px 20px rgba(0, 255, 115, 0.6); }
 
         /* SEÇÃO DE NOTÍCIAS EM GRID */
         .news-grid {
@@ -81,7 +93,15 @@
             overflow: hidden;
             box-shadow: 0 2px 5px rgba(0,0,0,0.05);
         }
-        .news-card img { width: 100%; height: 380px; object-fit: cover; display: block; }
+        /* Container para os desenhos das notícias */
+        .news-illustration {
+            width: 100%;
+            height: 320px;
+            background: #161616;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
         .news-body { padding: 25px; }
         .news-tag {
             display: inline-block;
@@ -125,7 +145,14 @@
             display: flex;
             flex-direction: column;
         }
-        .news-text-card img { width: 100%; height: 180px; object-fit: cover; }
+        .news-list-illustration {
+            width: 100%;
+            height: 150px;
+            background: #1e1e1e;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
         .news-text-card div { padding: 20px; flex-grow: 1; display: flex; flex-direction: column; justify-content: space-between; }
         .news-text-card h3 { font-size: 18px; margin: 8px 0; line-height: 1.4; }
 
@@ -167,7 +194,7 @@
         .footer-brand { max-width: 400px; }
         .footer-brand p { font-size: 16px; }
         .footer-brand .logo { color: #fff; text-decoration: none; font-size: 22px; font-weight: bold; display: flex; align-items: center; gap: 10px; margin-bottom: 15px; }
-        .logo-icon { background: var(--green); color: #fff; width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; border-radius: 6px; }
+        .logo-icon { background: var(--green); color: #fff; width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; border-radius: 6px; font-weight: 900; }
         .footer-col h4 { color: #fff; margin: 0 0 15px 0; font-size: 18px; }
         .footer-col ul { list-style: none; padding: 0; margin: 0; }
         .footer-col ul li { margin-bottom: 10px; }
@@ -215,7 +242,7 @@
         /* RESPONSIVIDADE */
         @media (max-width: 768px) {
             .news-grid { grid-template-columns: 1fr; }
-            .hero h1 { font-size: 32px; }
+            .hero h1 { font-size: 34px; }
             .hero p { font-size: 18px; }
             .footer-top { flex-direction: column; }
             .modal-content { margin: 15% 15px; padding: 20px; }
@@ -231,8 +258,8 @@
 <section class="hero">
     <div class="hero-box">
         <h1>LUMINA SPORTS</h1>
-        <p>Notícias exclusivas, bastidores do futebol e tabelas em tempo real.</p>
-        <a class="btn" href="#news-grid">Ler Notícias Recentes</a>
+        <p>A união da informação de impacto com o design moderno do futebol.</p>
+        <a class="btn" href="#news-grid">Ver Painel de Notícias</a>
     </div>
 </section>
 
@@ -240,9 +267,30 @@
     <!-- NOTÍCIAS PRINCIPAIS -->
     <div class="news-grid" id="news-grid">
         
-        <!-- CARD PRINCIPAL (FUTEBOL) -->
+        <!-- CARD PRINCIPAL COM DESENHO DO ESTÁDIO LUMINA -->
         <div class="news-card">
-            <img src="https://images.unsplash.com/photo-1518063319789-7217e6706b04?q=80&w=1200&auto=format&fit=crop" alt="Bola de futebol no gramado">
+            <div class="news-illustration">
+                <!-- Desenho Vetorial da Marca (Estádio e Luzes) -->
+                <svg width="100%" height="100%" viewBox="0 0 600 320" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                        <linearGradient id="sky" x1="0%" y1="0%" x2="0%" y2="100%">
+                            <stop offset="0%" stop-color="#0f2015"/>
+                            <stop offset="100%" stop-color="#161616"/>
+                        </linearGradient>
+                    </defs>
+                    <rect width="600" height="320" fill="url(#sky)" />
+                    <!-- Feixes de Luz Lumina -->
+                    <polygon points="100,320 150,0 200,320" fill="#00b050" opacity="0.15" />
+                    <polygon points="500,320 450,0 400,320" fill="#00b050" opacity="0.15" />
+                    <!-- Linhas do Gramado/Estádio -->
+                    <ellipse cx="300" cy="320" rx="250" ry="80" fill="none" stroke="#00b050" stroke-width="3" opacity="0.6"/>
+                    <ellipse cx="300" cy="320" rx="180" ry="50" fill="none" stroke="#ffffff" stroke-width="2" opacity="0.4"/>
+                    <path d="M 50,320 L 550,320" stroke="#00b050" stroke-width="4" />
+                    <!-- Logotipo Centralizado no Desenho -->
+                    <circle cx="300" cy="140" r="40" fill="#111" stroke="#00b050" stroke-width="3" />
+                    <text x="300" y="148" font-family="Arial" font-size="26" font-weight="900" fill="#ffffff" text-anchor="middle">L</text>
+                </svg>
+            </div>
             <div class="news-body">
                 <span class="news-tag">Brasileirão 2026</span>
                 <h3>Janela de transferências fecha com contratações recordes no país</h3>
@@ -269,12 +317,18 @@
         </div>
     </div>
 
-    <!-- LISTA DE NOTÍCIAS COMPLEMENTARES -->
+    <!-- LISTA DE NOTÍCIAS COMPLEMENTARES COM DESENHOS DE ÍCONES ESPORTIVOS -->
     <div class="news-list">
         
-        <!-- 1. NOTÍCIA BRASILEIRÃO -->
+        <!-- 1. DESENHO CAMPO DE FUTEBOL -->
         <div class="news-text-card">
-            <img src="https://images.unsplash.com/photo-1577223625856-758c127e1279?q=80&w=400&auto=format&fit=crop" alt="Jogadores em campo">
+            <div class="news-list-illustration">
+                <svg width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="#00b050" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                    <rect x="2" y="3" width="20" height="18" rx="2" ry="2"></rect>
+                    <line x1="12" y1="3" x2="12" y2="21"></line>
+                    <circle cx="12" cy="12" r="4"></circle>
+                </svg>
+            </div>
             <div>
                 <span class="news-tag">Disputa pelo Topo</span>
                 <h3>Palmeiras e Flamengo preparam estratégias para o clássico do fim de semana</h3>
@@ -282,9 +336,15 @@
             </div>
         </div>
 
-        <!-- 2. NOTÍCIA CHAMPIONS LEAGUE -->
+        <!-- 2. DESENHO BOLA DE FUTEBOL -->
         <div class="news-text-card">
-            <img src="https://images.unsplash.com/photo-1431324155629-1a6edd1d141d?q=80&w=400&auto=format&fit=crop" alt="Partida de futebol">
+            <div class="news-list-illustration">
+                <svg width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="#00b050" stroke-width="1.5">
+                    <circle cx="12" cy="12" r="10"></circle>
+                    <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+                    <path d="M2 12h20"></path>
+                </svg>
+            </div>
             <div>
                 <span class="news-tag">Champions League</span>
                 <h3>Arsenal projeta marcação pesada para parar o ataque do PSG na final</h3>
@@ -292,9 +352,17 @@
             </div>
         </div>
 
-        <!-- 3. NOTÍCIA LIBERTADORES -->
+        <!-- 3. DESENHO TROFÉU -->
         <div class="news-text-card">
-            <img src="https://images.unsplash.com/photo-1504155611831-28b3c6cb314c?q=80&w=400&auto=format&fit=crop" alt="Chuteira e bola">
+            <div class="news-list-illustration">
+                <svg width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="#00b050" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"></path>
+                    <path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"></path>
+                    <path d="M4 22h16"></path>
+                    <path d="M10 14.66V17c0 .55-.45 1-1 1H4v2h16v-2h-5c-.55 0-1-.45-1-1v-2.34"></path>
+                    <path d="M12 2a6 6 0 0 0-6 6v5a6 6 0 0 0 6 6 6 6 0 0 0 6-6V8a6 6 0 0 0-6-6z"></path>
+                </svg>
+            </div>
             <div>
                 <span class="news-tag">Libertadores</span>
                 <h3>Conmebol define arbitragem para os confrontos decisivos das oitavas</h3>
@@ -302,9 +370,13 @@
             </div>
         </div>
 
-        <!-- 4. NOTÍCIA SELEÇÃO -->
+        <!-- 4. DESENHO ESCUDO/MARCA -->
         <div class="news-text-card">
-            <img src="https://images.unsplash.com/photo-1529900748604-07564a03e7a6?q=80&w=400&auto=format&fit=crop" alt="Torcida no estádio">
+            <div class="news-list-illustration">
+                <svg width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="#00b050" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                </svg>
+            </div>
             <div>
                 <span class="news-tag">Preparação</span>
                 <h3>Técnico convoca novidades para os próximos amistosos internacionais</h3>
@@ -378,7 +450,7 @@
         <div class="footer-top">
             <div class="footer-brand">
                 <a href="#" class="logo"><div class="logo-icon">L</div><span>LUMINA SPORTS</span></a>
-                <p>O universo do futebol profissional em um só lugar. Notícias de impacto, bastidores e coberturas completas dos principais campeonatos.</p>
+                <p>O universo do futebol profissional em um só lugar. Notícias de impacto, bastidores e coberturas completas com identidade visual própria.</p>
             </div>
             <div class="footer-col">
                 <h4>Navegação</h4>
@@ -403,7 +475,7 @@
     </div>
 </footer>
 
-<!-- 🔒 JANELA DA POLÍTICA DE PRIVACIDADE CORRIGIDA -->
+<!-- 🔒 JANELA DA POLÍTICA DE PRIVACIDADE -->
 <div id="privacyModal" class="modal">
     <div class="modal-content">
         <span class="close-modal" onclick="closePrivacy()">&times;</span>
