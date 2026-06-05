@@ -66,9 +66,7 @@ margin-bottom:20px;
 
 <header>
   <nav>
-    <a href="index.html" class="logo">
-      <div class="logo-icon">S</div>
-      <span>SPORT GENERAL</span>
+
     </a>
     <ul class="nav-links">
       <li><a href="index.html" class="active">Início</a></li>
@@ -129,98 +127,7 @@ margin-bottom:20px;
   </div>
 </section>
 
-.news-card .tag {
-<  display: inline-block;
-  background: #4285f433;
-  color: #4285f4;
-  font-size: 0.7rem;
-  padding: 2px 8px;
-  border-radius: 20px;>
-  margin-bottom: 8px}
-</style>
-<div class="ai-bar">
-  <div class="ai-bar-left">
-    <div class="ai-icon">🤖</div>
-    <div>
-      <h3>IA de Notícias — Sport General</h3>
-      <p>Powered by Gemini · Gera notícias reais</p>
-    </div>
-  </div>
-  <button class="btn-ai" id="btn-gerar" onclick="gerarNoticias()">
-    <span>⚡</span> Atualizar Notícias com IA
-  </button>
-</div>
 
-<div class="ai-status" id="ai-status"></div>
-<div id="news-container"></div>
-
-<!-- 3. SCRIPT - cole antes do </body> -->
-<script>
-  const GEMINI_URL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${GEMINI_API_KEY}`;
-
-  async function gerarNoticias() {
-    const btn = document.getElementById("btn-gerar");
-    const status = document.getElementById("ai-status");
-    const container = document.getElementById("news-container");
-
-    btn.disabled = true;
-    btn.innerHTML = "⏳ Gerando...";
-    status.textContent = "Consultando Gemini AI...";
-    container.innerHTML = "";
-
-    const prompt = `Gere 6 notícias esportivas recentes e realistas sobre futebol, basquete, tênis e outros esportes.
-Responda APENAS em JSON válido, sem texto extra, neste formato:
-[
-  {
-    "titulo": "Título da notícia",
-    "resumo": "Resumo de 2 linhas da notícia",
-    "esporte": "Futebol"
-  }
-]`;
-
-    try {
-      const response = await fetch(GEMINI_URL, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          contents: [{ parts: [{ text: prompt }] }]
-        })
-      });
-
-      const data = await response.json();
-
-      if (!response.ok) {
-        throw new Error(data.error?.message || "Erro na API");
-      }
-
-      let texto = data.candidates[0].content.parts[0].text;
-      texto = texto.replace(/```json|```/g, "").trim();
-      const noticias = JSON.parse(texto);
-
-      noticias.forEach(n => {
-        const card = document.createElement("div");
-        card.className = "news-card";
-        card.innerHTML = `
-          <span class="tag">${n.esporte}</span>
-          <h4>${n.titulo}</h4>
-          <p>${n.resumo}</p>
-        `;
-        container.appendChild(card);
-      });
-
-      status.textContent = `✅ ${noticias.length} notícias geradas com sucesso!`;
-    } catch (err) {
-      status.textContent = "gerar 3 noticias : " + err.message;
-      console.error(err);
-    } finally {
-      btn.disabled = false;
-      btn.innerHTML = "<span>⚡</span> Atualizar Notícias com IA";
-    }
-  }
-
-  // Gera automaticamente ao carregar a página
-  window.onload = gerarNoticias;
-</script>
 
 
 <!-- NOTÍCIAS PRINCIPAIS -->
@@ -276,7 +183,7 @@ Calendario do Brasil na Copa 2026 — Grupo C
       <div class="news-thumb">
         <img src="https://images.unsplash.com/photo-1431324155629-1a6deb1dec8d?q=80&w=1000&auto=format&fit=crop" alt="Copa do Mundo 2026" style="width: 100%; height: auto; display: block;">
       </div>
-      <div>
+      <div>aaa
 
       <h3>Onde assistir Brasil x Egito:
 TV Aberta: TV Globo | TV Fechada: SporTV | Internet: ge.globo, Globoplay e GeTV (YouTube)
