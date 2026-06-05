@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sport General</title>
+    <title>Sport & eSports General</title>
     <style>
         /* VARIÁVEIS DE COR */
         :root {
@@ -14,33 +14,43 @@
             --dark: #111111;
         }
 
-        /* TEXTO GERAL AUMENTADO */
+        /* TEXTO GERAL */
         body { margin: 0; font-family: Arial, sans-serif; background: #fff; color: #111; line-height: 1.6; font-size: 17px; }
         header { background: var(--dark); color: #fff; padding: 20px; text-align: center; }
         header h2 { margin: 0; letter-spacing: 2px; font-size: 30px; }
         
         .container { max-width: 1100px; margin: auto; padding: 20px; }
 
-        /* 🚀 SEÇÃO HERO - NEYMAR/SELEÇÃO NO FUNDO */
+        /* 🚀 SEÇÃO HERO - ARENA DE ESPORTS NO FUNDO */
         .hero {
-            min-height: 500px;
+            min-height: 450px;
             display: flex;
             align-items: center;
             justify-content: center;
             text-align: center;
-            padding: 20px;
-            background: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.4)), url('https://images.unsplash.com/photo-1624880351094-86644e645515?q=80&w=1600&auto=format&fit=crop') center/cover no-repeat;
+            padding: 40px 20px;
+            /* Imagem de uma grande arena de eSports com efeito escurecido para destacar o texto */
+            background: linear-gradient(rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0.75)), url('https://images.unsplash.com/photo-1542751371-adc38448a05e?q=80&w=1600&auto=format&fit=crop') center/cover no-repeat;
             margin-bottom: 30px;
         }
         .hero-box {
-            background: rgba(255, 255, 255, 0.94);
-            padding: 40px;
-            border-radius: 12px;
+            background: transparent;
+            padding: 0;
             max-width: 700px;
-            box-shadow: 0 6px 20px rgba(0,0,0,0.3);
         }
-        .hero h1 { font-size: 48px; margin: 0 0 12px 0; color: var(--dark); font-weight: 900; }
-        .hero p { font-size: 22px; margin: 0 0 25px 0; color: #222; }
+        .hero h1 { 
+            font-size: 42px; 
+            margin: 0 0 12px 0; 
+            color: #ffffff; 
+            font-weight: 900; 
+            text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.9); 
+        }
+        .hero p { 
+            font-size: 20px; 
+            margin: 0 0 25px 0; 
+            color: #e5e5e5; 
+            text-shadow: 1px 1px 6px rgba(0, 0, 0, 0.9);
+        }
         .btn {
             display: inline-block;
             background: var(--green);
@@ -51,6 +61,7 @@
             font-weight: bold;
             font-size: 18px;
             transition: background 0.3s;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
         }
         .btn:hover { background: #008f3e; }
 
@@ -200,7 +211,8 @@
         /* RESPONSIVIDADE */
         @media (max-width: 768px) {
             .news-grid { grid-template-columns: 1fr; }
-            .hero h1 { font-size: 36px; }
+            .hero h1 { font-size: 32px; }
+            .hero p { font-size: 18px; }
             .footer-top { flex-direction: column; }
             .modal-content { margin: 15% 15px; padding: 20px; }
         }
@@ -209,97 +221,87 @@
 <body>
 
 <header>
-    <h2>SPORT GENERAL</h2>
+    <h2>SPORT & ESPORTS GENERAL</h2>
 </header>
 
-<!-- HERO SECTION COM NEYMAR NO EM ESTÁDIO LOTADO -->
 <section class="hero">
     <div class="hero-box">
-        <h1>O UNIVERSO DO FUTEBOL</h1>
-        <p>Notícias exclusivas, bastidores do mercado e tabelas em tempo real.</p>
+        <h1>O UNIVERSO DOS ESPORTS</h1>
+        <p>Notícias exclusivas, bastidores do mercado gamer e tabelas em tempo real.</p>
         <a class="btn" href="#news-grid">Ler Notícias Recentes</a>
     </div>
 </section>
 
 <div class="container">
-    <!-- NOTÍCIAS PRINCIPAIS -->
     <div class="news-grid" id="news-grid">
         
-        <!-- CARD PRINCIPAL -->
         <div class="news-card">
-            <img src="https://images.unsplash.com/photo-1522778119026-d647f0596c20?q=80&w=1200&auto=format&fit=crop" alt="Copa do Mundo 2026">
+            <img src="https://images.unsplash.com/photo-1560253023-3ec5d502959f?q=80&w=1200&auto=format&fit=crop" alt="Mundial de eSports">
             <div class="news-body">
-                <span class="news-tag">Copa do Mundo 2026</span>
-                <h3>Tudo pronto para a maior Copa da história na América do Norte!</h3>
+                <span class="news-tag">Mundial de eSports</span>
+                <h3>Tudo pronto para o maior torneio de eSports da história!</h3>
                 <p class="news-description">
-                    As principais seleções do planeta já desembarcaram nos Estados Unidos, México e Canadá. Com formato inédito de 48 equipes, a expectativa de público quebra recordes antes mesmo do apito inicial.
+                    As principais organizações de jogos eletrônicos do planeta já desembarcaram para a disputa do circuito mundial. Com palcos tecnológicos inéditos, a expectativa de audiência online quebra recordes históricos.
                 </p>
                 <p class="news-meta">há 45 minutos • Especial Mundial</p>
             </div>
         </div>
 
-        <!-- DETALHES DO JOGO DA SELEÇÃO -->
         <div class="news-side">
-            <span class="news-tag">Seleção Brasileira</span>
-            <h3>Brasil enfrenta o Egito neste sábado (6) às 19h</h3>
-            <p>Último amistoso preparatório antes da estreia oficial na Copa do Mundo contra o Marrocos.</p>
+            <span class="news-tag">Campeonato Nacional</span>
+            <h3>Grande Final acontece neste sábado (6) às 13h</h3>
+            <p>O confronto mais esperado da temporada definirá quem leva a taça mais cobiçada do cenário competitivo nacional.</p>
             
             <div class="info-box">
                 <strong>Onde Assistir:</strong><br>
-                Globo, SporTV, ge.globo e Globoplay.
+                YouTube Gaming, Twitch, TikTok e Canais de TV por assinatura.
             </div>
 
-            <p><strong>Desfalque importante:</strong> Neymar está fora por lenção na panturrilha e fará exames em Nova Jersey.</p>
-            <p><strong>Provável Escalação:</strong> Alisson; Wesley, Marquinhos, Gabriel Magalhães, Douglas Santos; Casemiro, Bruno Guimarães, Lucas Paquetá; Raphinha, Vini Jr. e Igor Thiago.</p>
+            <p><strong>Destaque importante:</strong> O jogador MVP do campeonato está confirmado na line-up principal após se recuperar de dores no pulso.</p>
+            <p><strong>Transmissão Oficial:</strong> Contará com analistas internacionais e presença de público presencial na arena principal.</p>
         </div>
     </div>
 
-    <!-- LISTA DE NOTÍCIAS COMPLEMENTARES (FOTOS CORRIGIDAS ABAIXO) -->
     <div class="news-list">
         
-        <!-- 1. FOTO DO BRASILEIRÃO CORRIGIDA (DISPUTA DE BOLA) -->
         <div class="news-text-card">
-            <img src="https://images.unsplash.com/photo-1575361204480-aadea25e6e68?q=80&w=400&auto=format&fit=crop" alt="Brasileirão - Disputa de bola">
+            <img src="https://images.unsplash.com/photo-1538481199705-c710c4e965fc?q=80&w=400&auto=format&fit=crop" alt="League of Legends - Teclado">
             <div>
-                <span class="news-tag">Brasileirão</span>
-                <h3>Palmeiras e Flamengo travam disputa acirrada no topo antes da pausa</h3>
-                <p class="news-meta">há 3 horas • Série A</p>
+                <span class="news-tag">League of Legends</span>
+                <h3>Janela de transferências do CBLOL pega fogo antes da próxima etapa</h3>
+                <p class="news-meta">há 3 horas • Cenário BR</p>
             </div>
         </div>
 
-        <!-- 2. FOTO DA CHAMPIONS CORRIGIDA (ESTÁDIO EM FESTA/CONFETES) -->
         <div class="news-text-card">
-            <img src="https://images.unsplash.com/photo-1516738901171-8eb4fc13bd20?q=80&w=400&auto=format&fit=crop" alt="Champions League - Festa">
+            <img src="https://images.unsplash.com/photo-1553481187-be93c21490a9?q=80&w=400&auto=format&fit=crop" alt="Counter-Strike - Controle">
             <div>
-                <span class="news-tag">Champions League</span>
-                <h3>Relembre a festa: PSG quebra tabu e celebra título europeu inédito</h3>
-                <p class="news-meta">há 5 horas • Futebol Europeu</p>
+                <span class="news-tag">Counter-Strike 2</span>
+                <h3>Equipe brasileira quebra tabu e avança para os playoffs na Europa</h3>
+                <p class="news-meta">há 5 horas • Major Internacional</p>
             </div>
         </div>
 
-        <!-- 3. FOTO DO MERCADO DA BOLA CORRIGIDA (ASSINATURA DE CONTRATO) -->
         <div class="news-text-card">
-            <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?q=80&w=400&auto=format&fit=crop" alt="Mercado da bola - Contrato">
+            <img src="https://images.unsplash.com/photo-1511512578047-dfb367046420?q=80&w=400&auto=format&fit=crop" alt="Mercado Gamer">
             <div>
-                <span class="news-tag">Mercado da Bola</span>
-                <h3>Janela Europeia: Gigantes correm para fechar reforços antes da Copa</h3>
-                <p class="news-meta">há 7 horas • Transferências</p>
+                <span class="news-tag">Mercado Gamer</span>
+                <h3>Grandes clubes investem milhões e fecham reforços de peso</h3>
+                <p class="news-meta">há 7 horas • Organizações</p>
             </div>
         </div>
 
-        <!-- 4. FOTO DA COPA DO BRASIL CORRIGIDA (BOLAS DO SORTEIO/COMPETIÇÃO) -->
         <div class="news-text-card">
-            <img src="https://images.unsplash.com/photo-1614632537423-1e6c2e7a0aab?q=80&w=400&auto=format&fit=crop" alt="Sorteio da Copa do Brasil">
+            <img src="https://images.unsplash.com/photo-1551103782-8ab07afd45c1?q=80&w=400&auto=format&fit=crop" alt="Valorant - Competições">
             <div>
-                <span class="news-tag">Copa do Brasil</span>
-                <h3>Sorteio define grandes clássicos nas oitavas de final</h3>
-                <p class="news-meta">há 9 horas • Sorteio Nacional</p>
+                <span class="news-tag">Valorant</span>
+                <h3>Sorteio define os grupos da primeira fase do torneio das Américas</h3>
+                <p class="news-meta">há 9 horas • Sorteio Oficial</p>
             </div>
         </div>
     </div>
 </div>
 
-<!-- TABELA DE CLASSIFICAÇÃO -->
 <section id="classificacao">
     <div class="container">
         <div class="section-title">Classificação</div>
@@ -311,7 +313,6 @@
             <button class="tab" onclick="showTab('libertadores')">Libertadores</button>
         </div>
 
-        <!-- Tabela Brasileirão -->
         <div id="tab-brasileirao" class="standings-table">
             <div class="standings-header"><h3>Série A — 2026</h3><span style="color:var(--muted);font-size:14px;">Rodada 15</span></div>
             <table>
@@ -328,7 +329,6 @@
             </table>
         </div>
 
-        <!-- Tabela Champions -->
         <div id="tab-champions" class="standings-table" style="display:none;">
             <div class="standings-header"><h3>Champions League</h3><span style="color:var(--muted);font-size:14px;">Fase Final — PSG Campeão</span></div>
             <table>
@@ -342,7 +342,6 @@
             </table>
         </div>
 
-        <!-- Tabela Libertadores -->
         <div id="tab-libertadores" class="standings-table" style="display:none;">
             <div class="standings-header"><h3>Libertadores — 2026</h3><span style="color:var(--muted);font-size:14px;">Fase de grupos</span></div>
             <table>
@@ -357,13 +356,12 @@
     </div>
 </section>
 
-<!-- FOOTER -->
 <footer>
     <div class="footer-inner">
         <div class="footer-top">
             <div class="footer-brand">
-                <a href="#" class="logo"><div class="logo-icon">S</div><span>SPORT GENERAL</span></a>
-                <p>O universo do futebol em um só lugar. Notícias, resultados e classificações dos maiores campeonatos do mundo.</p>
+                <a href="#" class="logo"><div class="logo-icon">S</div><span>SPORT & ESPORTS</span></a>
+                <p>O universo do esporte e dos games em um só lugar. Notícias, bastidores e classificações dos maiores campeonatos mundiais.</p>
             </div>
             <div class="footer-col">
                 <h4>Navegação</h4>
@@ -388,27 +386,25 @@
     </div>
 </footer>
 
-<!-- 🔒 JANELA DA POLÍTICA DE PRIVACIDADE -->
 <div id="privacyModal" class="modal">
     <div class="modal-content">
         <span class="close-modal" onclick="closePrivacy()">&times;</span>
         <h2>Política de Privacidade</h2>
-        <p>A sua privacidade é extremamente importante para nós. Esta Política de Privacidade explica como o <strong>Sport General</strong> coleta, usa e protege as suas informações ao navegar pelo nosso site.</p>
+        <p>A sua privacidade é extremamente importante para nós. Esta Política de Privacidade explica como o site coleta, usa e protege as suas informações ao navegar por nossas páginas.</p>
 
         <h3>1. Coleta de Informações</h3>
-        <p>Nós não solicitamos cadastros ou dados pessoais para que você leia nossas notícias. No entanto, coletamos informações anônimas de navegação automática para melhorar o site (como tipo de navegador e tempo gasto nas páginas).</p>
+        <p>Nós não solicitamos cadastros ou dados pessoais para que você leia nossas notícias. No entanto, coletamos informações anônimas de navegação automática para melhorar o site.</p>
 
         <h3>2. Uso de Cookies</h3>
-        <p>Utilizamos cookies para melhorar a sua experiência, servindo para salvar suas preferências (como a aba de classificação que você mais acessa).</p>
+        <p>Utilizamos cookies para melhorar a sua experiência, servindo para salvar suas preferências de navegação.</p>
 
         <h3>3. Links para Sites de Terceiros</h3>
-        <p>O Sport General contém links para outros sites de canais esportivos. Não nos responsabilizamos pelas políticas de privacidade externos a este domínio.</p>
+        <p>Nosso portal contém links para canais esportivos parceiros externos. Não nos responsabilizamos pelas políticas de privacidade externos a este domínio.</p>
         
         <p style="margin-top: 30px; font-size: 14px; color: var(--muted);">Última atualização: Junho de 2026</p>
     </div>
 </div>
 
-<!-- SCRIPTS JAVASCRIPT -->
 <script>
     function showTab(tabId) {
         document.querySelectorAll('.standings-table').forEach(table => {
