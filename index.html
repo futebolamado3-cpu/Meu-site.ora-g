@@ -14,40 +14,42 @@
             --dark: #111111;
         }
 
-        body { margin: 0; font-family: Arial, sans-serif; background: #fff; color: #111; line-height: 1.6; }
-        header { background: var(--dark); color: #fff; padding: 15px; text-align: center; }
-        header h2 { margin: 0; letter-spacing: 2px; }
+        /* TEXTO GERAL AUMENTADO */
+        body { margin: 0; font-family: Arial, sans-serif; background: #fff; color: #111; line-height: 1.6; font-size: 17px; }
+        header { background: var(--dark); color: #fff; padding: 20px; text-align: center; }
+        header h2 { margin: 0; letter-spacing: 2px; font-size: 30px; }
         
         .container { max-width: 1100px; margin: auto; padding: 20px; }
 
-        /* 🚀 ESTILO DA SEÇÃO HERO */
+        /* 🚀 SEÇÃO HERO */
         .hero {
-            min-height: 420px;
+            min-height: 450px;
             display: flex;
             align-items: center;
             justify-content: center;
             text-align: center;
             padding: 20px;
-            background: url('https://images.unsplash.com/photo-1574629810360-7efbbe195018?q=80&w=1600') center/cover no-repeat;
+            background: url('https://images.unsplash.com/photo-1508098682722-e99c643e7485?q=80&w=1600&auto=format&fit=crop') center/cover no-repeat;
             margin-bottom: 30px;
         }
         .hero-box {
-            background: rgba(255, 255, 255, 0.9);
-            padding: 30px;
+            background: rgba(255, 255, 255, 0.92);
+            padding: 35px;
             border-radius: 12px;
             max-width: 700px;
             box-shadow: 0 4px 15px rgba(0,0,0,0.2);
         }
-        .hero h1 { font-size: 42px; margin: 0 0 10px 0; color: var(--dark); }
-        .hero p { font-size: 18px; margin: 0 0 20px 0; color: #333; }
+        .hero h1 { font-size: 48px; margin: 0 0 12px 0; color: var(--dark); }
+        .hero p { font-size: 22px; margin: 0 0 25px 0; color: #222; }
         .btn {
             display: inline-block;
             background: var(--green);
             color: #fff;
-            padding: 12px 24px;
+            padding: 14px 28px;
             border-radius: 8px;
             text-decoration: none;
             font-weight: bold;
+            font-size: 18px;
             transition: background 0.3s;
         }
         .btn:hover { background: #008f3e; }
@@ -67,39 +69,39 @@
             overflow: hidden;
             box-shadow: 0 2px 5px rgba(0,0,0,0.05);
         }
-        .news-card img { width: 100%; height: auto; display: block; }
-        .news-body { padding: 20px; }
+        .news-card img { width: 100%; height: 380px; object-fit: cover; display: block; }
+        .news-body { padding: 25px; }
         .news-tag {
             display: inline-block;
             background: var(--green);
             color: white;
-            padding: 4px 8px;
-            font-size: 12px;
+            padding: 5px 10px;
+            font-size: 14px;
             border-radius: 4px;
             font-weight: bold;
-            margin-bottom: 10px;
+            margin-bottom: 12px;
         }
-        .news-body h3 { margin: 10px 0; font-size: 22px; }
-        .news-description { color: #444; font-size: 15px; }
-        .news-meta { color: var(--muted); font-size: 12px; margin-top: 15px; }
+        .news-body h3 { margin: 10px 0; font-size: 28px; line-height: 1.3; }
+        .news-description { color: #333; font-size: 18px; }
+        .news-meta { color: var(--muted); font-size: 14px; margin-top: 15px; }
 
         /* LADO DA NOTÍCIA DETALHADA */
         .news-side {
             background: var(--surface);
-            padding: 20px;
+            padding: 25px;
             border-radius: 10px;
             border: 1px solid var(--border);
-            max-height: 600px;
+            max-height: 650px;
             overflow-y: auto;
         }
-        .news-side h3 { font-size: 18px; margin-top: 0; }
-        .news-side p { font-size: 14px; color: #333; margin-bottom: 15px; }
-        .info-box { background: #fff; padding: 15px; border-left: 4px solid var(--green); margin: 15px 0; border-radius: 4px; }
+        .news-side h3 { font-size: 22px; margin-top: 0; line-height: 1.4; }
+        .news-side p { font-size: 16px; color: #222; margin-bottom: 15px; }
+        .info-box { background: #fff; padding: 15px; border-left: 4px solid var(--green); margin: 15px 0; border-radius: 4px; font-size: 16px; }
 
         /* LISTA DE NOTÍCIAS ABAIXO */
         .news-list {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 20px;
             margin-bottom: 40px;
         }
@@ -111,60 +113,96 @@
             display: flex;
             flex-direction: column;
         }
-        .news-text-card img { width: 100%; height: 160px; object-fit: cover; }
-        .news-text-card div { padding: 15px; flex-grow: 1; display: flex; flex-direction: column; justify-content: space-between; }
-        .news-text-card h3 { font-size: 15px; margin: 8px 0; }
+        .news-text-card img { width: 100%; height: 180px; object-fit: cover; }
+        .news-text-card div { padding: 20px; flex-grow: 1; display: flex; flex-direction: column; justify-content: space-between; }
+        .news-text-card h3 { font-size: 18px; margin: 8px 0; line-height: 1.4; }
 
-        /* 📊 CLASSIFICAÇÃO */
+        /* 📊 SEÇÃO DE CLASSIFICAÇÃO */
         #classificacao { background: var(--surface); padding: 40px 0; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
-        .section-title { font-size: 28px; font-weight: bold; margin-bottom: 5px; }
-        .section-sub { color: var(--muted); margin-bottom: 20px; }
+        .section-title { font-size: 32px; font-weight: bold; margin-bottom: 5px; }
+        .section-sub { color: var(--muted); margin-bottom: 25px; font-size: 16px; }
         
-        .tabs { display: flex; gap: 10px; margin-bottom: 20px; }
+        .tabs { display: flex; gap: 10px; margin-bottom: 25px; }
         .tab {
-            padding: 10px 20px;
+            padding: 12px 24px;
             background: #e0e0e0;
             border: none;
             border-radius: 6px;
             cursor: pointer;
             font-weight: bold;
+            font-size: 16px;
             transition: all 0.3s;
         }
         .tab.active, .tab:hover { background: var(--green); color: white; }
 
         .standings-table { background: #fff; padding: 20px; border-radius: 8px; border: 1px solid var(--border); box-shadow: 0 2px 8px rgba(0,0,0,0.02); }
         .standings-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; border-bottom: 1px solid var(--border); padding-bottom: 10px; }
-        .standings-header h3 { margin: 0; }
+        .standings-header h3 { margin: 0; font-size: 22px; }
         
-        table { width: 100%; border-collapse: collapse; text-align: left; }
-        th, td { padding: 12px; border-bottom: 1px solid var(--border); }
-        th { color: var(--muted); font-size: 14px; }
+        table { width: 100%; border-collapse: collapse; text-align: left; font-size: 16px; }
+        th, td { padding: 14px; border-bottom: 1px solid var(--border); }
+        th { color: var(--muted); font-size: 15px; }
         .pts { font-weight: bold; }
         
-        .pos-badge { display: inline-block; width: 22px; height: 22px; text-align: center; line-height: 22px; border-radius: 50%; font-size: 12px; font-weight: bold; background: #ddd; }
+        .pos-badge { display: inline-block; width: 24px; height: 24px; text-align: center; line-height: 24px; border-radius: 50%; font-size: 13px; font-weight: bold; background: #ddd; }
         .pos-badge.top { background: rgba(0, 176, 80, 0.15); color: var(--green); }
         .pos-badge.relegation { background: rgba(220, 53, 69, 0.15); color: #dc3545; }
 
         /* 👣 FOOTER */
-        footer { background: var(--dark); color: #bbb; padding: 40px 0 20px 0; font-size: 14px; }
+        footer { background: var(--dark); color: #bbb; padding: 40px 0 20px 0; font-size: 15px; }
         .footer-inner { max-width: 1100px; margin: auto; padding: 0 20px; }
         .footer-top { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 30px; margin-bottom: 30px; }
         .footer-brand { max-width: 400px; }
-        .footer-brand .logo { color: #fff; text-decoration: none; font-size: 20px; font-weight: bold; display: flex; align-items: center; gap: 10px; margin-bottom: 15px; }
-        .logo-icon { background: var(--green); color: #fff; width: 30px; height: 30px; display: flex; align-items: center; justify-content: center; border-radius: 6px; }
-        .footer-col h4 { color: #fff; margin: 0 0 15px 0; }
+        .footer-brand p { font-size: 16px; }
+        .footer-brand .logo { color: #fff; text-decoration: none; font-size: 22px; font-weight: bold; display: flex; align-items: center; gap: 10px; margin-bottom: 15px; }
+        .logo-icon { background: var(--green); color: #fff; width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; border-radius: 6px; }
+        .footer-col h4 { color: #fff; margin: 0 0 15px 0; font-size: 18px; }
         .footer-col ul { list-style: none; padding: 0; margin: 0; }
         .footer-col ul li { margin-bottom: 10px; }
-        .footer-col ul li a { color: #bbb; text-decoration: none; }
+        .footer-col ul li a { color: #bbb; text-decoration: none; cursor: pointer; }
         .footer-col ul li a:hover { color: #fff; }
-        .footer-bottom { border-top: 1px solid #222; padding-top: 20px; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 10px; font-size: 12px; }
+        .footer-bottom { border-top: 1px solid #222; padding-top: 20px; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 10px; font-size: 14px; }
         .footer-bottom p { margin: 0; }
+
+        /* 🔒 JANELA POP-UP DE PRIVACIDADE */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 9999;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.7);
+            overflow-y: auto;
+        }
+        .modal-content {
+            background-color: #fff;
+            margin: 8% auto;
+            padding: 35px;
+            border-radius: 12px;
+            max-width: 700px;
+            position: relative;
+            box-shadow: 0 4px 25px rgba(0,0,0,0.3);
+        }
+        .close-modal {
+            color: #aaa;
+            float: right;
+            font-size: 35px;
+            font-weight: bold;
+            cursor: pointer;
+            line-height: 1;
+        }
+        .close-modal:hover { color: var(--green); }
+        .modal h2 { font-size: 32px; margin-top: 0; color: var(--dark); }
+        .modal h3 { font-size: 20px; color: var(--dark); margin-top: 25px; margin-bottom: 8px; }
 
         /* RESPONSIVIDADE */
         @media (max-width: 768px) {
             .news-grid { grid-template-columns: 1fr; }
-            .hero h1 { font-size: 32px; }
+            .hero h1 { font-size: 36px; }
             .footer-top { flex-direction: column; }
+            .modal-content { margin: 15% 15px; padding: 20px; }
         }
     </style>
 </head>
@@ -178,8 +216,8 @@
 <section class="hero">
     <div class="hero-box">
         <h1>O UNIVERSO DO FUTEBOL</h1>
-        <p>Notícias, jogos ao vivo e classificações atuais.</p>
-        <a class="btn" href="#news-grid">Ver Notícias</a>
+        <p>Notícias exclusivas, bastidores do mercado e tabelas em tempo real.</p>
+        <a class="btn" href="#news-grid">Ler Notícias Recentes</a>
     </div>
 </section>
 
@@ -187,24 +225,24 @@
     <!-- NOTÍCIAS PRINCIPAIS -->
     <div class="news-grid" id="news-grid">
         
-        <!-- CARD PRINCIPAL -->
+        <!-- CARD PRINCIPAL (NOTÍCIA ATUALIZADA) -->
         <div class="news-card">
-            <img src="https://images.unsplash.com/photo-1543326727-cf6c39e8f84c?q=80&w=1200&auto=format&fit=crop" alt="Champions League">
+            <img src="https://images.unsplash.com/photo-1522778119026-d647f0596c20?q=80&w=1200&auto=format&fit=crop" alt="Copa do Mundo 2026">
             <div class="news-body">
-                <span class="news-tag">Champions League</span>
-                <h3>Final épica decide o campeão europeu em jogo histórico</h3>
+                <span class="news-tag">Copa do Mundo 2026</span>
+                <h3>Tudo pronto para a maior Copa da história na América do Norte!</h3>
                 <p class="news-description">
-                    Em uma partida cheia de emoção, o campeão europeu foi decidido nos minutos finais diante de um estádio lotado e milhões assistindo no mundo inteiro.
+                    As principais seleções do planeta já desembarcaram nos Estados Unidos, México e Canadá. Com formato inédito de 48 equipes, a expectativa de público quebra recordes antes mesmo do apito inicial.
                 </p>
-                <p class="news-meta">há 2 horas • Internacional</p>
+                <p class="news-meta">há 45 minutos • Especial Mundial</p>
             </div>
         </div>
 
-        <!-- DETALHES DO JOGO DA SELEÇÃO (MENU LATERAL REORGANIZADO) -->
+        <!-- DETALHES DO JOGO DA SELEÇÃO -->
         <div class="news-side">
             <span class="news-tag">Seleção Brasileira</span>
             <h3>Brasil enfrenta o Egito neste sábado (6) às 19h</h3>
-            <p>Último amistoso preparatório antes da estreia oficial na Copa do Mundo 2026 contra o Marrocos.</p>
+            <p>Último amistoso preparatório antes da estreia oficial na Copa do Mundo contra o Marrocos.</p>
             
             <div class="info-box">
                 <strong>Onde Assistir:</strong><br>
@@ -219,38 +257,38 @@
     <!-- LISTA DE NOTÍCIAS COMPLEMENTARES -->
     <div class="news-list">
         <div class="news-text-card">
-            <img src="https://images.unsplash.com/photo-1518091043644-c1d4457512c6?q=80&w=400" alt="Flamengo">
+            <img src="https://images.unsplash.com/photo-1518091043644-c1d4457512c6?q=80&w=400&auto=format&fit=crop" alt="Brasileirão">
             <div>
                 <span class="news-tag">Brasileirão</span>
-                <h3>Flamengo goleia Coritiba por 3 a 0 no Maracanã</h3>
-                <p class="news-meta">há 5 horas • Série A</p>
+                <h3>Palmeiras e Flamengo travam disputa acirrada no topo antes da pausa</h3>
+                <p class="news-meta">há 3 horas • Série A</p>
             </div>
         </div>
 
         <div class="news-text-card">
-            <img src="https://images.unsplash.com/photo-1556056504-5c7696c4c28d?q=80&w=400" alt="Copa do Brasil">
+            <img src="https://images.unsplash.com/photo-1556056504-5c7696c4c28d?q=80&w=400&auto=format&fit=crop" alt="Champions League">
             <div>
-                <span class="news-tag">Copa do Brasil</span>
-                <h3>Semifinais definidas após rodada emocionante</h3>
-                <p class="news-meta">há 6 horas • Nacional</p>
+                <span class="news-tag">Champions League</span>
+                <h3>Relembre a festa: PSG quebra tabu e celebra título europeu inédito</h3>
+                <p class="news-meta">há 5 horas • Futebol Europeu</p>
             </div>
         </div>
 
         <div class="news-text-card">
-            <img src="https://images.unsplash.com/photo-1522778119026-d647f0596c20?q=80&w=400" alt="Mercado">
+            <img src="https://images.unsplash.com/photo-1574629810360-7efbbe195018?q=80&w=400&auto=format&fit=crop" alt="Mercado">
             <div>
                 <span class="news-tag">Mercado da Bola</span>
-                <h3>Craque europeu entra na mira de gigante brasileiro</h3>
+                <h3>Janela Europeia: Gigantes correm para fechar reforços antes da Copa</h3>
                 <p class="news-meta">há 7 horas • Transferências</p>
             </div>
         </div>
 
         <div class="news-text-card">
-            <img src="https://images.unsplash.com/photo-1517466787929-bc90951d0974?q=80&w=400" alt="Europa">
+            <img src="https://images.unsplash.com/photo-1560272564-c83b66b1ad12?q=80&w=400&auto=format&fit=crop" alt="Copa do Brasil">
             <div>
-                <span class="news-tag">Europa</span>
-                <h3>Time inglês surpreende e assume liderança isolada</h3>
-                <p class="news-meta">há 10 horas • Premier League</p>
+                <span class="news-tag">Copa do Brasil</span>
+                <h3>Sorteio define grandes clássicos nas oitavas de final</h3>
+                <p class="news-meta">há 9 horas • Sorteio Nacional</p>
             </div>
         </div>
     </div>
@@ -270,7 +308,7 @@
 
         <!-- Tabela Brasileirão -->
         <div id="tab-brasileirao" class="standings-table">
-            <div class="standings-header"><h3>Série A — 2026</h3><span style="color:var(--muted);font-size:12px;">Rodada 15</span></div>
+            <div class="standings-header"><h3>Série A — 2026</h3><span style="color:var(--muted);font-size:14px;">Rodada 15</span></div>
             <table>
                 <thead><tr><th>#</th><th>Time</th><th>J</th><th>V</th><th>E</th><th>D</th><th>PTS</th></tr></thead>
                 <tbody>
@@ -287,21 +325,21 @@
 
         <!-- Tabela Champions -->
         <div id="tab-champions" class="standings-table" style="display:none;">
-            <div class="standings-header"><h3>Champions League</h3><span style="color:var(--muted);font-size:12px;">Fase de Grupos</span></div>
+            <div class="standings-header"><h3>Champions League</h3><span style="color:var(--muted);font-size:14px;">Fase Final — PSG Campeão</span></div>
             <table>
                 <thead><tr><th>#</th><th>Time</th><th>J</th><th>V</th><th>E</th><th>D</th><th>PTS</th></tr></thead>
                 <tbody>
-                    <tr><td><span class="pos-badge top">1</span></td><td>🏴󠁧󠁢󠁥󠁮󠁧󠁿 Arsenal</td><td>6</td><td>5</td><td>1</td><td>0</td><td class="pts">16</td></tr>
-                    <tr><td><span class="pos-badge top">2</span></td><td>🇩🇪 Bayern München</td><td>6</td><td>4</td><td>1</td><td>1</td><td class="pts">13</td></tr>
-                    <tr><td><span class="pos-badge top">3</span></td><td>🇪🇸 Real Madrid</td><td>6</td><td>4</td><td>0</td><td>2</td><td class="pts">12</td></tr>
-                    <tr><td><span class="pos-badge top">4</span></td><td>🇫🇷 PSG</td><td>6</td><td>3</td><td>2</td><td>1</td><td class="pts">11</td></tr>
+                    <tr><td><span class="pos-badge top">1</span></td><td>🇫🇷 PSG</td><td>13</td><td>10</td><td>2</td><td>1</td><td class="pts">32</td></tr>
+                    <tr><td><span class="pos-badge top">2</span></td><td>🏴󠁧󠁢󠁥󠁮󠁧󠁿 Arsenal</td><td>13</td><td>9</td><td>2</td><td>2</td><td class="pts">29</td></tr>
+                    <tr><td><span class="pos-badge top">3</span></td><td>🇩🇪 Bayern München</td><td>13</td><td>8</td><td>2</td><td>3</td><td class="pts">26</td></tr>
+                    <tr><td><span class="pos-badge top">4</span></td><td>🇪🇸 Real Madrid</td><td>13</td><td>7</td><td>2</td><td>4</td><td class="pts">23</td></tr>
                 </tbody>
             </table>
         </div>
 
         <!-- Tabela Libertadores -->
         <div id="tab-libertadores" class="standings-table" style="display:none;">
-            <div class="standings-header"><h3>Libertadores — 2026</h3><span style="color:var(--muted);font-size:12px;">Fase de grupos</span></div>
+            <div class="standings-header"><h3>Libertadores — 2026</h3><span style="color:var(--muted);font-size:14px;">Fase de grupos</span></div>
             <table>
                 <thead><tr><th>#</th><th>Time</th><th>J</th><th>V</th><th>E</th><th>D</th><th>PTS</th></tr></thead>
                 <tbody>
@@ -333,7 +371,7 @@
             <div class="footer-col">
                 <h4>Legal</h4>
                 <ul>
-                    <li><a href="#">Privacidade</a></li>
+                    <li><a onclick="openPrivacy()">Privacidade</a></li>
                     <li><a href="#">Termos de Uso</a></li>
                 </ul>
             </div>
@@ -345,20 +383,52 @@
     </div>
 </footer>
 
-<!-- SCRIPT DE ALTERNÂNCIA DAS ABAS -->
+<!-- 🔒 JANELA DA POLÍTICA DE PRIVACIDADE -->
+<div id="privacyModal" class="modal">
+    <div class="modal-content">
+        <span class="close-modal" onclick="closePrivacy()">&times;</span>
+        <h2>Política de Privacidade</h2>
+        <p>A sua privacidade é extremamente importante para nós. Esta Política de Privacidade explica como o <strong>Sport General</strong> coleta, usa e protege as suas informações ao navegar pelo nosso site.</p>
+
+        <h3>1. Coleta de Informações</h3>
+        <p>Nós não solicitamos cadastros ou dados pessoais para que você leia nossas notícias. No entanto, coletamos informações anônimas de navegação automática para melhorar o site (como tipo de navegador e tempo gasto nas páginas).</p>
+
+        <h3>2. Uso de Cookies</h3>
+        <p>Utilizamos cookies para melhorar a sua experiência, servindo para salvar suas preferências (como a aba de classificação que você mais acessa).</p>
+
+        <h3>3. Links para Sites de Terceiros</h3>
+        <p>O Sport General contém links para outros sites de canais esportivos. Não nos responsabilizamos pelas políticas de privacidade externos a este domínio.</p>
+        
+        <p style="margin-top: 30px; font-size: 14px; color: var(--muted);">Última atualização: Junho de 2026</p>
+    </div>
+</div>
+
+<!-- SCRIPTS JAVASCRIPT -->
 <script>
     function showTab(tabId) {
-        // Esconde todas as tabelas
         document.querySelectorAll('.standings-table').forEach(table => {
             table.style.display = 'none';
         });
-        // Remove a classe active de todos os botões
         document.querySelectorAll('.tab').forEach(button => {
             button.classList.remove('active');
         });
-        // Mostra a tabela clicada e ativa o botão correspondente
         document.getElementById('tab-' + tabId).style.display = 'block';
         event.currentTarget.classList.add('active');
+    }
+
+    function openPrivacy() {
+        document.getElementById('privacyModal').style.display = 'block';
+    }
+    
+    function closePrivacy() {
+        document.getElementById('privacyModal').style.display = 'none';
+    }
+
+    window.onclick = function(event) {
+        let modal = document.getElementById('privacyModal');
+        if (event.target == modal) {
+            modal.style.display = 'none';
+        }
     }
 </script>
 
