@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sport & eSports General</title>
+    <title>Lumina eSports</title>
     <style>
         /* VARIÁVEIS DE COR */
         :root {
@@ -29,7 +29,6 @@
             justify-content: center;
             text-align: center;
             padding: 40px 20px;
-            /* Imagem de uma grande arena de eSports com efeito escurecido para destacar o texto */
             background: linear-gradient(rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0.75)), url('https://images.unsplash.com/photo-1542751371-adc38448a05e?q=80&w=1600&auto=format&fit=crop') center/cover no-repeat;
             margin-bottom: 30px;
         }
@@ -39,10 +38,11 @@
             max-width: 700px;
         }
         .hero h1 { 
-            font-size: 42px; 
+            font-size: 46px; 
             margin: 0 0 12px 0; 
             color: #ffffff; 
             font-weight: 900; 
+            letter-spacing: 1px;
             text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.9); 
         }
         .hero p { 
@@ -189,10 +189,10 @@
         }
         .modal-content {
             background-color: #fff;
-            margin: 8% auto;
+            margin: 5% auto;
             padding: 35px;
             border-radius: 12px;
-            max-width: 700px;
+            max-width: 750px;
             position: relative;
             box-shadow: 0 4px 25px rgba(0,0,0,0.3);
         }
@@ -205,8 +205,12 @@
             line-height: 1;
         }
         .close-modal:hover { color: var(--green); }
-        .modal h2 { font-size: 32px; margin-top: 0; color: var(--dark); }
-        .modal h3 { font-size: 20px; color: var(--dark); margin-top: 25px; margin-bottom: 8px; }
+        
+        /* Estilos do Texto da Política */
+        .modal h2 { font-size: 28px; margin-top: 0; color: var(--dark); border-bottom: 2px solid var(--green); padding-bottom: 10px; }
+        .modal h3 { font-size: 18px; color: var(--dark); margin-top: 22px; margin-bottom: 6px; font-weight: bold; }
+        .modal p, .modal li { font-size: 15px; color: #444; text-align: justify; }
+        .modal ul { padding-left: 20px; }
 
         /* RESPONSIVIDADE */
         @media (max-width: 768px) {
@@ -221,18 +225,19 @@
 <body>
 
 <header>
-    <h2>SPORT & ESPORTS GENERAL</h2>
+    <h2>LUMINA ESPORTS</h2>
 </header>
 
 <section class="hero">
     <div class="hero-box">
-        <h1>O UNIVERSO DOS ESPORTS</h1>
+        <h1>LUMINA ESPORTS</h1>
         <p>Notícias exclusivas, bastidores do mercado gamer e tabelas em tempo real.</p>
         <a class="btn" href="#news-grid">Ler Notícias Recentes</a>
     </div>
 </section>
 
 <div class="container">
+    <!-- NOTÍCIAS PRINCIPAIS -->
     <div class="news-grid" id="news-grid">
         
         <div class="news-card">
@@ -262,10 +267,11 @@
         </div>
     </div>
 
+    <!-- LISTA DE NOTÍCIAS COMPLEMENTARES -->
     <div class="news-list">
         
         <div class="news-text-card">
-            <img src="https://images.unsplash.com/photo-1538481199705-c710c4e965fc?q=80&w=400&auto=format&fit=crop" alt="League of Legends - Teclado">
+            <img src="https://images.unsplash.com/photo-1538481199705-c710c4e965fc?q=80&w=400&auto=format&fit=crop" alt="League of Legends">
             <div>
                 <span class="news-tag">League of Legends</span>
                 <h3>Janela de transferências do CBLOL pega fogo antes da próxima etapa</h3>
@@ -274,7 +280,7 @@
         </div>
 
         <div class="news-text-card">
-            <img src="https://images.unsplash.com/photo-1553481187-be93c21490a9?q=80&w=400&auto=format&fit=crop" alt="Counter-Strike - Controle">
+            <img src="https://images.unsplash.com/photo-1553481187-be93c21490a9?q=80&w=400&auto=format&fit=crop" alt="Counter-Strike 2">
             <div>
                 <span class="news-tag">Counter-Strike 2</span>
                 <h3>Equipe brasileira quebra tabu e avança para os playoffs na Europa</h3>
@@ -292,7 +298,7 @@
         </div>
 
         <div class="news-text-card">
-            <img src="https://images.unsplash.com/photo-1551103782-8ab07afd45c1?q=80&w=400&auto=format&fit=crop" alt="Valorant - Competições">
+            <img src="https://images.unsplash.com/photo-1551103782-8ab07afd45c1?q=80&w=400&auto=format&fit=crop" alt="Valorant">
             <div>
                 <span class="news-tag">Valorant</span>
                 <h3>Sorteio define os grupos da primeira fase do torneio das Américas</h3>
@@ -302,6 +308,7 @@
     </div>
 </div>
 
+<!-- TABELA DE CLASSIFICAÇÃO -->
 <section id="classificacao">
     <div class="container">
         <div class="section-title">Classificação</div>
@@ -313,6 +320,7 @@
             <button class="tab" onclick="showTab('libertadores')">Libertadores</button>
         </div>
 
+        <!-- Tabela Brasileirão -->
         <div id="tab-brasileirao" class="standings-table">
             <div class="standings-header"><h3>Série A — 2026</h3><span style="color:var(--muted);font-size:14px;">Rodada 15</span></div>
             <table>
@@ -329,6 +337,7 @@
             </table>
         </div>
 
+        <!-- Tabela Champions -->
         <div id="tab-champions" class="standings-table" style="display:none;">
             <div class="standings-header"><h3>Champions League</h3><span style="color:var(--muted);font-size:14px;">Fase Final — PSG Campeão</span></div>
             <table>
@@ -342,6 +351,7 @@
             </table>
         </div>
 
+        <!-- Tabela Libertadores -->
         <div id="tab-libertadores" class="standings-table" style="display:none;">
             <div class="standings-header"><h3>Libertadores — 2026</h3><span style="color:var(--muted);font-size:14px;">Fase de grupos</span></div>
             <table>
@@ -356,12 +366,13 @@
     </div>
 </section>
 
+<!-- FOOTER -->
 <footer>
     <div class="footer-inner">
         <div class="footer-top">
             <div class="footer-brand">
-                <a href="#" class="logo"><div class="logo-icon">S</div><span>SPORT & ESPORTS</span></a>
-                <p>O universo do esporte e dos games em um só lugar. Notícias, bastidores e classificações dos maiores campeonatos mundiais.</p>
+                <a href="#" class="logo"><div class="logo-icon">L</div><span>LUMINA ESPORTS</span></a>
+                <p>O universo do esporte e dos games competitivos em um só lugar. Notícias de impacto, bastidores e coberturas completas.</p>
             </div>
             <div class="footer-col">
                 <h4>Navegação</h4>
@@ -380,31 +391,37 @@
             </div>
         </div>
         <div class="footer-bottom">
-            <p>© 2026 Sport General. Todos os direitos reservados.</p>
+            <p>© 2026 Lumina eSports. Todos os direitos reservados.</p>
             <p>Powered by <span style="color:var(--green); font-weight:700;">Arlison Linhares</span></p>
         </div>
     </div>
 </footer>
 
+<!-- 🔒 JANELA DA POLÍTICA DE PRIVACIDADE REFORMULADA E PROFISSIONAL -->
 <div id="privacyModal" class="modal">
     <div class="modal-content">
         <span class="close-modal" onclick="closePrivacy()">&times;</span>
-        <h2>Política de Privacidade</h2>
-        <p>A sua privacidade é extremamente importante para nós. Esta Política de Privacidade explica como o site coleta, usa e protege as suas informações ao navegar por nossas páginas.</p>
-
-        <h3>1. Coleta de Informações</h3>
-        <p>Nós não solicitamos cadastros ou dados pessoais para que você leia nossas notícias. No entanto, coletamos informações anônimas de navegação automática para melhorar o site.</p>
-
-        <h3>2. Uso de Cookies</h3>
-        <p>Utilizamos cookies para melhorar a sua experiência, servindo para salvar suas preferências de navegação.</p>
-
-        <h3>3. Links para Sites de Terceiros</h3>
-        <p>Nosso portal contém links para canais esportivos parceiros externos. Não nos responsabilizamos pelas políticas de privacidade externos a este domínio.</p>
+        <h2>Diretrizes de Privacidade — Lumina eSports</h2>
         
-        <p style="margin-top: 30px; font-size: 14px; color: var(--muted);">Última atualização: Junho de 2026</p>
+        <p>A <strong>Lumina eSports</strong>, comprometida com a transparência, segurança e respeito aos seus leitores, apresenta esta Política de Privacidade para detalhar como as informações de navegação são tratadas em nosso portal, em total conformidade com as regulamentações vigentes de proteção de dados.</p>
+
+        <h3>1. Coleta de Dados e Navegação</h3>
+        <p>A Lumina eSports é um portal de livre acesso. Não exigimos cadastros compulsórios, fornecimento de CPF, cartões ou dados pessoais sensíveis para a leitura e consumo do nosso conteúdo jornalístico. Coletamos apenas dados técnicos anônimos fornecidos pelo seu navegador (como tipo de dispositivo, localização aproximada e páginas mais visitadas) com o único propósito de otimizar a velocidade e o desempenho do site.</p>
+
+        <h3>2. Política de Cookies e Desempenho</h3>
+        <p>Utilizamos cookies essenciais para fins estatísticos e de customização de layout. Esses arquivos temporários ajudam a entender quais modalidades de games e eSports despertam maior interesse no público, permitindo que nossa equipe editorial priorize as coberturas mais relevantes.</p>
+
+        <h3>3. Direitos do Usuário (LGPD)</h3>
+        <p>Asseguramos aos nossos usuários o controle total sobre suas preferências digitais. Você pode, a qualquer momento, configurar seu navegador de internet para recusar todos os cookies ou indicar quando um cookie está sendo enviado, sem prejuízo ao carregamento das notícias da Lumina eSports.</p>
+
+        <h3>4. Links Externos e Streams</h3>
+        <p>Nosso portal frequentemente referencia plataformas parceiras, transmissões oficiais ao vivo (Twitch, YouTube Gaming, etc.) e redes de torneios. Esta política aplica-se única e exclusivamente às páginas internas da Lumina eSports, não nos responsabilizando pelas práticas de segurança de ambientes externos.</p>
+        
+        <p style="margin-top: 35px; font-size: 13px; color: var(--muted); border-top: 1px solid var(--border); padding-top: 10px;">Última revisão legal: Junho de 2026 • Lumina eSports Corp.</p>
     </div>
 </div>
 
+<!-- SCRIPTS JAVASCRIPT -->
 <script>
     function showTab(tabId) {
         document.querySelectorAll('.standings-table').forEach(table => {
