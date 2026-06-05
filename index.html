@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lumina eSports</title>
+    <title>Lumina Sports</title>
     <style>
         /* VARIÁVEIS DE COR */
         :root {
@@ -21,7 +21,7 @@
         
         .container { max-width: 1100px; margin: auto; padding: 20px; }
 
-        /* 🚀 SEÇÃO HERO - ARENA DE ESPORTS NO FUNDO */
+        /* 🚀 SEÇÃO HERO - ESTÁDIO DE FUTEBOL NO FUNDO */
         .hero {
             min-height: 450px;
             display: flex;
@@ -29,7 +29,8 @@
             justify-content: center;
             text-align: center;
             padding: 40px 20px;
-            background: linear-gradient(rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0.75)), url('https://images.unsplash.com/photo-1542751371-adc38448a05e?q=80&w=1600&auto=format&fit=crop') center/cover no-repeat;
+            /* Imagem de um grande estádio de futebol iluminado */
+            background: linear-gradient(rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0.75)), url('https://images.unsplash.com/photo-1508098682722-e99c43a406b2?q=80&w=1600&auto=format&fit=crop') center/cover no-repeat;
             margin-bottom: 30px;
         }
         .hero-box {
@@ -206,7 +207,6 @@
         }
         .close-modal:hover { color: var(--green); }
         
-        /* Estilos do Texto da Política */
         .modal h2 { font-size: 28px; margin-top: 0; color: var(--dark); border-bottom: 2px solid var(--green); padding-bottom: 10px; }
         .modal h3 { font-size: 18px; color: var(--dark); margin-top: 22px; margin-bottom: 6px; font-weight: bold; }
         .modal p, .modal li { font-size: 15px; color: #444; text-align: justify; }
@@ -225,13 +225,13 @@
 <body>
 
 <header>
-    <h2>LUMINA ESPORTS</h2>
+    <h2>LUMINA SPORTS</h2>
 </header>
 
 <section class="hero">
     <div class="hero-box">
-        <h1>LUMINA ESPORTS</h1>
-        <p>Notícias exclusivas, bastidores do mercado gamer e tabelas em tempo real.</p>
+        <h1>LUMINA SPORTS</h1>
+        <p>Notícias exclusivas, bastidores do futebol e tabelas em tempo real.</p>
         <a class="btn" href="#news-grid">Ler Notícias Recentes</a>
     </div>
 </section>
@@ -240,69 +240,75 @@
     <!-- NOTÍCIAS PRINCIPAIS -->
     <div class="news-grid" id="news-grid">
         
+        <!-- CARD PRINCIPAL (FUTEBOL) -->
         <div class="news-card">
-            <img src="https://images.unsplash.com/photo-1560253023-3ec5d502959f?q=80&w=1200&auto=format&fit=crop" alt="Mundial de eSports">
+            <img src="https://images.unsplash.com/photo-1518063319789-7217e6706b04?q=80&w=1200&auto=format&fit=crop" alt="Bola de futebol no gramado">
             <div class="news-body">
-                <span class="news-tag">Mundial de eSports</span>
-                <h3>Tudo pronto para o maior torneio de eSports da história!</h3>
+                <span class="news-tag">Brasileirão 2026</span>
+                <h3>Janela de transferências fecha com contratações recordes no país</h3>
                 <p class="news-description">
-                    As principais organizações de jogos eletrônicos do planeta já desembarcaram para a disputa do circuito mundial. Com palcos tecnológicos inéditos, a expectativa de audiência online quebra recordes históricos.
+                    Os principais clubes da Série A se movimentaram intensamente nas últimas horas do mercado. Reforços vindos diretamente da Europa chegam para mudar o patamar da disputa pela liderança do campeonato.
                 </p>
-                <p class="news-meta">há 45 minutos • Especial Mundial</p>
+                <p class="news-meta">há 45 minutos • Especial Mercado da Bola</p>
             </div>
         </div>
 
+        <!-- DETALHES DA RODADA -->
         <div class="news-side">
-            <span class="news-tag">Campeonato Nacional</span>
-            <h3>Grande Final acontece neste sábado (6) às 13h</h3>
-            <p>O confronto mais esperado da temporada definirá quem leva a taça mais cobiçada do cenário competitivo nacional.</p>
+            <span class="news-tag">Futebol Europeu</span>
+            <h3>Grande Final da Champions League acontece neste sábado às 16h</h3>
+            <p>O confronto mais esperado do continente definirá quem levanta a taça mais cobiçada da Europa nesta temporada espetacular.</p>
             
             <div class="info-box">
-                <strong>Onde Assistir:</strong><br>
-                YouTube Gaming, Twitch, TikTok e Canais de TV por assinatura.
+                <strong>Onde Assistir ao Vivo:</strong><br>
+                Canais de TV aberta, streaming oficial e cobertura minuto a minuto aqui no portal.
             </div>
 
-            <p><strong>Destaque importante:</strong> O jogador MVP do campeonato está confirmado na line-up principal após se recuperar de dores no pulso.</p>
-            <p><strong>Transmissão Oficial:</strong> Contará com analistas internacionais e presença de público presencial na arena principal.</p>
+            <p><strong>Destaque importante:</strong> Os principais craques estão confirmados na escalação titular após pouparem forças no último fim de semana.</p>
+            <p><strong>Clima de Decisão:</strong> A cidade sede já está tomada pelas torcidas, prometendo uma festa histórica nas arquibancadas.</p>
         </div>
     </div>
 
     <!-- LISTA DE NOTÍCIAS COMPLEMENTARES -->
     <div class="news-list">
         
+        <!-- 1. NOTÍCIA BRASILEIRÃO -->
         <div class="news-text-card">
-            <img src="https://images.unsplash.com/photo-1538481199705-c710c4e965fc?q=80&w=400&auto=format&fit=crop" alt="League of Legends">
+            <img src="https://images.unsplash.com/photo-1577223625856-758c127e1279?q=80&w=400&auto=format&fit=crop" alt="Jogadores em campo">
             <div>
-                <span class="news-tag">League of Legends</span>
-                <h3>Janela de transferências do CBLOL pega fogo antes da próxima etapa</h3>
-                <p class="news-meta">há 3 horas • Cenário BR</p>
+                <span class="news-tag">Disputa pelo Topo</span>
+                <h3>Palmeiras e Flamengo preparam estratégias para o clássico do fim de semana</h3>
+                <p class="news-meta">há 3 horas • Cenário Nacional</p>
             </div>
         </div>
 
+        <!-- 2. NOTÍCIA CHAMPIONS LEAGUE -->
         <div class="news-text-card">
-            <img src="https://images.unsplash.com/photo-1553481187-be93c21490a9?q=80&w=400&auto=format&fit=crop" alt="Counter-Strike 2">
+            <img src="https://images.unsplash.com/photo-1431324155629-1a6edd1d141d?q=80&w=400&auto=format&fit=crop" alt="Partida de futebol">
             <div>
-                <span class="news-tag">Counter-Strike 2</span>
-                <h3>Equipe brasileira quebra tabu e avança para os playoffs na Europa</h3>
-                <p class="news-meta">há 5 horas • Major Internacional</p>
+                <span class="news-tag">Champions League</span>
+                <h3>Arsenal projeta marcação pesada para parar o ataque do PSG na final</h3>
+                <p class="news-meta">há 5 horas • Bastidores da Europa</p>
             </div>
         </div>
 
+        <!-- 3. NOTÍCIA LIBERTADORES -->
         <div class="news-text-card">
-            <img src="https://images.unsplash.com/photo-1511512578047-dfb367046420?q=80&w=400&auto=format&fit=crop" alt="Mercado Gamer">
+            <img src="https://images.unsplash.com/photo-1504155611831-28b3c6cb314c?q=80&w=400&auto=format&fit=crop" alt="Chuteira e bola">
             <div>
-                <span class="news-tag">Mercado Gamer</span>
-                <h3>Grandes clubes investem milhões e fecham reforços de peso</h3>
-                <p class="news-meta">há 7 horas • Organizações</p>
+                <span class="news-tag">Libertadores</span>
+                <h3>Conmebol define arbitragem para os confrontos decisivos das oitavas</h3>
+                <p class="news-meta">há 7 horas • Torneio Continental</p>
             </div>
         </div>
 
+        <!-- 4. NOTÍCIA SELEÇÃO -->
         <div class="news-text-card">
-            <img src="https://images.unsplash.com/photo-1551103782-8ab07afd45c1?q=80&w=400&auto=format&fit=crop" alt="Valorant">
+            <img src="https://images.unsplash.com/photo-1529900748604-07564a03e7a6?q=80&w=400&auto=format&fit=crop" alt="Torcida no estádio">
             <div>
-                <span class="news-tag">Valorant</span>
-                <h3>Sorteio define os grupos da primeira fase do torneio das Américas</h3>
-                <p class="news-meta">há 9 horas • Sorteio Oficial</p>
+                <span class="news-tag">Preparação</span>
+                <h3>Técnico convoca novidades para os próximos amistosos internacionais</h3>
+                <p class="news-meta">há 9 horas • Seleção Principal</p>
             </div>
         </div>
     </div>
@@ -371,8 +377,8 @@
     <div class="footer-inner">
         <div class="footer-top">
             <div class="footer-brand">
-                <a href="#" class="logo"><div class="logo-icon">L</div><span>LUMINA ESPORTS</span></a>
-                <p>O universo do esporte e dos games competitivos em um só lugar. Notícias de impacto, bastidores e coberturas completas.</p>
+                <a href="#" class="logo"><div class="logo-icon">L</div><span>LUMINA SPORTS</span></a>
+                <p>O universo do futebol profissional em um só lugar. Notícias de impacto, bastidores e coberturas completas dos principais campeonatos.</p>
             </div>
             <div class="footer-col">
                 <h4>Navegação</h4>
@@ -391,33 +397,33 @@
             </div>
         </div>
         <div class="footer-bottom">
-            <p>© 2026 Lumina eSports. Todos os direitos reservados.</p>
+            <p>© 2026 Lumina Sports. Todos os direitos reservados.</p>
             <p>Powered by <span style="color:var(--green); font-weight:700;">Arlison Linhares</span></p>
         </div>
     </div>
 </footer>
 
-<!-- 🔒 JANELA DA POLÍTICA DE PRIVACIDADE REFORMULADA E PROFISSIONAL -->
+<!-- 🔒 JANELA DA POLÍTICA DE PRIVACIDADE CORRIGIDA -->
 <div id="privacyModal" class="modal">
     <div class="modal-content">
         <span class="close-modal" onclick="closePrivacy()">&times;</span>
-        <h2>Diretrizes de Privacidade — Lumina eSports</h2>
+        <h2>Diretrizes de Privacidade — Lumina Sports</h2>
         
-        <p>A <strong>Lumina eSports</strong>, comprometida com a transparência, segurança e respeito aos seus leitores, apresenta esta Política de Privacidade para detalhar como as informações de navegação são tratadas em nosso portal, em total conformidade com as regulamentações vigentes de proteção de dados.</p>
+        <p>A <strong>Lumina Sports</strong>, comprometida com a transparência, segurança e respeito aos seus leitores, apresenta esta Política de Privacidade para detalhar como as informações de navegação são tratadas em nosso portal, em total conformidade com as regulamentações vigentes de proteção de dados.</p>
 
         <h3>1. Coleta de Dados e Navegação</h3>
-        <p>A Lumina eSports é um portal de livre acesso. Não exigimos cadastros compulsórios, fornecimento de CPF, cartões ou dados pessoais sensíveis para a leitura e consumo do nosso conteúdo jornalístico. Coletamos apenas dados técnicos anônimos fornecidos pelo seu navegador (como tipo de dispositivo, localização aproximada e páginas mais visitadas) com o único propósito de otimizar a velocidade e o desempenho do site.</p>
+        <p>A Lumina Sports é um portal esportivo de livre acesso. Não exigimos cadastros compulsórios, fornecimento de CPF, cartões ou dados pessoais sensíveis para a leitura e consumo do nosso conteúdo jornalístico. Coletamos apenas dados técnicos anônimos fornecidos pelo seu navegador (como tipo de dispositivo e páginas mais visitadas) com o único propósito de otimizar a velocidade e o desempenho do site.</p>
 
         <h3>2. Política de Cookies e Desempenho</h3>
-        <p>Utilizamos cookies essenciais para fins estatísticos e de customização de layout. Esses arquivos temporários ajudam a entender quais modalidades de games e eSports despertam maior interesse no público, permitindo que nossa equipe editorial priorize as coberturas mais relevantes.</p>
+        <p>Utilizamos cookies essenciais para fins estatísticos e de customização de layout. Esses arquivos temporários ajudam a entender quais campeonatos e clubes despertam maior interesse no público, permitindo que nossa equipe editorial priorize as coberturas esportivas mais relevantes.</p>
 
         <h3>3. Direitos do Usuário (LGPD)</h3>
-        <p>Asseguramos aos nossos usuários o controle total sobre suas preferências digitais. Você pode, a qualquer momento, configurar seu navegador de internet para recusar todos os cookies ou indicar quando um cookie está sendo enviado, sem prejuízo ao carregamento das notícias da Lumina eSports.</p>
+        <p>Asseguramos aos nossos usuários o controle total sobre suas preferências digitais. Você pode, a qualquer momento, configurar seu navegador de internet para recusar todos os cookies ou indicar quando um cookie está sendo enviado, sem prejuízo ao carregamento das notícias da Lumina Sports.</p>
 
-        <h3>4. Links Externos e Streams</h3>
-        <p>Nosso portal frequentemente referencia plataformas parceiras, transmissões oficiais ao vivo (Twitch, YouTube Gaming, etc.) e redes de torneios. Esta política aplica-se única e exclusivamente às páginas internas da Lumina eSports, não nos responsabilizando pelas práticas de segurança de ambientes externos.</p>
+        <h3>4. Links Externos e Transmissões</h3>
+        <p>Nosso portal frequentemente referencia canais esportivos parceiros, transmissões de partidas ao vivo e federações oficiais. Esta política aplica-se única e exclusivamente às páginas internas da Lumina Sports, não nos responsabilizando pelas práticas de segurança de ambientes externos.</p>
         
-        <p style="margin-top: 35px; font-size: 13px; color: var(--muted); border-top: 1px solid var(--border); padding-top: 10px;">Última revisão legal: Junho de 2026 • Lumina eSports Corp.</p>
+        <p style="margin-top: 35px; font-size: 13px; color: var(--muted); border-top: 1px solid var(--border); padding-top: 10px;">Última revisão legal: Junho de 2026 • Lumina Sports Corp.</p>
     </div>
 </div>
 
