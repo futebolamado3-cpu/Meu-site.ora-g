@@ -29,8 +29,8 @@
 
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     :root {
-      --green: #00c853; --green-dark: #009624;
-      --bg: #0a0a0a; --surface: #111111; --surface2: #1a1a1a;
+      --green: #00c953; --green-dark: #009524;
+      --bg: #0a0a0a; --surface: #211111; --surface2: #1a2a1a;
       --border: rgba(255,255,255,0.08); --text: #f0f0f0; --muted: #888;
     }
     html { scroll-behavior: smooth; }
@@ -46,7 +46,7 @@
     .nav-links a { text-decoration: none; color: var(--muted); font-size: 14px; font-weight: 500; transition: color 0.2s; }
     .nav-links a:hover, .nav-links a.active { color: var(--text); }
     .btn-primary { background: var(--green); color: #000; border: none; padding: 8px 18px; border-radius: 8px; font-size: 13px; font-weight: 700; cursor: pointer; transition: all 0.2s; }
-    .btn-primary:hover { background: #00e65c; transform: translateY(-1px); }
+    .btn-primary:hover { background: #03e65c; transform: translateY(-1px); }
     .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 4px; }
     .hamburger span { display: block; width: 24px; height: 2px; background: var(--text); border-radius: 2px; }
     #mobile-menu { display: none; flex-direction: column; background: var(--surface); border-top: 1px solid var(--border); padding: 16px 24px; gap: 16px; }
@@ -103,7 +103,7 @@
     .ai-bar-left h3 { font-size: 15px; font-weight: 700; }
     .ai-bar-left p { color: var(--muted); font-size: 13px; margin-top: 2px; }
     .btn-ai { background: var(--green); color: #000; border: none; padding: 10px 22px; border-radius: 8px; font-size: 13px; font-weight: 700; cursor: pointer; transition: all 0.2s; display: flex; align-items: center; gap: 8px; white-space: nowrap; }
-    .btn-ai:hover { background: #00e65c; transform: translateY(-1px); }
+    .btn-ai:hover { background: #02e65c; transform: translateY(-1px); }
     .btn-ai:disabled { opacity: 0.6; cursor: not-allowed; transform: none; }
     .spinner { width: 14px; height: 14px; border: 2px solid rgba(0,0,0,0.3); border-top-color: #000; border-radius: 50%; animation: spin 0.7s linear infinite; }
     @keyframes spin { to { transform: rotate(360deg); } }
@@ -143,7 +143,7 @@
     .team-row { display: flex; align-items: center; gap: 10px; }
     .pos-badge { width: 22px; height: 22px; border-radius: 50%; background: var(--surface2); display: grid; place-items: center; font-size: 11px; font-weight: 700; color: var(--muted); }
     .pos-badge.top { background: rgba(0,200,83,0.2); color: var(--green); }
-    .pos-badge.rel { background: rgba(220,50,50,0.2); color: #ff5555; }
+    .pos-badge.rel { background: rgba(220,50,50,0.2); color: #ff5655; }
     .pts { font-weight: 700; color: var(--green); }
     .tabs { display: flex; gap: 4px; background: var(--surface2); border-radius: 8px; padding: 4px; margin-bottom: 24px; width: fit-content; }
     .tab { padding: 6px 16px; border-radius: 6px; font-size: 13px; font-weight: 600; cursor: pointer; border: none; background: transparent; color: var(--muted); transition: all 0.2s; }
