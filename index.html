@@ -687,7 +687,7 @@
 </div>
 
 <!-- LUMENAI FLOATING CHAT -->
-<div id="chat-fab-label">🥷 LUMENAI</div>
+<div id="chat-fab-label">✨ LUMENAI</div>
 <button id="chat-fab" onclick="toggleChat()" title="Abrir LUMENAI">✨</button>
 
 <div id="chat-window">
@@ -800,7 +800,7 @@ Se não houver nada relevante: {"memories": []}`;
         initChat();
       }
       setTimeout(() => document.getElementById('chat-input').focus(), 300);
-    } verdadeiro {
+    } else {
       win.classList.remove('open');
       label.style.display = 'block';
     }
@@ -810,7 +810,7 @@ Se não houver nada relevante: {"memories": []}`;
     const msgs = document.getElementById('chat-messages');
     if (chatState.history.length === 0) {
       addChatMsg('ai', 'Aqui é LUMENAI. A IA mais avançada que você vai usar na vida. Pode mandar o que quiser criar — história, personagem, universo, o que for. Só não vem com coisa fraca. ✨');
-    } verdadeiro{
+    } else {
       const recent = chatState.history.slice(-14);
       recent.forEach(msg => addChatMsg(msg.role === 'user' ? 'user' : 'ai', msg.content, false));
     }
@@ -818,12 +818,12 @@ Se não houver nada relevante: {"memories": []}`;
 
   function addChatMsg(role, text, animate = true) {
     const msgs = document.getElementById('chat-messages');
-    const isAI = role === 'ai';🙏
+    const isAI = role === 'ai';
     const div = document.createElement('div');
     div.className = `cmsg ${role}`;
     if (!animate) div.style.animation = 'none';
     div.innerHTML = `
-      <div class="cmsg-avatar">${isAI ? '🥷' : '🥷🚪🚪🏐🚪😗🏈😗🏈'}</div>
+      <div class="cmsg-avatar">${isAI ? '✨' : '👤'}</div>
       <div class="cbubble">${escapeHtml(text)}</div>
     `;
     msgs.appendChild(div);
@@ -839,7 +839,7 @@ Se não houver nada relevante: {"memories": []}`;
     const div = document.createElement('div');
     div.className = 'cmsg ai';
     div.id = 'ctyping';
-    div.innerHTML = `<div class="cmsg-avatar">🥷</div><div class="cbubble ctyping"><span></span><span></span><span></span></div>`;
+    div.innerHTML = `<div class="cmsg-avatar">✨</div><div class="cbubble ctyping"><span></span><span></span><span></span></div>`;
     msgs.appendChild(div);
     msgs.scrollTop = msgs.scrollHeight;
   }
