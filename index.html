@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lumina Sports</title>
+    <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;900&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet">
     <style>
-        /* VARIÁVEIS DE COR */
         :root {
             --surface: #f9f9f9;
             --border: #eeeeee;
@@ -16,28 +16,45 @@
         }
 
         /* TEXTO GERAL */
-        body { margin: 0; font-family: Arial, sans-serif; background: #fff; color: #111; line-height: 1.6; font-size: 17px; }
-        header { background: var(--dark); color: #fff; padding: 20px; text-align: center; border-bottom: 3px solid var(--green); }
-        header h2 { margin: 0; letter-spacing: 4px; font-size: 30px; font-weight: 900; }
+        body { 
+            margin: 0; 
+            font-family: 'Barlow', Arial, sans-serif; 
+            background: #fff; 
+            color: #111; 
+            line-height: 1.6; 
+            font-size: 14px; 
+        }
+        header { 
+            background: var(--dark); 
+            color: #fff; 
+            padding: 14px 20px; 
+            text-align: center; 
+            border-bottom: 3px solid var(--green); 
+        }
+        header h2 { 
+            margin: 0; 
+            letter-spacing: 4px; 
+            font-size: 22px; 
+            font-weight: 900; 
+            font-family: 'Barlow Condensed', sans-serif;
+        }
         
-        .container { max-width: 1100px; margin: auto; padding: 20px; }
+        .container { max-width: 1100px; width: 100%; margin: 0 auto; padding: 20px; box-sizing: border-box; }
 
-        /* 🚀 SEÇÃO HERO - DESENHO ABSTRATO DA MARCA LUMINA */
+        /* HERO */
         .hero {
-            min-height: 400px;
+            min-height: 320px; 
             display: flex;
             align-items: center;
             justify-content: center;
             text-align: center;
-            padding: 40px 20px;
-            /* Fundo geométrico desenhado via CSS representando feixes de luz (Lumina) */
+            padding: 30px 20px;
             background: radial-gradient(circle at 80% 20%, rgba(0, 176, 80, 0.3), transparent 50%), 
                         linear-gradient(135deg, #111111 0%, #1a3020 100%);
             position: relative;
             overflow: hidden;
             margin-bottom: 30px;
         }
-        /* Detalhe do desenho de linhas no fundo do Hero */
         .hero::before {
             content: "";
             position: absolute;
@@ -46,39 +63,36 @@
                               linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
             background-size: 20px 20px;
         }
-        .hero-box {
-            position: relative;
-            z-index: 2;
-            max-width: 700px;
-        }
+        .hero-box { position: relative; z-index: 2; max-width: 700px; }
         .hero h1 { 
-            font-size: 48px; 
-            margin: 0 0 12px 0; 
+            font-size: 36px; 
+            margin: 0 0 10px 0; 
             color: #ffffff; 
             font-weight: 900; 
             letter-spacing: 2px;
+            font-family: 'Barlow Condensed', sans-serif;
             text-shadow: 0 4px 10px rgba(0,0,0,0.5);
         }
         .hero p { 
-            font-size: 20px; 
-            margin: 0 0 25px 0; 
+            font-size: 15px; 
+            margin: 0 0 20px 0; 
             color: #ccc;
         }
         .btn {
             display: inline-block;
             background: var(--green);
             color: #fff;
-            padding: 14px 28px;
+            padding: 10px 22px;
             border-radius: 8px;
             text-decoration: none;
             font-weight: bold;
-            font-size: 18px;
+            font-size: 14px; 
             transition: all 0.3s;
             box-shadow: 0 4px 15px rgba(0, 176, 80, 0.4);
         }
         .btn:hover { background: var(--glow); color: var(--dark); box-shadow: 0 4px 20px rgba(0, 255, 115, 0.6); }
 
-        /* SEÇÃO DE NOTÍCIAS EM GRID */
+        /* GRID DE NOTÍCIAS */
         .news-grid {
             display: grid;
             grid-template-columns: 2fr 1fr;
@@ -86,166 +100,168 @@
             margin-bottom: 40px;
         }
 
-        .news-card {
+        /* CARTÕES DE NOTÍCIA E EFEITOS DE CLIQUE */
+        .news-card, .news-text-card {
             background: #fff;
             border: 1px solid var(--border);
             border-radius: 10px;
             overflow: hidden;
             box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            cursor: pointer;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
-        /* Container para os desenhos das notícias */
+        .news-card:hover, .news-text-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+        }
+
         .news-illustration {
             width: 100%;
-            height: 320px;
-            background: #161616;
+            height: 260px; 
+            background: #0d1f14;
             display: flex;
             align-items: center;
             justify-content: center;
+            overflow: hidden;
         }
-        .news-body { padding: 25px; }
+        .news-body { padding: 18px 20px; } 
         .news-tag {
             display: inline-block;
             background: var(--green);
             color: white;
-            padding: 5px 10px;
-            font-size: 14px;
+            padding: 3px 8px;
+            font-size: 11px; 
             border-radius: 4px;
             font-weight: bold;
-            margin-bottom: 12px;
+            margin-bottom: 8px;
+            font-family: 'Barlow Condensed', sans-serif;
+            letter-spacing: 0.5px;
         }
-        .news-body h3 { margin: 10px 0; font-size: 28px; line-height: 1.3; }
-        .news-description { color: #333; font-size: 18px; }
-        .news-meta { color: var(--muted); font-size: 14px; margin-top: 15px; }
+        .news-body h3 { 
+            margin: 8px 0 6px; 
+            font-size: 20px; 
+            line-height: 1.3; 
+            font-family: 'Barlow Condensed', sans-serif;
+            font-weight: 700;
+        }
+        .news-description { color: #333; font-size: 13px; } 
+        .news-meta { color: var(--muted); font-size: 11px; margin-top: 10px; } 
 
-        /* LADO DA NOTÍCIA DETALHADA */
+        /* LADO DETALHE */
         .news-side {
             background: var(--surface);
-            padding: 25px;
+            padding: 20px;
             border-radius: 10px;
             border: 1px solid var(--border);
-            max-height: 650px;
+            max-height: 600px;
             overflow-y: auto;
         }
-        .news-side h3 { font-size: 22px; margin-top: 0; line-height: 1.4; }
-        .news-side p { font-size: 16px; color: #222; margin-bottom: 15px; }
-        .info-box { background: #fff; padding: 15px; border-left: 4px solid var(--green); margin: 15px 0; border-radius: 4px; font-size: 16px; }
+        .news-side h3 { font-size: 17px; margin-top: 0; line-height: 1.4; font-family: 'Barlow Condensed', sans-serif; font-weight: 700; }
+        .news-side p { font-size: 13px; color: #222; margin-bottom: 12px; }
+        .info-box { background: #fff; padding: 12px 14px; border-left: 4px solid var(--green); margin: 12px 0; border-radius: 4px; font-size: 13px; }
 
-        /* LISTA DE NOTÍCIAS ABAIXO */
+        /* LISTA DE NOTÍCIAS */
         .news-list {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 18px;
             margin-bottom: 40px;
         }
         .news-text-card {
-            background: #fff;
-            border: 1px solid var(--border);
             border-radius: 8px;
-            overflow: hidden;
             display: flex;
             flex-direction: column;
         }
         .news-list-illustration {
             width: 100%;
-            height: 150px;
-            background: #1e1e1e;
+            height: 130px; 
+            background: #0d1f14;
             display: flex;
             align-items: center;
             justify-content: center;
+            overflow: hidden;
         }
-        .news-text-card div { padding: 20px; flex-grow: 1; display: flex; flex-direction: column; justify-content: space-between; }
-        .news-text-card h3 { font-size: 18px; margin: 8px 0; line-height: 1.4; }
+        .news-text-card > div:last-child { 
+            padding: 14px 16px; 
+            flex-grow: 1; 
+            display: flex; 
+            flex-direction: column; 
+            justify-content: space-between; 
+        }
+        .news-text-card h3 { 
+            font-size: 14px; 
+            margin: 6px 0; 
+            line-height: 1.4; 
+            font-family: 'Barlow Condensed', sans-serif;
+            font-weight: 700;
+        }
 
-        /* 📊 SEÇÃO DE CLASSIFICAÇÃO */
-        #classificacao { background: var(--surface); padding: 40px 0; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
-        .section-title { font-size: 32px; font-weight: bold; margin-bottom: 5px; }
-        .section-sub { color: var(--muted); margin-bottom: 25px; font-size: 16px; }
+        /* CLASSIFICAÇÃO */
+        #classificacao { background: var(--surface); padding: 35px 0; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+        .section-title { font-size: 24px; font-weight: bold; margin-bottom: 4px; font-family: 'Barlow Condensed', sans-serif; } 
+        .section-sub { color: var(--muted); margin-bottom: 20px; font-size: 13px; }
         
-        .tabs { display: flex; gap: 10px; margin-bottom: 25px; }
+        .tabs { display: flex; gap: 8px; margin-bottom: 20px; }
         .tab {
-            padding: 12px 24px;
+            padding: 9px 20px;
             background: #e0e0e0;
             border: none;
             border-radius: 6px;
             cursor: pointer;
             font-weight: bold;
-            font-size: 16px;
+            font-size: 13px; 
             transition: all 0.3s;
+            font-family: 'Barlow Condensed', sans-serif;
+            letter-spacing: 0.5px;
         }
         .tab.active, .tab:hover { background: var(--green); color: white; }
 
-        .standings-table { background: #fff; padding: 20px; border-radius: 8px; border: 1px solid var(--border); box-shadow: 0 2px 8px rgba(0,0,0,0.02); }
-        .standings-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; border-bottom: 1px solid var(--border); padding-bottom: 10px; }
-        .standings-header h3 { margin: 0; font-size: 22px; }
+        .standings-table { background: #fff; padding: 18px; border-radius: 8px; border: 1px solid var(--border); box-shadow: 0 2px 8px rgba(0,0,0,0.02); }
+        .standings-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; border-bottom: 1px solid var(--border); padding-bottom: 8px; }
+        .standings-header h3 { margin: 0; font-size: 18px; font-family: 'Barlow Condensed', sans-serif; } 
         
-        table { width: 100%; border-collapse: collapse; text-align: left; font-size: 16px; }
-        th, td { padding: 14px; border-bottom: 1px solid var(--border); }
-        th { color: var(--muted); font-size: 15px; }
+        table { width: 100%; border-collapse: collapse; text-align: left; font-size: 13px; } 
+        th, td { padding: 10px 12px; border-bottom: 1px solid var(--border); }
+        th { color: var(--muted); font-size: 12px; }
         .pts { font-weight: bold; }
         
-        .pos-badge { display: inline-block; width: 24px; height: 24px; text-align: center; line-height: 24px; border-radius: 50%; font-size: 13px; font-weight: bold; background: #ddd; }
+        .pos-badge { display: inline-block; width: 22px; height: 22px; text-align: center; line-height: 22px; border-radius: 50%; font-size: 11px; font-weight: bold; background: #ddd; }
         .pos-badge.top { background: rgba(0, 176, 80, 0.15); color: var(--green); }
         .pos-badge.relegation { background: rgba(220, 53, 69, 0.15); color: #dc3545; }
 
-        /* 👣 FOOTER */
-        footer { background: var(--dark); color: #bbb; padding: 40px 0 20px 0; font-size: 15px; }
+        /* FOOTER */
+        footer { background: var(--dark); color: #bbb; padding: 35px 0 18px 0; font-size: 13px; }
         .footer-inner { max-width: 1100px; margin: auto; padding: 0 20px; }
-        .footer-top { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 30px; margin-bottom: 30px; }
-        .footer-brand { max-width: 400px; }
-        .footer-brand p { font-size: 16px; }
-        .footer-brand .logo { color: #fff; text-decoration: none; font-size: 22px; font-weight: bold; display: flex; align-items: center; gap: 10px; margin-bottom: 15px; }
-        .logo-icon { background: var(--green); color: #fff; width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; border-radius: 6px; font-weight: 900; }
-        .footer-col h4 { color: #fff; margin: 0 0 15px 0; font-size: 18px; }
+        .footer-top { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 25px; margin-bottom: 25px; }
+        .footer-brand { max-width: 380px; }
+        .footer-brand p { font-size: 13px; }
+        .footer-brand .logo { color: #fff; text-decoration: none; font-size: 18px; font-weight: bold; display: flex; align-items: center; gap: 10px; margin-bottom: 12px; font-family: 'Barlow Condensed', sans-serif; }
+        .logo-icon { background: var(--green); color: #fff; width: 28px; height: 28px; display: flex; align-items: center; justify-content: center; border-radius: 6px; font-weight: 900; font-size: 15px; }
+        .footer-col h4 { color: #fff; margin: 0 0 12px 0; font-size: 15px; font-family: 'Barlow Condensed', sans-serif; }
         .footer-col ul { list-style: none; padding: 0; margin: 0; }
-        .footer-col ul li { margin-bottom: 10px; }
-        .footer-col ul li a { color: #bbb; text-decoration: none; cursor: pointer; }
+        .footer-col ul li { margin-bottom: 8px; }
+        .footer-col ul li a { color: #bbb; text-decoration: none; cursor: pointer; font-size: 13px; }
         .footer-col ul li a:hover { color: #fff; }
-        .footer-bottom { border-top: 1px solid #222; padding-top: 20px; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 10px; font-size: 14px; }
+        .footer-bottom { border-top: 1px solid #222; padding-top: 16px; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 10px; font-size: 12px; }
         .footer-bottom p { margin: 0; }
 
-        /* 🔒 JANELA POP-UP DE PRIVACIDADE */
-        .modal {
-            display: none;
-            position: fixed;
-            z-index: 9999;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0,0,0,0.7);
-            overflow-y: auto;
-        }
-        .modal-content {
-            background-color: #fff;
-            margin: 5% auto;
-            padding: 35px;
-            border-radius: 12px;
-            max-width: 750px;
-            position: relative;
-            box-shadow: 0 4px 25px rgba(0,0,0,0.3);
-        }
-        .close-modal {
-            color: #aaa;
-            float: right;
-            font-size: 35px;
-            font-weight: bold;
-            cursor: pointer;
-            line-height: 1;
-        }
+        /* MODAL GERAL */
+        .modal { display: none; position: fixed; z-index: 9999; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.7); overflow-y: auto; }
+        .modal-content { background-color: #fff; margin: 5% auto; padding: 30px; border-radius: 12px; max-width: 700px; position: relative; box-shadow: 0 4px 25px rgba(0,0,0,0.3); }
+        .close-modal { color: #aaa; float: right; font-size: 30px; font-weight: bold; cursor: pointer; line-height: 1; }
         .close-modal:hover { color: var(--green); }
-        
-        .modal h2 { font-size: 28px; margin-top: 0; color: var(--dark); border-bottom: 2px solid var(--green); padding-bottom: 10px; }
-        .modal h3 { font-size: 18px; color: var(--dark); margin-top: 22px; margin-bottom: 6px; font-weight: bold; }
-        .modal p, .modal li { font-size: 15px; color: #444; text-align: justify; }
-        .modal ul { padding-left: 20px; }
+        .modal h2 { font-size: 22px; margin-top: 0; color: var(--dark); border-bottom: 2px solid var(--green); padding-bottom: 10px; font-family: 'Barlow Condensed', sans-serif; }
+        .modal h3 { font-size: 15px; color: var(--dark); margin-top: 18px; margin-bottom: 5px; font-weight: bold; }
+        .modal p, .modal li { font-size: 13px; color: #444; text-align: justify; }
+        .modal ul { padding-left: 18px; }
 
         /* RESPONSIVIDADE */
         @media (max-width: 768px) {
             .news-grid { grid-template-columns: 1fr; }
-            .hero h1 { font-size: 34px; }
-            .hero p { font-size: 18px; }
+            .hero h1 { font-size: 26px; }
+            .hero p { font-size: 13px; }
             .footer-top { flex-direction: column; }
-            .modal-content { margin: 15% 15px; padding: 20px; }
+            .modal-content { margin: 10% 12px; padding: 18px; }
         }
     </style>
 </head>
@@ -264,32 +280,17 @@
 </section>
 
 <div class="container">
-    <!-- NOTÍCIAS PRINCIPAIS -->
     <div class="news-grid" id="news-grid">
         
-        <!-- CARD PRINCIPAL COM DESENHO DO ESTÁDIO LUMINA -->
-        <div class="news-card">
+        <!-- CARD PRINCIPAL COM ONCLICK -->
+        <div class="news-card" onclick="openNews(
+            'Janela de transferências fecha com contratações recordes no país',
+            'Brasileirão 2026', 
+            'https://images.unsplash.com/photo-1459865264687-595d652de67e?w=800&q=80', 
+            '<p>Os principais clubes da Série A se movimentaram intensamente nas últimas horas do mercado. Reforços vindos diretamente da Europa chegam para mudar o patamar da disputa pela liderança do campeonato.</p><p>Segundo analistas, o investimento nesta temporada já supera a marca de R$ 800 milhões, configurando a maior janela de transferências da história do futebol nacional. Os clubes focaram especialmente em meias-armadores e atacantes de beirada.</p>'
+        )">
             <div class="news-illustration">
-                <!-- Desenho Vetorial da Marca (Estádio e Luzes) -->
-                <svg width="100%" height="100%" viewBox="0 0 600 320" xmlns="http://www.w3.org/2000/svg">
-                    <defs>
-                        <linearGradient id="sky" x1="0%" y1="0%" x2="0%" y2="100%">
-                            <stop offset="0%" stop-color="#0f2015"/>
-                            <stop offset="100%" stop-color="#161616"/>
-                        </linearGradient>
-                    </defs>
-                    <rect width="600" height="320" fill="url(#sky)" />
-                    <!-- Feixes de Luz Lumina -->
-                    <polygon points="100,320 150,0 200,320" fill="#00b050" opacity="0.15" />
-                    <polygon points="500,320 450,0 400,320" fill="#00b050" opacity="0.15" />
-                    <!-- Linhas do Gramado/Estádio -->
-                    <ellipse cx="300" cy="320" rx="250" ry="80" fill="none" stroke="#00b050" stroke-width="3" opacity="0.6"/>
-                    <ellipse cx="300" cy="320" rx="180" ry="50" fill="none" stroke="#ffffff" stroke-width="2" opacity="0.4"/>
-                    <path d="M 50,320 L 550,320" stroke="#00b050" stroke-width="4" />
-                    <!-- Logotipo Centralizado no Desenho -->
-                    <circle cx="300" cy="140" r="40" fill="#111" stroke="#00b050" stroke-width="3" />
-                    <text x="300" y="148" font-family="Arial" font-size="26" font-weight="900" fill="#ffffff" text-anchor="middle">L</text>
-                </svg>
+                <img src="https://images.unsplash.com/photo-1459865264687-595d652de67e?w=800&q=80" alt="Estádio de futebol lotado" style="width:100%;height:100%;object-fit:cover;display:block;"/>
             </div>
             <div class="news-body">
                 <span class="news-tag">Brasileirão 2026</span>
@@ -301,33 +302,32 @@
             </div>
         </div>
 
-        <!-- DETALHES DA RODADA -->
+        <!-- LADO DETALHE -->
         <div class="news-side">
             <span class="news-tag">Futebol Europeu</span>
             <h3>Grande Final da Champions League acontece neste sábado às 16h</h3>
             <p>O confronto mais esperado do continente definirá quem levanta a taça mais cobiçada da Europa nesta temporada espetacular.</p>
-            
             <div class="info-box">
                 <strong>Onde Assistir ao Vivo:</strong><br>
                 Canais de TV aberta, streaming oficial e cobertura minuto a minuto aqui no portal.
             </div>
-
             <p><strong>Destaque importante:</strong> Os principais craques estão confirmados na escalação titular após pouparem forças no último fim de semana.</p>
             <p><strong>Clima de Decisão:</strong> A cidade sede já está tomada pelas torcidas, prometendo uma festa histórica nas arquibancadas.</p>
         </div>
     </div>
 
-    <!-- LISTA DE NOTÍCIAS COMPLEMENTARES COM DESENHOS DE ÍCONES ESPORTIVOS -->
+    <!-- LISTA DE 4 NOTÍCIAS COM ONCLICK -->
     <div class="news-list">
         
-        <!-- 1. DESENHO CAMPO DE FUTEBOL -->
-        <div class="news-text-card">
+        <!-- 1. Clássico Palmeiras x Flamengo -->
+        <div class="news-text-card" onclick="openNews(
+            'Palmeiras e Flamengo preparam estratégias para o clássico do fim de semana',
+            'Disputa pelo Topo', 
+            'https://images.unsplash.com/photo-1508098682722-e99c43a406b2?w=400&q=80', 
+            '<p>O clássico mais aguardado do primeiro turno acontece neste domingo. Ambos os técnicos fecharam os treinos durante a semana para esconder as escalações.</p>'
+        )">
             <div class="news-list-illustration">
-                <svg width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="#00b050" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                    <rect x="2" y="3" width="20" height="18" rx="2" ry="2"></rect>
-                    <line x1="12" y1="3" x2="12" y2="21"></line>
-                    <circle cx="12" cy="12" r="4"></circle>
-                </svg>
+                <img src="https://images.unsplash.com/photo-1508098682722-e99c43a406b2?w=400&q=80" alt="Clássico de futebol" style="width:100%;height:100%;object-fit:cover;display:block;"/>
             </div>
             <div>
                 <span class="news-tag">Disputa pelo Topo</span>
@@ -336,14 +336,15 @@
             </div>
         </div>
 
-        <!-- 2. DESENHO BOLA DE FUTEBOL -->
-        <div class="news-text-card">
+        <!-- 2. Final Arsenal x PSG -->
+        <div class="news-text-card" onclick="openNews(
+            'Arsenal projeta marcação pesada para parar o ataque do PSG na final',
+            'Champions League', 
+            'https://images.unsplash.com/photo-1522778119026-d647f0596c20?w=400&q=80', 
+            '<p>Focados na grande final, os ingleses prometem não dar espaço para o trio de ataque parisiense. O jogo promete ser um confronto histórico entre ataque e defesa.</p>'
+        )">
             <div class="news-list-illustration">
-                <svg width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="#00b050" stroke-width="1.5">
-                    <circle cx="12" cy="12" r="10"></circle>
-                    <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
-                    <path d="M2 12h20"></path>
-                </svg>
+                <img src="https://images.unsplash.com/photo-1522778119026-d647f0596c20?w=400&q=80" alt="Final da Champions League" style="width:100%;height:100%;object-fit:cover;display:block;"/>
             </div>
             <div>
                 <span class="news-tag">Champions League</span>
@@ -352,16 +353,15 @@
             </div>
         </div>
 
-        <!-- 3. DESENHO TROFÉU -->
-        <div class="news-text-card">
+        <!-- 3. Libertadores -->
+        <div class="news-text-card" onclick="openNews(
+            'Conmebol define arbitragem para os confrontos decisivos das oitavas',
+            'Libertadores', 
+            'https://images.unsplash.com/photo-1574629810360-7efbbe195018?w=400&q=80', 
+            '<p>A comissão de arbitragem anunciou os nomes que apitarão os jogos de volta. A tecnologia do VAR receberá reforços na sala de vídeo para evitar polêmicas.</p>'
+        )">
             <div class="news-list-illustration">
-                <svg width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="#00b050" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"></path>
-                    <path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"></path>
-                    <path d="M4 22h16"></path>
-                    <path d="M10 14.66V17c0 .55-.45 1-1 1H4v2h16v-2h-5c-.55 0-1-.45-1-1v-2.34"></path>
-                    <path d="M12 2a6 6 0 0 0-6 6v5a6 6 0 0 0 6 6 6 6 0 0 0 6-6V8a6 6 0 0 0-6-6z"></path>
-                </svg>
+                <img src="https://images.unsplash.com/photo-1574629810360-7efbbe195018?w=400&q=80" alt="Árbitro em campo" style="width:100%;height:100%;object-fit:cover;display:block;"/>
             </div>
             <div>
                 <span class="news-tag">Libertadores</span>
@@ -370,12 +370,15 @@
             </div>
         </div>
 
-        <!-- 4. DESENHO ESCUDO/MARCA -->
-        <div class="news-text-card">
+        <!-- 4. Convocação da Seleção -->
+        <div class="news-text-card" onclick="openNews(
+            'Técnico convoca novidades para os próximos amistosos internacionais',
+            'Preparação', 
+            'https://images.unsplash.com/photo-1553778263-73a83bab9b0c?w=400&q=80', 
+            '<p>Com foco na renovação do elenco, a nova lista traz cinco estreantes que vêm se destacando no campeonato nacional. Os amistosos acontecerão no próximo mês.</p>'
+        )">
             <div class="news-list-illustration">
-                <svg width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="#00b050" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
-                </svg>
+                <img src="https://images.unsplash.com/photo-1553778263-73a83bab9b0c?w=400&q=80" alt="Jogadores da seleção em campo" style="width:100%;height:100%;object-fit:cover;display:block;"/>
             </div>
             <div>
                 <span class="news-tag">Preparação</span>
@@ -386,21 +389,20 @@
     </div>
 </div>
 
-<!-- TABELA DE CLASSIFICAÇÃO -->
+<!-- CLASSIFICAÇÃO -->
 <section id="classificacao">
     <div class="container">
         <div class="section-title">Classificação</div>
         <div class="section-sub">Tabela dos principais campeonatos</div>
         
         <div class="tabs">
-            <button class="tab active" onclick="showTab('brasileirao')">Brasileirão</button>
-            <button class="tab" onclick="showTab('champions')">Champions</button>
-            <button class="tab" onclick="showTab('libertadores')">Libertadores</button>
+            <button class="tab active" onclick="showTab('brasileirao', event)">Brasileirão</button>
+            <button class="tab" onclick="showTab('champions', event)">Champions</button>
+            <button class="tab" onclick="showTab('libertadores', event)">Libertadores</button>
         </div>
 
-        <!-- Tabela Brasileirão -->
         <div id="tab-brasileirao" class="standings-table">
-            <div class="standings-header"><h3>Série A — 2026</h3><span style="color:var(--muted);font-size:14px;">Rodada 15</span></div>
+            <div class="standings-header"><h3>Série A — 2026</h3><span style="color:var(--muted);font-size:12px;">Rodada 15</span></div>
             <table>
                 <thead><tr><th>#</th><th>Time</th><th>J</th><th>V</th><th>E</th><th>D</th><th>PTS</th></tr></thead>
                 <tbody>
@@ -415,29 +417,27 @@
             </table>
         </div>
 
-        <!-- Tabela Champions -->
         <div id="tab-champions" class="standings-table" style="display:none;">
-            <div class="standings-header"><h3>Champions League</h3><span style="color:var(--muted);font-size:14px;">Fase Final — PSG Campeão</span></div>
+            <div class="standings-header"><h3>Champions League</h3><span style="color:var(--muted);font-size:12px;">Fase Final</span></div>
             <table>
                 <thead><tr><th>#</th><th>Time</th><th>J</th><th>V</th><th>E</th><th>D</th><th>PTS</th></tr></thead>
                 <tbody>
-                    <tr><td><span class="pos-badge top">1</span></td><td>🇫🇷 PSG</td><td>13</td><td>10</td><td>2</td><td>1</td><td class="pts">32</td></tr>
-                    <tr><td><span class="pos-badge top">2</span></td><td>🏴󠁧󠁢󠁥󠁮󠁧󠁿 Arsenal</td><td>13</td><td>9</td><td>2</td><td>2</td><td class="pts">29</td></tr>
-                    <tr><td><span class="pos-badge top">3</span></td><td>🇩🇪 Bayern München</td><td>13</td><td>8</td><td>2</td><td>3</td><td class="pts">26</td></tr>
-                    <tr><td><span class="pos-badge top">4</span></td><td>🇪🇸 Real Madrid</td><td>13</td><td>7</td><td>2</td><td>4</td><td class="pts">23</td></tr>
+                    <tr><td><span class="pos-badge top">1</span></td><td>PSG</td><td>13</td><td>10</td><td>2</td><td>1</td><td class="pts">32</td></tr>
+                    <tr><td><span class="pos-badge top">2</span></td><td>Arsenal</td><td>13</td><td>9</td><td>2</td><td>2</td><td class="pts">29</td></tr>
+                    <tr><td><span class="pos-badge top">3</span></td><td>Bayern München</td><td>13</td><td>8</td><td>2</td><td>3</td><td class="pts">26</td></tr>
+                    <tr><td><span class="pos-badge top">4</span></td><td>Real Madrid</td><td>13</td><td>7</td><td>2</td><td>4</td><td class="pts">23</td></tr>
                 </tbody>
             </table>
         </div>
 
-        <!-- Tabela Libertadores -->
         <div id="tab-libertadores" class="standings-table" style="display:none;">
-            <div class="standings-header"><h3>Libertadores — 2026</h3><span style="color:var(--muted);font-size:14px;">Fase de grupos</span></div>
+            <div class="standings-header"><h3>Libertadores — 2026</h3><span style="color:var(--muted);font-size:12px;">Fase de grupos</span></div>
             <table>
                 <thead><tr><th>#</th><th>Time</th><th>J</th><th>V</th><th>E</th><th>D</th><th>PTS</th></tr></thead>
                 <tbody>
-                    <tr><td><span class="pos-badge top">1</span></td><td>🇧🇷 Flamengo</td><td>6</td><td>5</td><td>0</td><td>1</td><td class="pts">15</td></tr>
-                    <tr><td><span class="pos-badge top">2</span></td><td>🇦🇷 River Plate</td><td>6</td><td>4</td><td>1</td><td>1</td><td class="pts">13</td></tr>
-                    <tr><td><span class="pos-badge top">3</span></td><td>🇧🇷 Palmeiras</td><td>6</td><td>3</td><td>2</td><td>1</td><td class="pts">11</td></tr>
+                    <tr><td><span class="pos-badge top">1</span></td><td>Flamengo</td><td>6</td><td>5</td><td>0</td><td>1</td><td class="pts">15</td></tr>
+                    <tr><td><span class="pos-badge top">2</span></td><td>River Plate</td><td>6</td><td>4</td><td>1</td><td>1</td><td class="pts">13</td></tr>
+                    <tr><td><span class="pos-badge top">3</span></td><td>Palmeiras</td><td>6</td><td>3</td><td>2</td><td>1</td><td class="pts">11</td></tr>
                 </tbody>
             </table>
         </div>
@@ -475,56 +475,64 @@
     </div>
 </footer>
 
-<!-- 🔒 JANELA DA POLÍTICA DE PRIVACIDADE -->
+<!-- MODAL PRIVACIDADE -->
 <div id="privacyModal" class="modal">
     <div class="modal-content">
         <span class="close-modal" onclick="closePrivacy()">&times;</span>
         <h2>Diretrizes de Privacidade — Lumina Sports</h2>
-        
-        <p>A <strong>Lumina Sports</strong>, comprometida com a transparência, segurança e respeito aos seus leitores, apresenta esta Política de Privacidade para detalhar como as informações de navegação são tratadas em nosso portal, em total conformidade com as regulamentações vigentes de proteção de dados.</p>
-
+        <p>A <strong>Lumina Sports</strong>, comprometida com a transparência, segurança e respeito aos seus leitores, apresenta esta Política de Privacidade para detalhar como as informações de navegação são tratadas em nosso portal.</p>
         <h3>1. Coleta de Dados e Navegação</h3>
-        <p>A Lumina Sports é um portal esportivo de livre acesso. Não exigimos cadastros compulsórios, fornecimento de CPF, cartões ou dados pessoais sensíveis para a leitura e consumo do nosso conteúdo jornalístico. Coletamos apenas dados técnicos anônimos fornecidos pelo seu navegador (como tipo de dispositivo e páginas mais visitadas) com o único propósito de otimizar a velocidade e o desempenho do site.</p>
-
+        <p>A Lumina Sports é um portal esportivo de livre acesso. Não exigimos cadastros compulsórios, fornecimento de CPF, cartões ou dados pessoais sensíveis para a leitura e consumo do nosso conteúdo jornalístico.</p>
         <h3>2. Política de Cookies e Desempenho</h3>
-        <p>Utilizamos cookies essenciais para fins estatísticos e de customização de layout. Esses arquivos temporários ajudam a entender quais campeonatos e clubes despertam maior interesse no público, permitindo que nossa equipe editorial priorize as coberturas esportivas mais relevantes.</p>
-
+        <p>Utilizamos cookies essenciais para fins estatísticos e de customização de layout, ajudando a entender quais campeonatos despertam maior interesse no público.</p>
         <h3>3. Direitos do Usuário (LGPD)</h3>
-        <p>Asseguramos aos nossos usuários o controle total sobre suas preferências digitais. Você pode, a qualquer momento, configurar seu navegador de internet para recusar todos os cookies ou indicar quando um cookie está sendo enviado, sem prejuízo ao carregamento das notícias da Lumina Sports.</p>
-
+        <p>Você pode, a qualquer momento, configurar seu navegador para recusar todos os cookies sem prejuízo ao carregamento das notícias.</p>
         <h3>4. Links Externos e Transmissões</h3>
-        <p>Nosso portal frequentemente referencia canais esportivos parceiros, transmissões de partidas ao vivo e federações oficiais. Esta política aplica-se única e exclusivamente às páginas internas da Lumina Sports, não nos responsabilizando pelas práticas de segurança de ambientes externos.</p>
-        
-        <p style="margin-top: 35px; font-size: 13px; color: var(--muted); border-top: 1px solid var(--border); padding-top: 10px;">Última revisão legal: Junho de 2026 • Lumina Sports Corp.</p>
+        <p>Esta política aplica-se única e exclusivamente às páginas internas da Lumina Sports, não nos responsabilizando pelas práticas de segurança de ambientes externos.</p>
+        <p style="margin-top: 30px; font-size: 12px; color: var(--muted); border-top: 1px solid var(--border); padding-top: 10px;">Última revisão legal: Junho de 2026 • Lumina Sports Corp.</p>
     </div>
 </div>
 
-<!-- SCRIPTS JAVASCRIPT -->
-<script>
-    function showTab(tabId) {
-        document.querySelectorAll('.standings-table').forEach(table => {
-            table.style.display = 'none';
-        });
-        document.querySelectorAll('.tab').forEach(button => {
-            button.classList.remove('active');
-        });
-        document.getElementById('tab-' + tabId).style.display = 'block';
-        event.currentTarget.classList.add('active');
-    }
+<!-- MODAL DE NOTÍCIAS -->
+<div id="newsModal" class="modal">
+    <div class="modal-content">
+        <span class="close-modal" onclick="closeNews()">&times;</span>
+        <img id="newsModalImg" src="" alt="Imagem da Notícia" style="width:100%; height:250px; object-fit:cover; border-radius:8px; margin-bottom:15px;">
+        <span id="newsModalTag" class="news-tag"></span>
+        <h2 id="newsModalTitle" style="border:none; padding-bottom: 0;"></h2>
+        <div id="newsModalBody" style="margin-top: 15px; line-height: 1.8;"></div>
+    </div>
+</div>
 
-    function openPrivacy() {
-        document.getElementById('privacyModal').style.display = 'block';
+<script>
+    // Sistema de Abas da Classificação
+    function showTab(tabId, e) {
+        document.querySelectorAll('.standings-table').forEach(t => t.style.display = 'none');
+        document.querySelectorAll('.tab').forEach(b => b.classList.remove('active'));
+        document.getElementById('tab-' + tabId).style.display = 'block';
+        if (e && e.currentTarget) e.currentTarget.classList.add('active');
     }
     
-    function closePrivacy() {
-        document.getElementById('privacyModal').style.display = 'none';
+    // Modal de Privacidade
+    function openPrivacy() { document.getElementById('privacyModal').style.display = 'block'; }
+    function closePrivacy() { document.getElementById('privacyModal').style.display = 'none'; }
+    
+    // Modal de Notícias
+    function openNews(title, tag, imgUrl, content) {
+        document.getElementById('newsModalTitle').innerText = title;
+        document.getElementById('newsModalTag').innerText = tag;
+        document.getElementById('newsModalImg').src = imgUrl;
+        document.getElementById('newsModalBody').innerHTML = content;
+        document.getElementById('newsModal').style.display = 'block';
     }
-
-    window.onclick = function(event) {
-        let modal = document.getElementById('privacyModal');
-        if (event.target == modal) {
-            modal.style.display = 'none';
-        }
+    function closeNews() { document.getElementById('newsModal').style.display = 'none'; }
+    
+    // Fechar modais ao clicar fora deles
+    window.onclick = function(e) {
+        let privacy = document.getElementById('privacyModal');
+        let news = document.getElementById('newsModal');
+        if (e.target == privacy) privacy.style.display = 'none';
+        if (e.target == news) news.style.display = 'none';
     }
 </script>
 
