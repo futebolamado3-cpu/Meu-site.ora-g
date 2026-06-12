@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>AiCarly - Vibe Edition</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+:root{
+  --w:390px;--h:844px;
+  --bg:#0A0A0F;--surface:#111118;--surface2:#1A1A26;
+  --accent:#E8FF3C;--accent-dim:rgba(232,255,60,0.12);--accent-border:rgba(232,255,60,0.25);
+  --like:#FF3C78;--text:#FAFAFA;--text-dim:rgba(250,250,250,0.45);
+  --text-muted:rgba(250,250,250,0.2);--border:rgba(255,255,255,0.07);
+}
+html,body{height:100%;background:#070709;font-family:'DM Sans',sans-serif;display:flex;align-items:center;justify-content:center;overflow:hidden;}
+#phone{width:var(--w);height:var(--h);background:var(--bg);border-radius:44px;overflow:hidden;position:relative;box-shadow:0 0 0 1px rgba(232,255,60,0.08),0 0 60px rgba(232,255,60,0.04),0 40px 80px rgba(0,0,0,0.9);border: 4px solid #1c1c24;}
+@media(max-height:900px), (max-width:430px){#phone{border-radius:0;width:100vw;height:100vh;height:100dvh;border:none;}}
+.screen{position:absolute;inset:0;display:none;flex-direction:column;overflow:hidden;background:var(--bg);}
+.screen.active{display:flex;}
+
+/* LOADING SPLASH */
+#splash-screen{background:var(--bg);align-items:center;justify-content:center;flex-direction:column;gap:16px;}
+.splash-logo{font-family:'Space Grotesk',sans-serif;font-size:42px;font-weight:700;letter-spacing:-2px;color:var(--text);}
+.splash-logo span{color:var(--accent);}
+.splash-spinner{width:28px;height:28px;border:2px solid rgba(255,255,255,.1);border-top-color:var(--accent);border-radius:50%;animation:spin .6s linear infinite;}
+@keyframes spin{to{transform:rotate(360deg);}}
+
+/* AUTH */
+#auth-screen{background:var(--bg);position:relative;}
+#auth-screen::before{content:'';position:absolute;inset:0;background-image:radial-gradient(circle,rgba(232,255,60,0.15) 1px,transparent 1px);background-size:28px 28px;opacity:0.5;z-index:0;}
+.auth-inner{position:relative;z-index:2;display:flex;flex-direction:column;height:100%;padding:0;}
+.auth-logo{padding:56px 28px 36px;display:flex;flex-direction:column;gap:6px;}
+.auth-logo-wordmark{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:42px;letter-spacing:-2px;color:var(--text);line-height:1;}
+.auth-logo-wordmark span{color:var(--accent);}
+.auth-logo-sub{font-size:13px;color:var(--text-dim);}
+.auth-card{background:var(--surface);border:1px solid var(--border);border-radius:24px 24px 0 0;flex:1;padding:28px 24px 0;display:flex;flex-direction:column;}
+.auth-tabs{display:flex;background:var(--surface2);border-radius:12px;padding:4px;margin-bottom:24px;}
+.auth-tab{flex:1;text-align:center;padding:9px;border-radius:8px;font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:13px;color:var(--text-dim);cursor:pointer;transition:all .2s;}
+.auth-tab.active{background:var(--accent);color:#0A0A0F;}
+.auth-form{display:flex;flex-direction:column;gap:12px;}
+.auth-field-label{font-size:11px;font-weight:600;color:var(--text-dim);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:4px;}
+.auth-input{width:100%;background:var(--surface2);border:1px solid var(--border);border-radius:12px;padding:13px 16px;color:var(--text);font-size:15px;outline:none;}
+.auth-input:focus{border-color:var(--accent-border);}
+.auth-btn{width:100%;padding:14px;border-radius:12px;border:none;background:var(--accent);color:#0A0A0F;font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:15px;cursor:pointer;margin-top:4px;}
+.auth-divider{display:flex;align-items:center;gap:12px;color:var(--text-muted);font-size:11px;text-transform:uppercase;letter-spacing:0.08em;}
+.auth-divider::before,.auth-divider::after{content:'';flex:1;height:1px;background:var(--border);}
+
+/* FEED */
+#feed-screen{background:#000;}
+#feed{width:100%;height:100%;overflow-y:scroll;scroll-snap-type:y mandatory;scrollbar-width:none;}
+#feed::-webkit-scrollbar{display:none;}
+.slide{width:100%;height:100%;scroll-snap-align:start;scroll-snap-stop:always;position:relative;overflow:hidden;flex-shrink:0;background:#000;}
+.slide-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;}
+.slide::after{content:'';position:absolute;inset:0;background:linear-gradient(to bottom,rgba(0,0,0,.2) 0%,transparent 30%,rgba(0,0,0,.8) 85%,rgba(0,0,0,1) 100%);pointer-events:none;z-index:1;}
+#topnav{position:absolute;top:0;left:0;right:0;z-index:100;padding:52px 16px 14px;display:flex;align-items:center;justify-content:space-between;}
+.nav-tabs{display:flex;gap:18px;margin-left:auto;margin-right:auto;}
+.nav-tab{font-family:'Space Grotesk',sans-serif;font-size:15px;font-weight:600;color:rgba(255,255,255,.5);cursor:pointer;}
+.nav-tab.active{color:#fff;border-bottom:2px solid var(--accent);}
+#mute-btn{position:absolute;top:108px;right:14px;z-index:101;width:36px;height:36px;border-radius:50%;background:rgba(0,0,0,0.5);display:flex;align-items:center;justify-content:center;cursor:pointer;color:#fff;font-size:14px;}
+.slide-content{position:absolute;bottom:0;left:0;right:68px;z-index:2;padding:0 20px 92px 20px;}
+.slide-user{display:flex;align-items:center;gap:8px;margin-bottom:8px;}
+.slide-user-avatar{width:28px;height:28px;border-radius:50%;background:var(--surface2);display:flex;align-items:center;justify-content:center;font-size:14px;border:1px solid #fff;}
+.slide-user-name{font-weight:700;color:#fff;font-size:14px;}
+.slide-cat{display:inline-block;background:var(--accent-dim);border:1px solid var(--accent-border);padding:2px 8px;border-radius:6px;font-size:10px;color:var(--accent);margin-bottom:6px;text-transform:uppercase;font-weight:700;}
+.slide-title{font-family:'Space Grotesk',sans-serif;font-size:20px;font-weight:700;color:#fff;line-height:1.2;margin-bottom:4px;}
+.slide-desc{font-size:13px;color:rgba(255,255,255,.7);margin-bottom:8px;}
+.slide-actions{position:absolute;right:0;bottom:84px;width:68px;z-index:2;display:flex;flex-direction:column;align-items:center;gap:16px;}
+.action-btn{display:flex;flex-direction:column;align-items:center;gap:4px;cursor:pointer;}
+.action-icon{width:44px;height:44px;border-radius:50%;background:rgba(20,20,30,0.6);border:1px solid var(--border);backdrop-filter:blur(10px);display:flex;align-items:center;justify-content:center;font-size:20px;color:#fff;transition:all 0.2s;}
+.action-btn.liked .action-icon{background:rgba(255,60,120,0.2);border-color:var(--like);color:var(--like);}
+.action-count{font-size:11px;color:#fff;font-weight:600;}
+.play-tap{position:absolute;inset:0;z-index:1;}
+
+/* NAVIGATION BOTTOM */
+#bottomnav{position:absolute;bottom:0;left:0;right:0;z-index:100;display:flex;justify-content:space-around;align-items:center;padding:12px 0 28px;background:linear-gradient(to top, #000 70%, transparent);}
+.bot-btn{display:flex;flex-direction:column;align-items:center;gap:4px;cursor:pointer;color:var(--text-dim);font-size:10px;text-transform:uppercase;font-weight:700;font-family:'Space Grotesk',sans-serif;}
+.bot-btn.active{color:var(--text);}
+.bot-btn-icon{font-size:22px;}
+.post-icon{width:44px;height:30px;border-radius:8px;background:var(--accent);display:flex;align-items:center;justify-content:center;color:#000;font-size:18px;font-weight:700;}
+
+/* POST WINDOW */
+.post-body{padding:20px;display:flex;flex-direction:column;gap:16px;overflow-y:auto;flex:1;}
+.post-header{padding:52px 20px 16px;display:flex;align-items:center;justify-content:between;border-bottom:1px solid var(--border);background:var(--surface);}
+.post-preview{width:100%;height:180px;background:var(--surface2);border-radius:12px;display:flex;align-items:center;justify-content:center;border:1px dashed var(--accent-border);overflow:hidden;}
+.post-preview video{width:100%;height:100%;object-fit:cover;}
+
+/* PROFILE */
+.profile-info{padding:60px 20px 20px;text-align:center;background:var(--surface);}
+.profile-avatar{width:80px;height:80px;border-radius:24px;background:var(--surface2);font-size:44px;display:flex;align-items:center;justify-content:center;margin:0 auto 12px;border:2px solid var(--border);}
+.profile-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:2px;padding:2px;}
+.profile-thumb{aspect-ratio:9/16;background:var(--surface2);position:relative;overflow:hidden;cursor:pointer;}
+.profile-thumb video{width:100%;height:100%;object-fit:cover;}
+
+/* TOAST */
+.toast{position:fixed;bottom:100px;left:50%;transform:translateX(-50%);background:var(--surface2);border:1px solid var(--accent-border);color:#fff;padding:10px 20px;border-radius:20px;font-size:13px;z-index:9999;display:none;}
+</style>
+</head>
+<body>
+
+<div id="phone">
+
+  <!-- SPLASH SCREEN -->
+  <div class="screen active" id="splash-screen">
+    <div class="splash-logo">Ai<span>Carly</span></div>
+    <div class="splash-spinner"></div>
+  </div>
+
+  <!-- AUTH SCREEN -->
+  <div class="screen" id="auth-screen">
+    <div class="auth-inner">
+      <div class="auth-logo">
+        <div class="auth-logo-wordmark">Ai<span>Carly</span></div>
+        <div class="auth-logo-sub">Banco de dados local ativado. Sem falhas.</div>
+      </div>
+      <div class="auth-card">
+        <div class="auth-tabs">
+          <div class="auth-tab active" id="tab-login">Entrar Rápido</div>
+        </div>
+        <div class="auth-form">
+          <div>
+            <div class="auth-field-label">Escolha seu Nome</div>
+            <input class="auth-input" id="auth-username" type="text" value="CriadorMitico">
+          </div>
+          <button class="auth-btn" onclick="handleLocalAuth()">Entrar no App</button>
+          <div class="auth-divider">ou</div>
+          <button class="auth-btn" style="background:transparent; border:1px solid var(--border); color:#fff;" onclick="handleLocalAuth('Visitante')">Entrar como Anonimo</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FEED SCREEN -->
+  <div class="screen" id="feed-screen">
+    <div id="topnav">
+      <div class="nav-tabs">
+        <div class="nav-tab active">Para Você</div>
+      </div>
+    </div>
+    <div id="mute-btn" onclick="toggleMute()">🔇</div>
+    
+    <!-- Video Feed Container -->
+    <div id="feed"></div>
+
+    <!-- Bottom Nav Bar -->
+    <div id="bottomnav">
+      <div class="bot-btn active" onclick="showScreen('feed-screen')"><span class="bot-btn-icon">⌂</span><span>Início</span></div>
+      <div class="bot-btn-post" onclick="showScreen('post-screen')"><div class="post-icon">＋</div></div>
+      <div class="bot-btn" onclick="showScreen('profile-screen')"><span class="bot-btn-icon">◯</span><span>Perfil</span></div>
+    </div>
+  </div>
+
+  <!-- POST SCREEN -->
+  <div class="screen" id="post-screen">
+    <div class="post-header" style="justify-content: space-between;">
+      <button style="background:none; border:none; color:#fff; cursor:pointer;" onclick="showScreen('feed-screen')">← Voltar</button>
+      <strong style="color:#fff;">Criar Post</strong>
+      <button onclick="publishLocalPost()" style="background:var(--accent); border:none; padding:6px 12px; border-radius:6px; font-weight:700; cursor:pointer;">Postar</button>
+    </div>
+    <div class="post-body">
+      <div class="auth-field-label">Vídeo MP4 local</div>
+      <input type="file" accept="video/mp4" id="post-file-input" onchange="previewLocalFile(this)" style="color:#fff;">
+      <div class="post-preview" id="post-preview-area">
+        <span style="color:var(--text-dim);">Nenhum arquivo selecionado</span>
+      </div>
+      <div>
+        <div class="auth-field-label">Título do Conteúdo</div>
+        <input class="auth-input" id="post-title" type="text" placeholder="Escreva algo viral...">
+      </div>
+      <div>
+        <div class="auth-field-label">Categoria</div>
+        <input class="auth-input" id="post-category" type="text" value="⚡ Lifestyle">
+      </div>
+    </div>
+  </div>
+
+  <!-- PROFILE SCREEN -->
+  <div class="screen" id="profile-screen">
+    <div class="profile-info">
+      <div class="profile-avatar">🦊</div>
+      <h2 style="color:#fff;" id="profile-name">@User</h2>
+      <p style="color:var(--text-dim); font-size:13px; margin-top:4px;">Local Storage Creator Studio</p>
+    </div>
+    <div style="padding:10px; color:#fff; font-size:11px; text-transform:uppercase; font-weight:700;">Meus Vídeos</div>
+    <div class="profile-grid" id="profile-grid"></div>
+    
+    <div id="bottomnav">
+      <div class="bot-btn" onclick="showScreen('feed-screen')"><span class="bot-btn-icon">⌂</span><span>Início</span></div>
+      <div class="bot-btn-post" onclick="showScreen('post-screen')"><div class="post-icon">＋</div></div>
+      <div class="bot-btn active" onclick="showScreen('profile-screen')"><span class="bot-btn-icon">◯</span><span>Perfil</span></div>
+    </div>
+  </div>
+
+  <!-- TOAST NOTIFICATION -->
+  <div class="toast" id="toast-msg"></div>
+
+</div>
+
+<script>
+// ─── BANCO DE DADOS LOCAL COMPLETO (MOCK DATA) ─────────────────
+const DEFAULT_POSTS = [
+  {
+    id: "v1",
+    user: "NatureVibes",
+    avatar: "🌿",
+    title: "Olha a paz desse lugar! No topo do mundo 🏔️",
+    category: "🌿 NATUREZA",
+    video_url: "https://assets.mixkit.co/videos/preview/mixkit-tree-with-yellow-flowers-from-below-4801-large.mp4",
+    likes: 1420
+  },
+  {
+    id: "v2",
+    user: "ChefGourmet",
+    avatar: "🍳",
+    title: "A melhor receita de domingo que você vai ver hoje!",
+    category: "🍳 CULINÁRIA",
+    video_url: "https://assets.mixkit.co/videos/preview/mixkit-cooking-in-a-modern-kitchen-40508-large.mp4",
+    likes: 982
+  },
+  {
+    id: "v3",
+    user: "SurfGlow",
+    avatar: "🌊",
+    title: "Dropando a onda perfeita no fim de tarde. Sentimento indescritível.",
+    category: "🏄 ESPORTE",
+    video_url: "https://assets.mixkit.co/videos/preview/mixkit-waves-in-the-ocean-near-a-cliff-43028-large.mp4",
+    likes: 3105
+  }
+];
+
+let appPosts = [];
+let currentAccount = "CriadorMitico";
+let muted = true;
+let currentVisibleVideo = null;
+let uploadedFileBlob = null;
+
+// Inicialização do App
+window.addEventListener('DOMContentLoaded', () => {
+  // Salva ou recupera posts criados localmente
+  if(!localStorage.getItem('aicarly_posts')) {
+    localStorage.setItem('aicarly_posts', JSON.stringify(DEFAULT_POSTS));
+  }
+  appPosts = JSON.parse(localStorage.getItem('aicarly_posts'));
+
+  // Transição suave da splash screen
+  setTimeout(() => {
+    document.getElementById('splash-screen').classList.remove('active');
+    showScreen('auth-screen');
+  }, 1800);
+});
+
+// Toast Manager
+function showToast(text) {
+  const t = document.getElementById('toast-msg');
+  t.textContent = text;
+  t.style.display = 'block';
+  setTimeout(() => t.style.display = 'none', 2500);
+}
+
+// Navegação de Telas
+function showScreen(id) {
+  document.querySelectorAll('.slide-video').forEach(v => v.pause());
+  document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+
+  if(id === 'feed-screen') {
+    setTimeout(initVideoObserver, 100);
+  }
+  if(id === 'profile-screen') {
+    renderProfileGrid();
+  }
+}
+
+// Login Simulado
+function handleLocalAuth(altName) {
+  const inputName = document.getElementById('auth-username').value.trim();
+  currentAccount = altName || inputName || "UserAnonimo";
+  document.getElementById('profile-name').textContent = "@" + currentAccount;
+  
+  renderFeed();
+  showScreen('feed-screen');
+  showToast(`Bem-vindo, @${currentAccount}!`);
+}
+
+// Renderizador do Feed estilo TikTok
+function renderFeed() {
+  const feed = document.getElementById('feed');
+  feed.innerHTML = '';
+
+  appPosts.forEach((post, i) => {
+    const slide = document.createElement('div');
+    slide.className = 'slide';
+    slide.innerHTML = `
+      <video class="slide-video" src="${post.video_url}" loop playsinline muted></video>
+      <div class="play-tap" onclick="handleVideoTap(this)"></div>
+      <div class="slide-content">
+        <div class="slide-user">
+          <div class="slide-user-avatar">${post.avatar || '👤'}</div>
+          <div class="slide-user-name">@${post.user}</div>
+        </div>
+        <div class="slide-cat">${post.category}</div>
+        <div class="slide-title">${post.title}</div>
+      </div>
+      <div class="slide-actions">
+        <div class="action-btn" onclick="handleLike('${post.id}', this)">
+          <div class="action-icon">❤️</div>
+          <div class="action-count">${post.likes}</div>
+        </div>
+        <div class="action-btn" onclick="showToast('Link copiado para compartilhar!')">
+          <div class="action-icon">🚀</div>
+          <div class="action-count">Fwd</div>
+        </div>
+      </div>
+    `;
+    feed.appendChild(slide);
+  });
+}
+
+// Motor de Autoplay por Rolagem (IntersectionObserver)
+function initVideoObserver() {
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      const video = entry.target.querySelector('.slide-video');
+      if (entry.isIntersecting) {
+        if(video) {
+          currentVisibleVideo = video;
+          video.muted = muted;
+          video.play().catch(() => console.log('Interação pendente'));
+        }
+      } else {
+        if(video) video.pause();
+      }
+    });
+  }, { threshold: 0.6 });
+
+  document.querySelectorAll('.slide').forEach(slide => observer.observe(slide));
+}
+
+// Tap para Pausar / Play
+function handleVideoTap(tapEl) {
+  const video = tapEl.closest('.slide').querySelector('.slide-video');
+  if(!video) return;
+  if(video.paused) {
+    video.play();
+  } else {
+    video.pause();
+  }
+}
+
+// Controle de Áudio Global
+function toggleMute() {
+  muted = !muted;
+  document.getElementById('mute-btn').textContent = muted ? '🔇' : '🔊';
+  if(currentVisibleVideo) {
+    currentVisibleVideo.muted = muted;
+  }
+}
+
+// Sistema de Curtidas Local
+function handleLike(id, btn) {
+  const post = appPosts.find(p => p.id === id);
+  if(!post) return;
+  
+  if(btn.classList.contains('liked')) {
+    btn.classList.remove('liked');
+    post.likes--;
+  } else {
+    btn.classList.add('liked');
+    post.likes++;
+  }
+  btn.querySelector('.action-count').textContent = post.likes;
+  localStorage.setItem('aicarly_posts', JSON.stringify(appPosts));
+}
+
+// Preview de arquivo de vídeo local
+function previewLocalFile(input) {
+  const file = input.files[0];
+  if(!file) return;
+  
+  uploadedFileBlob = URL.createObjectURL(file);
+  const area = document.getElementById('post-preview-area');
+  area.innerHTML = `<video src="${uploadedFileBlob}" controls muted></video>`;
+}
+
+// Publicar Vídeo no Banco Local
+function publishLocalPost() {
+  const title = document.getElementById('post-title').value.trim();
+  const category = document.getElementById('post-category').value.trim();
+
+  if(!uploadedFileBlob) return showToast('Selecione um arquivo de vídeo!');
+  if(!title) return showToast('Adicione um título para o vídeo!');
+
+  const newPost = {
+    id: "local_" + Date.now(),
+    user: currentAccount,
+    avatar: "🦊",
+    title: title,
+    category: category.toUpperCase(),
+    video_url: uploadedFileBlob,
+    likes: 0
+  };
+
+  // Insere no início do Feed
+  appPosts.unshift(newPost);
+  localStorage.setItem('aicarly_posts', JSON.stringify(appPosts));
+
+  // Limpa formulário
+  document.getElementById('post-title').value = '';
+  document.getElementById('post-file-input').value = '';
+  document.getElementById('post-preview-area').innerHTML = `<span style="color:var(--text-dim);">Nenhum arquivo selecionado</span>`;
+  uploadedFileBlob = null;
+
+  renderFeed();
+  showScreen('feed-screen');
+  showToast('Seu vídeo foi postado com sucesso!');
+}
+
+// Renderiza a Grade de Vídeos do Perfil
+function renderProfileGrid() {
+  const grid = document.getElementById('profile-grid');
+  grid.innerHTML = '';
+  
+  const myPosts = appPosts.filter(p => p.user === currentAccount);
+
+  if(myPosts.length === 0) {
+    grid.innerHTML = `<div style="color:var(--text-dim); text-align:center; padding:40px; grid-column:span 3;">Nenhum vídeo criado ainda.</div>`;
+    return;
+  }
+
+  myPosts.forEach(post => {
+    const thumb = document.createElement('div');
+    thumb.className = 'profile-thumb';
+    thumb.innerHTML = `<video src="${post.video_url}"></video>`;
+    thumb.onclick = () => {
+      renderFeed();
+      showScreen('feed-screen');
+    };
+    grid.appendChild(thumb);
+  });
+}
+</script>
+
+</body>
+</html>
